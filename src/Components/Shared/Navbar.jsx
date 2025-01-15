@@ -30,7 +30,9 @@ const Navbar = () => {
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
-  const isHomepage = location.pathname === "/";
+  // const isHomepage = location.pathname === "/";
+  const isLoginPage = location.pathname === "/login";
+  const isRegisterPage = location.pathname === "/register";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,31 +72,33 @@ const Navbar = () => {
       <nav className="flex  items-center  justify-between px-8 py-2">
         <div className="flex items-center">
           <img className="w-12" src={logo} alt="" />
-          <Link
-            to="/"
-            className="text-3xl font-bold  font tracking-widest"
-          >
+          <Link to="/" className="text-3xl font-bold  font tracking-widest">
             Packify
           </Link>
         </div>
 
         <div className=" flex space-x-3  items-center">
-          <div className="lg:flex items-center space-x-3 hidden">
-            <NavLink
-              to="/"
-              className=" hover:font-bold text-sm flex items-center space-x-2"
-            >
-              Home
-            </NavLink>
-            <NavLink to="/queries" className="hover:font-bold text-sm ">
-              <IoIosNotificationsOutline className="text-2xl" />
-            </NavLink>
+          <div>
+            {isLoginPage || isRegisterPage ? null : (
+              <div className="flex space-x-3 items-center">
+                <div className="lg:flex items-center space-x-3 hidden">
+                  <NavLink
+                    to="/"
+                    className="hover:font-bold text-sm flex items-center space-x-2"
+                  >
+                    Home
+                  </NavLink>
+                  <NavLink to="/queries" className="hover:font-bold text-sm">
+                    <IoIosNotificationsOutline className="text-2xl" />
+                  </NavLink>
+                </div>
+              </div>
+            )}
           </div>
-
           <BsPersonCircle className="text-3xl" />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button  variant="outline">Open</Button>
+              <Button variant="outline">Open</Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56">
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -151,7 +155,7 @@ const Navbar = () => {
           <NavLink to="/login">
             <button className="text-white flex items-center gap-1">
               <CiLogin />
-              Login
+              Sign In
             </button>
           </NavLink>
         </div>
