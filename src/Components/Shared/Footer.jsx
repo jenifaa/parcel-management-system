@@ -15,8 +15,9 @@ const Footer = () => {
     !isLoginPage &&
     !isRegisterPage && ( 
       <div className="bg-green-950 text-white">
-        <div className="flex  justify-between w-11/12 mx-auto py-8">
-          <div>
+        <div className="lg:flex  lg:justify-between w-11/12  mx-auto py-8 space-y-10 lg:space-y-0">
+         <div className="md:flex md:justify-between lg:gap-60  space-y-10 md:space-y-2">
+         <div className="px-6 lg:px-0">
             <h2 className="text-2xl font-bold mb-3">Follow us</h2>
             <div className="flex items-center gap-3">
               <img className="w-8" src={img1} alt="" />
@@ -25,7 +26,7 @@ const Footer = () => {
               <img className="w-8" src={img4} alt="" />
             </div>
           </div>
-          <div>
+          <div className="">
             <div className=" px-8 pb-4 rounded-lg shadow-md flex gap-40 ">
               <div>
                 <h2 className="text-xl font-semibold mb-4 border-b border-green-700 pb-2">
@@ -107,7 +108,8 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div>
+         </div>
+          <div className="px-6 lg:px-0">
             <div className="flex items-center mb-4">
               <img src={img5} alt="" />
               <h2 className="text-4xl font">Packify</h2>

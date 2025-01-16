@@ -30,6 +30,7 @@ const Register = () => {
   const onSubmit = (data) => {
     createNewUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
+    
 
       updateUserProfile(data.name, data.photoURL).then(() => {
         const userInfo = {
@@ -52,17 +53,17 @@ const Register = () => {
   };
   return (
     <div>
-      <div className="mt-20 mb-10 text-green-800">
+      <div className="mt-20 mb-10 ">
         <div className="   flex flex-col-reverse lg:flex-row  items-center lg:w-10/12 mx-auto">
           <div className="  lg:w-1/2 mx-auto lg:max-w-xs">
-            <h2 className="text-center text-4xl font2 mb-8  font-bold">
+            <h2 className="text-center text-4xl font2 mb-8 text-green-800 font-bold">
               Sign Up
             </h2>
             <form onSubmit={handleSubmit(onSubmit)} className="">
               {step === 1 && (
                 <>
                   <div className="form-control">
-                    <h2>Name*</h2>
+                    <h2 className="text-green-800">Name*</h2>
                     <input
                       type="text"
                       {...register("name", { required: true })}
@@ -77,7 +78,7 @@ const Register = () => {
                     )}
                   </div>
                   <div className="form-control">
-                    <h2>Email*</h2>
+                    <h2 className="text-green-800">Email*</h2>
                     <input
                       type="email"
                       {...register("email", { required: true })}
@@ -94,7 +95,7 @@ const Register = () => {
                   <div className="flex items-center justify-end mb-5 mt-3">
                     <button
                       type="button"
-                      className=" text-sm font-bold flex items-center gap-3"
+                      className=" text-sm font-bold text-green-800 flex items-center gap-3"
                       onClick={handleNext}
                     >
                       Continue <FaArrowRightLong className="text-sm" />
@@ -105,7 +106,7 @@ const Register = () => {
               {step === 2 && (
                 <>
                   <div className="form-control">
-                    <h2>PhotoUrl*</h2>
+                    <h2 className="text-green-800">PhotoUrl*</h2>
                     <input
                       type="url"
                       {...register("photoURL", { required: true })}
@@ -120,7 +121,7 @@ const Register = () => {
                   </div>
 
                   <div className="form-control">
-                    <h2>Password*</h2>
+                    <h2 className="text-green-800">Password*</h2>
                     <input
                       type="password"
                       {...register("password", {
@@ -158,10 +159,10 @@ const Register = () => {
                     <div className="flex items-center ">
                       <button
                         type="button"
-                        className=" text-sm font-bold flex items-center gap-2"
+                        className=" text-sm font-bold text-green-800 flex items-center gap-2"
                         onClick={handleBack}
                       >
-                    <FaArrowLeft className="text-sm" /> Back
+                    <FaArrowLeft className="text-sm " /> Back
                       </button>
                     </div>
                     <input
@@ -174,7 +175,7 @@ const Register = () => {
                 </>
               )}
 
-              <p className="text-center ">
+              <p className="text-center text-green-800">
                 <small>
                   New Here? Create an Account -
                   <Link className="font-bold" to="/login">

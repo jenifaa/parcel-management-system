@@ -31,12 +31,26 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
-  const updateUserProfile = (updatedData) => {
-    return updateProfile(auth.currentUser, updatedData);
+  const updateUserProfile = (name, photo) => {
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photo,
+    });
   };
   const signInWithGoogle = () => {
     return signInWithPopup(auth, provider);
   };
+ 
+  useEffect(() => {
+    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+     
+      setLoading(false);
+    });
+    return () => {
+      unSubscribe();
+    };
+  },[]);
   const authInfo = {
     user,
     setUser,
@@ -49,15 +63,7 @@ const AuthProvider = ({ children }) => {
     signInWithGoogle,
     onAuthStateChanged,
   };
-  useEffect(() => {
-    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setLoading(false);
-    });
-    return () => {
-      unSubscribe();
-    };
-  },[]);
+  console.log(user);
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );
