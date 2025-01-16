@@ -101,6 +101,12 @@ const Navbar = () => {
                     >
                       Home
                     </NavLink>
+                    <NavLink
+                      to="/extra"
+                      className="hover:font-bold text-sm flex items-center space-x-2"
+                    >
+                      Extra
+                    </NavLink>
                   </div>
                   {user && user?.email ? (
                     <>
