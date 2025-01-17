@@ -25,10 +25,11 @@ import { IoPersonOutline } from "react-icons/io5";
 import { Button } from "../ui/button";
 import useAuth from "../Hooks/useAuth";
 import Swal from "sweetalert2";
+import Loading from "./Loading";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { user, logOut } = useAuth();
+  const { user, logOut, loading } = useAuth();
 
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
@@ -53,7 +54,9 @@ const Navbar = () => {
       });
     });
   };
-
+  if (loading) {
+    return <Loading></Loading>;
+  }
   return (
     <div
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
@@ -101,11 +104,10 @@ const Navbar = () => {
                     >
                       Home
                     </NavLink>
-                    <NavLink
-                      to="/extra"
-                      className="hover:font-bold text-sm flex items-center space-x-2"
-                    >
-                      Extra
+
+                    
+                    <NavLink className="hover:text-gray-200">
+                      <IoIosNotificationsOutline />
                     </NavLink>
                   </div>
                   {user && user?.email ? (
@@ -171,9 +173,8 @@ const Navbar = () => {
           <NavLink to="/" className="hover:text-gray-200">
             Home
           </NavLink>
-          <NavLink to="/queries" className="hover:text-gray-200">
-            <IoIosNotificationsOutline />
-          </NavLink>
+
+          
         </div>
       )}
     </div>

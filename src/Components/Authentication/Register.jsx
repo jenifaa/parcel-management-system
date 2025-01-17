@@ -30,7 +30,6 @@ const Register = () => {
   const onSubmit = (data) => {
     createNewUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
-    
 
       updateUserProfile(data.name, data.photoURL).then(() => {
         const userInfo = {
@@ -92,6 +91,28 @@ const Register = () => {
                       </span>
                     )}
                   </div>
+                  {/* <div className="form-control">
+                    <h2 className="text-green-800">Type*</h2>
+                    <select
+                      defaultValue="default"
+                      {...register("type", { required: true })}
+                      className=" border-b-2 rounded-md py-2 px-3 w-full mt-2 mb-2"
+                    >
+                      <option disabled value="default">
+                        Select A Type
+                      </option>
+                      <option value="user">User</option>
+                      <option value="admin">Admin</option>
+                      <option value="deliveryMan">Delivery Man</option>
+                     
+                    </select>
+
+                    {errors.name && (
+                      <span className="text-red-600">
+                        This field is required
+                      </span>
+                    )}
+                  </div> */}
                   <div className="flex items-center justify-end mb-5 mt-3">
                     <button
                       type="button"
@@ -162,7 +183,7 @@ const Register = () => {
                         className=" text-sm font-bold text-green-800 flex items-center gap-2"
                         onClick={handleBack}
                       >
-                    <FaArrowLeft className="text-sm " /> Back
+                        <FaArrowLeft className="text-sm " /> Back
                       </button>
                     </div>
                     <input
@@ -186,7 +207,7 @@ const Register = () => {
             </form>
 
             <div className="text-center text-green-700 ">
-              <small>Or Sign in with</small>
+              <p>Or </p>
               <SocialLogin></SocialLogin>
             </div>
           </div>

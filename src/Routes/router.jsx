@@ -7,8 +7,11 @@ import Register from "@/Components/Authentication/Register";
 import Login from "@/Components/Authentication/Login";
 import Dashboard from "@/Components/Main/Dashboard";
 import BookParcel from "@/Components/Pages/Dashboard/Users/BookParcel";
-import MyParcel from "@/Components/Pages/Dashboard/MyParcel";
-import Extra from "@/Components/Pages/Extra";
+import MyParcel from "@/Components/Pages/Dashboard/Users/MyParcel";
+import AllUsers from "@/Components/Pages/Dashboard/Admin/AllUsers";
+import MyProfile from "@/Components/Pages/Dashboard/Users/MyProfile";
+
+
 
 const router = createBrowserRouter([
   {
@@ -28,16 +31,15 @@ const router = createBrowserRouter([
         path: "login",
         element: <Login></Login>,
       },
-      {
-        path: "extra",
-        element: <Extra></Extra>,
-      },
+     
+      
     ],
   },
   {
     path: "dashboard",
     element: <Dashboard></Dashboard>,
     children: [
+      //Users Only
       {
         path: "booking",
         element: <BookParcel></BookParcel>,
@@ -46,6 +48,15 @@ const router = createBrowserRouter([
         path: "parcel",
         element: <MyParcel></MyParcel>,
       },
+      {
+        path: "myProfile",
+        element: <MyProfile></MyProfile>,
+      },
+      //Admin Only
+      {
+        path: 'allUsers',
+        element: <AllUsers></AllUsers>
+      }
     ],
   },
 ]);

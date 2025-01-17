@@ -16,11 +16,17 @@ const SocialLogin = () => {
       const userInfo = {
         email: result.user?.email,
         name: result.user?.displayName,
+        type: "user", 
+        isSocialLogin: true, 
       };
-      axiosPublic.post("/users", userInfo).then((res) => {
-        
-        navigate("/");
-      });
+
+      axiosPublic
+        .post("/users", userInfo)
+        .then((res) => {
+          if (res.data.insertedId || res.data.message === "User exists") {
+            navigate("/"); 
+          }
+        })
      
     });
   };
