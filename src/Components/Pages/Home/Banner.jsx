@@ -6,7 +6,7 @@ const Banner = () => {
   return (
     <div className="relative mt-16">
       <img
-        className="h-[300px] lg:h-[500px] w-full object-cover"
+        className="h-[400px] lg:h-[550px] w-full object-cover"
         src={bannerImg}
         alt=""
       />

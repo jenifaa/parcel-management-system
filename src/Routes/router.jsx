@@ -10,8 +10,7 @@ import BookParcel from "@/Components/Pages/Dashboard/Users/BookParcel";
 import MyParcel from "@/Components/Pages/Dashboard/Users/MyParcel";
 import AllUsers from "@/Components/Pages/Dashboard/Admin/AllUsers";
 import MyProfile from "@/Components/Pages/Dashboard/Users/MyProfile";
-
-
+import UpdateBooking from "@/Components/Pages/Dashboard/Users/UpdateBooking";
 
 const router = createBrowserRouter([
   {
@@ -31,8 +30,6 @@ const router = createBrowserRouter([
         path: "login",
         element: <Login></Login>,
       },
-     
-      
     ],
   },
   {
@@ -52,11 +49,16 @@ const router = createBrowserRouter([
         path: "myProfile",
         element: <MyProfile></MyProfile>,
       },
+      {
+        path: "update/:id",
+        element: <UpdateBooking></UpdateBooking>,
+        loader: ({params}) =>fetch(`http://localhost:5000/parcel/item/${params.id}`)
+      },
       //Admin Only
       {
-        path: 'allUsers',
-        element: <AllUsers></AllUsers>
-      }
+        path: "allUsers",
+        element: <AllUsers></AllUsers>,
+      },
     ],
   },
 ]);

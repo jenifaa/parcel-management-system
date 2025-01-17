@@ -17,6 +17,9 @@ const MyParcel = () => {
       return res.data;
     },
   });
+  const handleDeleteParcel =(id)=>{
+    
+  }
   return (
     <div className="my-20">
       <h2 className="text-center">My Parcels {parcels.length}</h2>
@@ -41,8 +44,8 @@ const MyParcel = () => {
                   <td className="px-4 py-2">{parcel.requestedDeliveryDate}</td>
                   <td className="px-4 py-2 text-right">Id</td>
                   <td className="px-4 py-2 text-right">{parcel.status}</td>
-                  <td className="px-4 py-2 text-right"><button>Update</button></td>
-                  <td className="px-4 py-2 text-right"><button>delete</button></td>
+                  <td className="px-4 py-2 text-right"><Link to={`/dashboard/update/${parcel._id}`}><button>Update</button></Link></td>
+                  <td className="px-4 py-2 text-right"><button onClick={()=>handleDeleteParcel(parcel._id)}>delete</button></td>
                   <td className="px-4 py-2 text-right"><button>pay</button></td>
                 </tr>
               ))}
