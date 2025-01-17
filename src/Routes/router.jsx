@@ -11,6 +11,11 @@ import MyParcel from "@/Components/Pages/Dashboard/Users/MyParcel";
 import AllUsers from "@/Components/Pages/Dashboard/Admin/AllUsers";
 import MyProfile from "@/Components/Pages/Dashboard/Users/MyProfile";
 import UpdateBooking from "@/Components/Pages/Dashboard/Users/UpdateBooking";
+import AdminHome from "@/Components/Pages/Dashboard/Admin/AdminHome";
+import UserHome from "@/Components/Pages/Dashboard/Users/UserHome";
+import DeliveryManHome from "@/Components/Pages/Dashboard/DeliveryMan/DeliveryManHome";
+import AllParcel from "@/Components/Pages/Dashboard/Admin/AllParcel";
+import AllDeliveryman from "@/Components/Pages/Dashboard/Admin/AllDeliveryman";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +51,10 @@ const router = createBrowserRouter([
         element: <MyParcel></MyParcel>,
       },
       {
+        path: "userHome",
+        element: <UserHome></UserHome>,
+      },
+      {
         path: "myProfile",
         element: <MyProfile></MyProfile>,
       },
@@ -59,6 +68,23 @@ const router = createBrowserRouter([
         path: "allUsers",
         element: <AllUsers></AllUsers>,
       },
+      {
+        path: "allParcel",
+        element: <AllParcel></AllParcel>,
+      },
+      {
+        path: "adminHome",
+        element: <AdminHome></AdminHome>,
+      },
+      //delivery man only
+      {
+        path: 'deliveryHome',
+        element: <DeliveryManHome></DeliveryManHome>
+      },
+      {
+        path: 'allDeliveryMan',
+        element: <AllDeliveryman></AllDeliveryman>
+      }
     ],
   },
 ]);

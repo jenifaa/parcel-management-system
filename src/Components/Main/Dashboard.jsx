@@ -23,19 +23,23 @@ const Dashboard = () => {
                   <FaHome></FaHome> Admin Home
                 </NavLink>
               </li>
-              <li>
-                <NavLink to="/dashboard/addItems">Add Items</NavLink>
-              </li>
+             
               <li>
                 <NavLink to="/dashboard/manageItems">Manage Items</NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/manageBookings">
-                  Manage Bookings
-                </NavLink>
+                <NavLink to="/dashboard/allParcel">All Parcels</NavLink>
               </li>
+             
+              <li>
+                <NavLink to="/dashboard/allDeliveryMan">All DeliveryMan</NavLink>
+              </li>
+             
               <li>
                 <NavLink to="/dashboard/allUsers">All Users</NavLink>
+              </li>
+              <li>
+                <NavLink to="/">Home</NavLink>
               </li>
             </>
           ) : isDeliveryMan ? (

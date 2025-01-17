@@ -30,11 +30,15 @@ const Register = () => {
   const onSubmit = (data) => {
     createNewUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
+      console.log(loggedUser);
 
       updateUserProfile(data.name, data.photoURL).then(() => {
         const userInfo = {
           name: data.name,
           email: data.email,
+          photoURL: data.photoURL,
+          type: data.type,
+          phoneNumber: data.phoneNumber,
         };
         axiosPublic.post("/users", userInfo).then((res) => {
           if (res.data.insertedId) {
@@ -54,7 +58,7 @@ const Register = () => {
     <div>
       <div className="mt-20 mb-10 ">
         <div className="   flex flex-col-reverse lg:flex-row  items-center lg:w-10/12 mx-auto">
-          <div className="  lg:w-1/2 mx-auto lg:max-w-xs">
+          <div className=" md:w-8/12 w-10/12  lg:w-1/2 mx-auto lg:max-w-xs">
             <h2 className="text-center text-4xl font2 mb-8 text-green-800 font-bold">
               Sign Up
             </h2>
@@ -91,20 +95,19 @@ const Register = () => {
                       </span>
                     )}
                   </div>
-                  {/* <div className="form-control">
+                  <div className="form-control">
                     <h2 className="text-green-800">Type*</h2>
                     <select
                       defaultValue="default"
                       {...register("type", { required: true })}
-                      className=" border-b-2 rounded-md py-2 px-3 w-full mt-2 mb-2"
+                      className=" border-b-2 rounded-md py-2 px-2 w-full mt-2 mb-2 text-sm"
                     >
                       <option disabled value="default">
                         Select A Type
                       </option>
                       <option value="user">User</option>
-                      <option value="admin">Admin</option>
+                      {/* <option value="admin">Admin</option> */}
                       <option value="deliveryMan">Delivery Man</option>
-                     
                     </select>
 
                     {errors.name && (
@@ -112,7 +115,7 @@ const Register = () => {
                         This field is required
                       </span>
                     )}
-                  </div> */}
+                  </div>
                   <div className="flex items-center justify-end mb-5 mt-3">
                     <button
                       type="button"
@@ -139,6 +142,15 @@ const Register = () => {
                         This field is required
                       </span>
                     )}
+                  </div>
+                  <div className="form-control">
+                    <h2 className="text-green-800">Phone Number*</h2>
+                    <input
+                      type="number"
+                      {...register("phoneNumber", { required: true })}
+                      placeholder="Your phone Number"
+                      className=" border-b-2 rounded-md py-2 px-3 w-full mt-2 mb-5"
+                    />
                   </div>
 
                   <div className="form-control">
@@ -190,7 +202,7 @@ const Register = () => {
                       //   disabled={disable}
                       className="w-full py-2 my-2 bg-opacity-90 rounded-lg text-white font-bold bg-green-900"
                       type="submit"
-                      value="Login"
+                      value="Sign Up"
                     />
                   </div>
                 </>

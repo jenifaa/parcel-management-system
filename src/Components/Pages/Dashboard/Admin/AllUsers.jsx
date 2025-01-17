@@ -1,126 +1,203 @@
-import useAdmin from '@/Components/Hooks/useAdmin';
-import useAuth from '@/Components/Hooks/useAuth';
-import useAxiosSecure from '@/Components/Hooks/useAxiosSecure';
-import useDeliveryMan from '@/Components/Hooks/useDeliveryMan';
-import { useQuery } from '@tanstack/react-query';
-import React from 'react';
-import { FaTrashAlt } from 'react-icons/fa';
-import { FaUsers } from 'react-icons/fa6';
-import Swal from 'sweetalert2';
+import useAdmin from "@/Components/Hooks/useAdmin";
+import useAuth from "@/Components/Hooks/useAuth";
+import useAxiosSecure from "@/Components/Hooks/useAxiosSecure";
+import useDeliveryMan from "@/Components/Hooks/useDeliveryMan";
+import { useQuery } from "@tanstack/react-query";
+import React from "react";
+import { FaTrashAlt } from "react-icons/fa";
+import { FaUsers } from "react-icons/fa6";
+import Swal from "sweetalert2";
 
 const AllUsers = () => {
-    const {user , signInWithGoogle } = useAuth()
-    const [isAdmin] = useAdmin()
-    const [isDeliveryMan] = useDeliveryMan()
-    const axiosSecure = useAxiosSecure();
-    const { data: users = [], refetch } = useQuery({
-      queryKey: ["users"],
-      queryFn: async () => {
-        const res = await axiosSecure.get("/users");
-        return res.data;
-      },
+  const { user, signInWithGoogle } = useAuth();
+  const [isAdmin] = useAdmin();
+  const [isDeliveryMan] = useDeliveryMan();
+  const axiosSecure = useAxiosSecure();
+  const { data: users = [], refetch } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const res = await axiosSecure.get("/users");
+      return res.data;
+    },
+  });
+  const handleUserDelete = (user) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/users/${user?._id}`).then((res) => {
+          if (res.data.deletedCount > 0) {
+            refetch();
+            Swal.fire({
+              title: "Deleted!",
+              text: "User has been deleted.",
+              icon: "success",
+            });
+          }
+        });
+      }
     });
-    const handleUserDelete = (user) => {
+  };
+  const handleMakeAdmin = (user) => {
+    axiosSecure.patch(`/users/admin/${user?._id}`).then((res) => {
+      if (res.data.modifiedCount > 0) {
+        refetch();
         Swal.fire({
-          title: "Are you sure?",
-          text: "You won't be able to revert this!",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Yes, delete it!",
-        }).then((result) => {
-          if (result.isConfirmed) {
-            axiosSecure.delete(`/users/${user?._id}`).then((res) => {
-              if (res.data.deletedCount > 0) {
-                refetch();
-                Swal.fire({
-                  title: "Deleted!",
-                  text: "User has been deleted.",
-                  icon: "success",
-                });
-              }
-            });
-          }
+          title: "Updated!",
+          text: "User has been Updated to Admin.",
+          icon: "success",
         });
-      };
-    const handleMakeAdmin = (user) => {
-        axiosSecure.patch(`/users/admin/${user?._id}`).then((res) => {
-        
-          if (res.data.modifiedCount > 0) {
-            refetch();
-            Swal.fire({
-              title: "Updated!",
-              text: "User has been Updated to Admin.",
-              icon: "success",
-            });
-          }
+      }
+    });
+  };
+  const handleMakeDeliveryMan = (user) => {
+    axiosSecure.patch(`/users/deliveryMan/${user?._id}`).then((res) => {
+      if (res.data.modifiedCount > 0) {
+        refetch();
+        Swal.fire({
+          title: "Updated!",
+          text: "User has been Updated to deliveryMan.",
+          icon: "success",
         });
-      };
-    const handleMakeDeliveryMan = (user) => {
-        axiosSecure.patch(`/users/deliveryMan/${user?._id}`).then((res) => {
-        
-          if (res.data.modifiedCount > 0) {
-            refetch();
-            Swal.fire({
-              title: "Updated!",
-              text: "User has been Updated to deliveryMan.",
-              icon: "success",
-            });
-          }
-        });
-      };
-    return (
-        <div>
-             <div className="flex justify-evenly items-centers my-5">
-        {" "}
-        <h2 className="text-3xl font-bolds">All user</h2>
-        <h2 className="text-3xl font-bolds">Total Users({users.length})</h2>
+      }
+    });
+  };
+  return (
+    //   <div>
+    //        <div className="flex justify-evenly items-centers my-5">
+    //   {" "}
+    //   <h2 className="text-3xl font-bolds">All user</h2>
+    //   <h2 className="text-3xl font-bolds">Total Users({users.length})</h2>
+    // </div>
+    // <div className="overflow-x-auto">
+    //   <table className="table w-full">
+    //     <thead>
+    //       <tr>
+    //         <th></th>
+    //         <th>Name</th>
+    //         <th>Email</th>
+    //         <th>Admin Role</th>
+    //         <th>Delivery man</th>
+    //         <th>edit</th>
+    //         <th>delete</th>
+    //       </tr>
+    //     </thead>
+    //     <tbody>
+    //       {users.map((user, index) => (
+    //         <tr key={user._id}>
+    //           <td>{index + 1}</td>
+    //           <td>{user.name}</td>
+    //           <td>{user.email}</td>
+    //           <td>
+    //             {user.role === "admin" ? (
+    //               "Admin"
+    //             ) : (
+    //               <button
+    //                 onClick={() => handleMakeAdmin(user)}
+    //                 className="p-2 bg-[#D1A054]"
+    //               >
+    //                 <FaUsers className="text-xl"></FaUsers>
+    //               </button>
+    //             )}
+    //           </td>
+    //           <td>
+    //             {user.role === "deliveryMan" ? (
+    //               "DeliveryMan"
+    //             ) : (
+    //               <button
+    //                 onClick={() => handleMakeDeliveryMan(user)}
+    //                 className="p-2 bg-[#D1A054]"
+    //               >
+    //                 <FaUsers className="text-xl"></FaUsers>
+    //               </button>
+    //             )}
+    //           </td>
+    //           <td>
+    //             <button onClick={() => handleUserDelete(user)}>
+    //               <FaTrashAlt className="text-xl text-red-600"></FaTrashAlt>
+    //             </button>
+    //           </td>
+    //         </tr>
+    //       ))}
+    //     </tbody>
+    //   </table>
+    // </div>
+    //   </div>
+    <div className="p-6 bg-gray-50 rounded-lg shadow-lg">
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-3xl font-bold text-gray-700">All Users</h2>
+        <h2 className="text-3xl font-bold text-gray-700">
+          Total Users ({users.length})
+        </h2>
       </div>
+
       <div className="overflow-x-auto">
-        <table className="table w-full">
-          <thead>
+        <table className="table-auto w-full border-collapse border border-gray-200 text-left">
+          <thead className="bg-gray-200">
             <tr>
-              <th></th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Admin Role</th>
-              <th>Delivery man</th>
+              <th className="px-4 py-2 border border-gray-300">#</th>
+              <th className="px-4 py-2 border border-gray-300">Name</th>
+              <th className="px-4 py-2 border border-gray-300">Phone Number</th>
+              <th className="px-4 py-2 border border-gray-300">Booked Parcel</th>
+              <th className="px-4 py-2 border border-gray-300">Total cost</th>
+              <th className="px-4 py-2 border border-gray-300">Admin Role</th>
+              <th className="px-4 py-2 border border-gray-300">Delivery Man</th>
+
+              
             </tr>
           </thead>
+
           <tbody>
             {users.map((user, index) => (
-              <tr key={user._id}>
-                <th>{index + 1}</th>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
-                <td>
-                  {user.role === "admin" ? (
+              <tr
+                key={user._id}
+                className={`${
+                  index % 2 === 0 ? "bg-gray-100" : "bg-white"
+                } hover:bg-gray-200`}
+              >
+                <td className="px-4 py-2 border border-gray-300 text-center">
+                  {index + 1}
+                </td>
+                <td className="px-4 py-2 border border-gray-300">
+                  {user.name}
+                </td>
+                <td className="px-4 py-2 border border-gray-300">
+                  {user.email}
+                </td>
+                <td className="px-4 py-2 border border-gray-300 text-center">
+                  {user.type === "admin" ? (
                     "Admin"
                   ) : (
                     <button
                       onClick={() => handleMakeAdmin(user)}
-                      className="p-2 bg-[#D1A054]"
+                      className="p-2 bg-yellow-400 text-white rounded-md shadow-md"
                     >
-                      <FaUsers className="text-xl"></FaUsers>
+                      <FaUsers className="text-xl" />
                     </button>
                   )}
                 </td>
-                <td>
-                  {user.role === "deliveryMan" ? (
+                <td className="px-4 py-2 border border-gray-300 text-center">
+                  {user.type === "deliveryMan" ? (
                     "DeliveryMan"
                   ) : (
                     <button
                       onClick={() => handleMakeDeliveryMan(user)}
-                      className="p-2 bg-[#D1A054]"
+                      className="p-2 bg-blue-500 text-white rounded-md shadow-md"
                     >
-                      <FaUsers className="text-xl"></FaUsers>
+                      <FaUsers className="text-xl" />
                     </button>
                   )}
                 </td>
-                <td>
+
+                <td className="px-4 py-2 border border-gray-300 text-center">
                   <button onClick={() => handleUserDelete(user)}>
-                    <FaTrashAlt className="text-xl text-red-600"></FaTrashAlt>
+                    <FaTrashAlt className="text-xl text-red-600" />
                   </button>
                 </td>
               </tr>
@@ -128,8 +205,8 @@ const AllUsers = () => {
           </tbody>
         </table>
       </div>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default AllUsers;

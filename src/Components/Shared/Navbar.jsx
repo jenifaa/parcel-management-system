@@ -26,6 +26,8 @@ import { Button } from "../ui/button";
 import useAuth from "../Hooks/useAuth";
 import Swal from "sweetalert2";
 import Loading from "./Loading";
+import useAdmin from "../Hooks/useAdmin";
+import useDeliveryMan from "../Hooks/useDeliveryMan";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -37,7 +39,8 @@ const Navbar = () => {
   // const isHomepage = location.pathname === "/";
   const isLoginPage = location.pathname === "/login";
   const isRegisterPage = location.pathname === "/register";
-
+  const isAdmin = useAdmin();
+  const isDeliveryMan = useDeliveryMan();
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 250);
@@ -105,7 +108,6 @@ const Navbar = () => {
                       Home
                     </NavLink>
 
-                    
                     <NavLink className="hover:text-gray-200">
                       <IoIosNotificationsOutline />
                     </NavLink>
@@ -125,18 +127,38 @@ const Navbar = () => {
                           <DropdownMenuSeparator />
                           <DropdownMenuGroup>
                             <DropdownMenuItem>
-                              <h2 className=" font-bold">
+                              <h2 className=" font-bold text-xl">
                                 {" "}
                                 {user?.displayName}
                               </h2>
                             </DropdownMenuItem>
                             <DropdownMenuItem>
-                              <Link
-                                to="/dashboard"
-                                className="hover:font-bold text-sm flex items-center space-x-2"
-                              >
-                                DashBoard
-                              </Link>
+                              {isAdmin ? (
+                                // Admin Menu
+
+                                <li>
+                                  <NavLink to="/dashboard/adminHome">
+                                    Dashboard
+                                  </NavLink>
+                                </li>
+                              ) : isDeliveryMan ? (
+                                // Delivery Man Menu
+
+                                <li>
+                                  <NavLink to="/dashboard/deliveryHome">
+                                    Dashboard
+                                  </NavLink>
+                                </li>
+                              ) : (
+                                // User Menu
+                                <>
+                                  <li>
+                                    <Link to="/userHome" className="">
+                                      Dashboard
+                                    </Link>
+                                  </li>
+                                </>
+                              )}
                             </DropdownMenuItem>
                           </DropdownMenuGroup>
 
@@ -173,8 +195,6 @@ const Navbar = () => {
           <NavLink to="/" className="hover:text-gray-200">
             Home
           </NavLink>
-
-          
         </div>
       )}
     </div>
