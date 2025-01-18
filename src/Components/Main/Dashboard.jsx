@@ -6,14 +6,17 @@ import { FaHome, FaUserCircle } from "react-icons/fa";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../Hooks/useAdmin";
 import useDeliveryMan from "../Hooks/useDeliveryMan";
+import Loading from "../Shared/Loading";
 const Dashboard = () => {
-  const { user } = useAuth();
+  const { user ,loading} = useAuth();
   const [isAdmin] = useAdmin();
   const [isDeliveryMan] = useDeliveryMan();
-
+if(loading){
+  return <Loading></Loading>
+}
   return (
     <div className="flex">
-      <div className="w-64 p-5 min-h-screen text-white bg-green-700">
+      <div className="w-64 lg:p-5 p-2 min-h-screen text-white bg-green-700">
         <ul className="menu">
           {isAdmin ? (
             // Admin Menu
@@ -46,10 +49,13 @@ const Dashboard = () => {
             // Delivery Man Menu
             <>
               <li>
-                <NavLink to="/dashboard/deliveryTasks">Delivery Tasks</NavLink>
+                <NavLink to="/dashboard/deliveryHome">Delivery Man Home</NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/profile">Profile</NavLink>
+                <NavLink to="/dashboard/deliveryList">My Delivery List</NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/myReviews">My Reviews</NavLink>
               </li>
             </>
           ) : (

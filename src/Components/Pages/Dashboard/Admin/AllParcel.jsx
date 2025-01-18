@@ -70,11 +70,11 @@ const AllParcel = () => {
       };
 
       await axiosSecure.put(`/parcel/${selectedParcel._id}`, updatedParcel);
-      Swal.fire({
-        title: "Updated!!",
-        text: "DeliveryMan And status Updated successfully",
-        icon: "success",
-      });
+    //   Swal.fire({
+    //     title: "Updated!!",
+    //     text: "DeliveryMan And status Updated successfully",
+    //     icon: "success",
+    //   });
       refetch();
     } catch (error) {
       console.error("Error updating parcel:", error);

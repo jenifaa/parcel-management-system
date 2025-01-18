@@ -16,6 +16,9 @@ import UserHome from "@/Components/Pages/Dashboard/Users/UserHome";
 import DeliveryManHome from "@/Components/Pages/Dashboard/DeliveryMan/DeliveryManHome";
 import AllParcel from "@/Components/Pages/Dashboard/Admin/AllParcel";
 import AllDeliveryman from "@/Components/Pages/Dashboard/Admin/AllDeliveryman";
+import DeliveryList from "@/Components/Pages/Dashboard/DeliveryMan/DeliveryList";
+import MyReviews from "@/Components/Pages/Dashboard/DeliveryMan/MyReviews";
+import Payment from "@/Components/Pages/Dashboard/Users/Payment";
 
 const router = createBrowserRouter([
   {
@@ -59,9 +62,14 @@ const router = createBrowserRouter([
         element: <MyProfile></MyProfile>,
       },
       {
+        path: "payment",
+        element: <Payment></Payment>,
+      },
+      {
         path: "update/:id",
         element: <UpdateBooking></UpdateBooking>,
-        loader: ({params}) =>fetch(`http://localhost:5000/parcel/item/${params.id}`)
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/parcel/item/${params.id}`),
       },
       //Admin Only
       {
@@ -78,13 +86,23 @@ const router = createBrowserRouter([
       },
       //delivery man only
       {
-        path: 'deliveryHome',
-        element: <DeliveryManHome></DeliveryManHome>
+        path: "deliveryHome",
+        element: <DeliveryManHome></DeliveryManHome>,
       },
       {
-        path: 'allDeliveryMan',
-        element: <AllDeliveryman></AllDeliveryman>
-      }
+        path: "allDeliveryMan",
+        element: <AllDeliveryman></AllDeliveryman>,
+      },
+      {
+        path: "deliveryList",
+        element: <DeliveryList></DeliveryList>,
+        // loader: ({ params }) =>
+        //   fetch(`http://localhost:5000/parcels/deliveryMan/${params.id}`),
+      },
+      {
+        path: "myReviews",
+        element: <MyReviews></MyReviews>,
+      },
     ],
   },
 ]);

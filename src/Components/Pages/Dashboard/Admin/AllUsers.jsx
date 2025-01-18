@@ -7,7 +7,15 @@ import React from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import { FaUsers } from "react-icons/fa6";
 import Swal from "sweetalert2";
-
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "../../../ui/pagination";
 const AllUsers = () => {
   const { user, signInWithGoogle } = useAuth();
   const [isAdmin] = useAdmin();
@@ -144,12 +152,12 @@ const AllUsers = () => {
               <th className="px-4 py-2 border border-gray-300">#</th>
               <th className="px-4 py-2 border border-gray-300">Name</th>
               <th className="px-4 py-2 border border-gray-300">Phone Number</th>
-              <th className="px-4 py-2 border border-gray-300">Booked Parcel</th>
+              <th className="px-4 py-2 border border-gray-300">
+                Booked Parcel
+              </th>
               <th className="px-4 py-2 border border-gray-300">Total cost</th>
               <th className="px-4 py-2 border border-gray-300">Admin Role</th>
               <th className="px-4 py-2 border border-gray-300">Delivery Man</th>
-
-              
             </tr>
           </thead>
 
@@ -204,6 +212,32 @@ const AllUsers = () => {
             ))}
           </tbody>
         </table>
+      </div>
+      <div className="my-5 text-center">
+        <Pagination>
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPrevious href="#" />
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#">1</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#" isActive>
+                2
+              </PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#">3</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationEllipsis />
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationNext href="#" />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
       </div>
     </div>
   );

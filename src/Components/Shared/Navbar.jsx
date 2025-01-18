@@ -127,7 +127,7 @@ const Navbar = () => {
                           <DropdownMenuSeparator />
                           <DropdownMenuGroup>
                             <DropdownMenuItem>
-                              <h2 className=" font-bold text-xl">
+                              <h2 className=" font-bold text-green-800 text-xl">
                                 {" "}
                                 {user?.displayName}
                               </h2>

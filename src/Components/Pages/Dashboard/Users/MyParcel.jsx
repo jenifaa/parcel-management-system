@@ -77,7 +77,7 @@ const MyParcel = () => {
                     </button>
                   </td>
                   <td className="px-4 py-2 text-right">
-                    <button>pay</button>
+                    <button><Link to="/dashboard/payment">Pay</Link></button>
                   </td>
                 </tr>
               ))}
