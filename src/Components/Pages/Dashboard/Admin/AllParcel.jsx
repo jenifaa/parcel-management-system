@@ -28,9 +28,17 @@ import {
   SelectValue,
 } from "../../../ui/select";
 import Swal from "sweetalert2";
+import { useForm } from "react-hook-form";
+import { toast, ToastContainer } from "react-toastify";
 
 const AllParcel = () => {
   const axiosSecure = useAxiosSecure();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
   const [selectedDeliveryMan, setSelectedDeliveryMan] = useState(null);
   const [selectedParcel, setSelectedParcel] = useState(null);
   const [deliveryDate, setDeliveryDate] = useState("");
@@ -69,21 +77,34 @@ const AllParcel = () => {
         approximateDeliveryDate: deliveryDate,
       };
 
-      await axiosSecure.put(`/parcel/${selectedParcel._id}`, updatedParcel);
-    //   Swal.fire({
-    //     title: "Updated!!",
-    //     text: "DeliveryMan And status Updated successfully",
-    //     icon: "success",
-    //   });
-      refetch();
+      const res = await axiosSecure.put(
+        `/parcel/${selectedParcel._id}`,
+        updatedParcel
+      );
+      console.log(res.data);
+      if (res.data.modifiedCount > 0) {
+        toast.success("Updated");
+        refetch();
+       
+      }
     } catch (error) {
       console.error("Error updating parcel:", error);
-      
     }
   };
 
   return (
     <div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        theme="light"
+      ></ToastContainer>
       <Table>
         <TableCaption>A list of all parcels.</TableCaption>
         <TableHeader>
@@ -116,6 +137,7 @@ const AllParcel = () => {
                     <DialogHeader>
                       <DialogTitle>Assign Delivery</DialogTitle>
                     </DialogHeader>
+
                     <div className="py-4">
                       <div className="mb-4">
                         <Select
@@ -149,6 +171,7 @@ const AllParcel = () => {
                         />
                       </div>
                     </div>
+
                     <DialogFooter>
                       <Button
                         onClick={handleUpdateStatus}

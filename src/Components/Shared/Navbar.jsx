@@ -133,6 +133,34 @@ const Navbar = () => {
                               </h2>
                             </DropdownMenuItem>
                             <DropdownMenuItem>
+
+                              {/* {
+                                isAdmin ? <li>
+                                <NavLink to="/dashboard/adminHome">
+                                  Dashboard
+                                </NavLink>
+                              </li> : ""
+                              }
+                              {
+                                isDeliveryMan ?  <li>
+                                <NavLink to="/dashboard/deliveryHome">
+                                  Dashboard
+                                </NavLink>
+                              </li> : ""
+                              }
+                              {
+                                user && user?.email ?  <li>
+                                <Link to="/userHome" className="">
+                                  Dashboard
+                                </Link>
+                              </li> : ""
+                              } */}
+
+
+
+
+
+                              
                               {isAdmin ? (
                                 // Admin Menu
 

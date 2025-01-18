@@ -96,8 +96,6 @@ const router = createBrowserRouter([
       {
         path: "deliveryList",
         element: <DeliveryList></DeliveryList>,
-        // loader: ({ params }) =>
-        //   fetch(`http://localhost:5000/parcels/deliveryMan/${params.id}`),
       },
       {
         path: "myReviews",

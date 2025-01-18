@@ -48,6 +48,7 @@ if(loading){
           ) : isDeliveryMan ? (
             // Delivery Man Menu
             <>
+             
               <li>
                 <NavLink to="/dashboard/deliveryHome">Delivery Man Home</NavLink>
               </li>
@@ -68,6 +69,15 @@ if(loading){
                 >
                   <IoBookmarksOutline />
                   Book A Parcel
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/userHome"
+                  className="flex items-center gap-1"
+                >
+                  <IoBookmarksOutline />
+                  User Home
                 </NavLink>
               </li>
 
