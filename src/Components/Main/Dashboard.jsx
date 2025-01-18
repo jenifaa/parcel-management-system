@@ -58,6 +58,9 @@ if(loading){
               <li>
                 <NavLink to="/dashboard/myReviews">My Reviews</NavLink>
               </li>
+              <li>
+                <NavLink to="/">Home</NavLink>
+              </li>
             </>
           ) : (
             // User Menu

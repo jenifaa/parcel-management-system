@@ -1,50 +1,142 @@
 import React from "react";
-import icon from '../../../assets/icons/map.png'
+import icon from "../../../assets/icons/map.png";
+import secure from "../../../assets/lottie/secure.json";
+import map from "../../../assets/lottie/map.json";
+import rocket from "../../../assets/lottie/rocket.json";
+import { FaTruck, FaUserFriends, FaBoxOpen } from "react-icons/fa";
+import Lottie from "lottie-react";
+import CountUp from "react-countup";
+import useAxiosPublic from "@/Components/Hooks/useAxiosPublic";
+
+import { useQuery } from "@tanstack/react-query";
 const OurFeature = () => {
+  const axiosPublic = useAxiosPublic();
+  const { data: stats = [], refetch } = useQuery({
+    queryKey: ["stats"],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/parcel");
+      console.log(res.data);
+      return res.data;
+    },
+  });
+  const { data: users = [] } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/users");
+      console.log(res.data);
+      return res.data;
+    },
+  });
   return (
-    <div className="my-10">
-     <div className="flex items-center justify-between w-11/12 mx-auto">
-     <div className="flex flex-col items-center p-6 bg-white border rounded-lg shadow-md hover:shadow-lg transition-shadow">
-        <div className=" mb-4 bg-blue-100 rounded-full flex items-center justify-center">
-          <img src={icon} alt="Icon" className="w-full h-[100px]" />
+    <div className="bg-gray-50">
+      <section className="pt-12 pb-8  px-6 ">
+        <div className="max-w-screen-xl mx-auto text-center">
+          <h2 className="text-sm font-bold mb-2 text-green-700">
+            Our Features---
+          </h2>
+          <h2 className="text-5xl font-bold mb-10">Our Services at a Glance</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* card 1 */}
+            <div className="bg-white px-6 pb-3 rounded-lg shadow-lg">
+              <div className="flex justify-center items-center">
+                <Lottie animationData={secure} className="w-48"></Lottie>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">
+                Secure & Safe Delivery
+              </h3>
+              <p className="text-gray-600">
+                With advanced tracking and security protocols, your parcel stays
+                safe from pickup to delivery.
+              </p>
+            </div>
+
+            {/* card 2 */}
+            <div className="bg-white pt-6 px-6  rounded-lg shadow-lg">
+              <div className="flex justify-center items-center">
+                <Lottie animationData={rocket} className="w-36 mb-3"></Lottie>
+              </div>
+              <h3 className="text-xl font-semibold mb-3">Speedy Service</h3>
+              <p className="text-gray-600">
+                Get your parcels delivered in record time with our ultra-fast
+                delivery network.
+              </p>
+            </div>
+
+            {/* card 3 */}
+            <div className="bg-white px-6 pb-3 rounded-lg shadow-lg">
+              <div className="flex justify-center items-center">
+                <Lottie animationData={map} className="w-48"></Lottie>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Track Your Parcel</h3>
+              <p className="text-gray-600">
+                Know exactly where your parcel is with live tracking updates,
+                ensuring peace of mind throughout the journey.
+              </p>
+            </div>
+          </div>
         </div>
+      </section>
+      <section className="">
+        <div className=" py-10">
+          <div className="bg-gray-100 ">
+            <h2 className="text-5xl font-extrabold text-center pt-8 mb-4 ">
+              Why Choose Us?
+            </h2>
+            <p className="text-center text-sm text-green-600 font-bold mb-12">
+              See what makes us the most reliable delivery service.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:w-8/12 mx-auto gap-8 px-8">
+              {/* Parcels Booked */}
+              <div className="bg-white shadow-lg p-8 rounded-lg text-center hover:shadow-2xl transition-shadow duration-300">
+                <div className="flex justify-center items-center mb-4">
+                  <FaBoxOpen className="text-6xl text-green-500" />
+                </div>
+                <h3 className="text-2xl font-semibold text-gray-700 mb-2">
+                  Parcels Booked
+                </h3>
+                <CountUp
+                  className="text-4xl font-bold text-green-600"
+                  end={stats.length}
+                  duration={2}
+                  separator=","
+                />
+              </div>
 
-        <h3 className="text-xl font-semibold text-gray-800 mb-2">
-          Parcel Tracking
-        </h3>
+              {/* Parcels Delivered */}
+              <div className="bg-white shadow-lg p-8 rounded-lg text-center hover:shadow-2xl transition-shadow duration-300">
+                <div className="flex justify-center items-center mb-4">
+                  <FaTruck className="text-6xl text-blue-500" />
+                </div>
+                <h3 className="text-2xl font-semibold text-gray-700 mb-2">
+                  Parcels Delivered
+                </h3>
+                <CountUp
+                  className="text-4xl font-bold text-blue-600"
+                  end={stats.length}
+                  duration={2}
+                  separator=","
+                />
+              </div>
 
-        <p className="text-gray-600 text-center">
-          Track parcels in real-time from pickup to delivery.
-        </p>
-      </div>
-     <div className="flex flex-col items-center p-6 bg-white border rounded-lg shadow-md hover:shadow-lg transition-shadow">
-        <div className=" mb-4 bg-blue-100 rounded-full flex items-center justify-center">
-          <img src={icon} alt="Icon" className="w-full h-[100px]" />
+              {/* Users Registered */}
+              <div className="bg-white shadow-lg p-8 rounded-lg text-center hover:shadow-2xl transition-shadow duration-300">
+                <div className="flex justify-center items-center mb-4">
+                  <FaUserFriends className="text-6xl text-purple-500" />
+                </div>
+                <h3 className="text-2xl font-semibold text-gray-700 mb-2">
+                  Users Registered
+                </h3>
+                <CountUp
+                  className="text-4xl font-bold text-purple-600"
+                  end={users.length}
+                  duration={2}
+                  separator=","
+                />
+              </div>
+            </div>
+          </div>
         </div>
-
-        <h3 className="text-xl font-semibold text-gray-800 mb-2">
-          Parcel Tracking
-        </h3>
-
-        <p className="text-gray-600 text-center">
-          Track parcels in real-time from pickup to delivery.
-        </p>
-      </div>
-     <div className="flex flex-col items-center p-6 bg-white border rounded-lg shadow-md hover:shadow-lg transition-shadow">
-        <div className=" mb-4 bg-blue-100 rounded-full flex items-center justify-center">
-          <img src={icon} alt="Icon" className="w-full h-[100px]" />
-        </div>
-
-        <h3 className="text-xl font-semibold text-gray-800 mb-2">
-          Parcel Tracking
-        </h3>
-
-        <p className="text-gray-600 text-center">
-          Track parcels in real-time from pickup to delivery.
-        </p>
-      </div>
-     
-     </div>
+      </section>
     </div>
   );
 };

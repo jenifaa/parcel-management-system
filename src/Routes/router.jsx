@@ -19,6 +19,9 @@ import AllDeliveryman from "@/Components/Pages/Dashboard/Admin/AllDeliveryman";
 import DeliveryList from "@/Components/Pages/Dashboard/DeliveryMan/DeliveryList";
 import MyReviews from "@/Components/Pages/Dashboard/DeliveryMan/MyReviews";
 import Payment from "@/Components/Pages/Dashboard/Users/Payment";
+import AdminRoute from "./AdminRoute";
+import DeliveryManRoute from "./DeliveryManRoute";
+import PrivateRoutes from "./PrivateRoutes";
 
 const router = createBrowserRouter([
   {
@@ -42,7 +45,11 @@ const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard></Dashboard>,
+    element: (
+      <PrivateRoutes>
+        <Dashboard></Dashboard>
+      </PrivateRoutes>
+    ),
     children: [
       //Users Only
       {
@@ -74,32 +81,61 @@ const router = createBrowserRouter([
       //Admin Only
       {
         path: "allUsers",
-        element: <AllUsers></AllUsers>,
+        element: (
+          <AdminRoute>
+            <AllUsers></AllUsers>
+          </AdminRoute>
+        ),
       },
       {
         path: "allParcel",
-        element: <AllParcel></AllParcel>,
+        element: (
+          <AdminRoute>
+            <AllParcel></AllParcel>
+          </AdminRoute>
+        ),
       },
       {
         path: "adminHome",
-        element: <AdminHome></AdminHome>,
+        element: (
+          <AdminRoute>
+            <AdminHome></AdminHome>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "allDeliveryMan",
+        element: (
+          <AdminRoute>
+            <AllDeliveryman></AllDeliveryman>
+          </AdminRoute>
+        ),
       },
       //delivery man only
       {
         path: "deliveryHome",
-        element: <DeliveryManHome></DeliveryManHome>,
+        element: (
+          <DeliveryManRoute>
+            <DeliveryManHome></DeliveryManHome>
+          </DeliveryManRoute>
+        ),
       },
-      {
-        path: "allDeliveryMan",
-        element: <AllDeliveryman></AllDeliveryman>,
-      },
+
       {
         path: "deliveryList",
-        element: <DeliveryList></DeliveryList>,
+        element: (
+          <DeliveryManRoute>
+            <DeliveryList></DeliveryList>
+          </DeliveryManRoute>
+        ),
       },
       {
         path: "myReviews",
-        element: <MyReviews></MyReviews>,
+        element: (
+          <DeliveryManRoute>
+            <MyReviews></MyReviews>
+          </DeliveryManRoute>
+        ),
       },
     ],
   },
