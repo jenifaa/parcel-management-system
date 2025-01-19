@@ -7,6 +7,10 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../Hooks/useAdmin";
 import useDeliveryMan from "../Hooks/useDeliveryMan";
 import Loading from "../Shared/Loading";
+import { IoIosStats } from "react-icons/io";
+import { BsBoxes } from "react-icons/bs";
+import { MdGroups } from "react-icons/md";
+import { HiUserGroup } from "react-icons/hi2";
 const Dashboard = () => {
   const { user, loading } = useAuth();
   const [isAdmin] = useAdmin();
@@ -22,29 +26,28 @@ const Dashboard = () => {
             // Admin Menu
             <>
               <li>
-                <NavLink to="/dashboard/adminHome">
-                  <FaHome></FaHome> Statistic
+                <NavLink to="/dashboard/adminHome" className="flex items-center gap-1">
+                  <IoIosStats></IoIosStats> Statistic
+                </NavLink>
+              </li>
+
+             
+              <li>
+                <NavLink to="/dashboard/allParcel" className="flex items-center gap-1"><BsBoxes></BsBoxes>All Parcels</NavLink>
+              </li>
+
+              <li>
+                <NavLink className="flex items-center gap-1" to="/dashboard/allDeliveryMan">
+                 <MdGroups></MdGroups> All DeliveryMan
                 </NavLink>
               </li>
 
               <li>
-                <NavLink to="/dashboard/manageItems">Manage Items</NavLink>
+                <NavLink className="flex items-center gap-1" to="/dashboard/allUsers"><HiUserGroup></HiUserGroup>All Users</NavLink>
               </li>
+              <hr />
               <li>
-                <NavLink to="/dashboard/allParcel">All Parcels</NavLink>
-              </li>
-
-              <li>
-                <NavLink to="/dashboard/allDeliveryMan">
-                  All DeliveryMan
-                </NavLink>
-              </li>
-
-              <li>
-                <NavLink to="/dashboard/allUsers">All Users</NavLink>
-              </li>
-              <li>
-                <NavLink to="/">Home</NavLink>
+                <NavLink className="flex items-center gap-1" to="/"><FaHome></FaHome>Home</NavLink>
               </li>
             </>
           ) : isDeliveryMan ? (

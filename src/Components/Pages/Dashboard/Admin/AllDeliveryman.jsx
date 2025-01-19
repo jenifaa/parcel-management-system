@@ -11,6 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from "../../../ui/table";
+import { FaSearch } from "react-icons/fa";
 const AllDeliveryman = () => {
   const axiosSecure = useAxiosSecure();
   const { data: deliveryMan = [], refetch } = useQuery({
@@ -24,6 +25,9 @@ const AllDeliveryman = () => {
 
   return (
     <div>
+      <div><h2 className="text-3xl font-bold my-5 text-center">All Delivery Man</h2>
+      
+    </div>
       <Table>
       
         <TableHeader>

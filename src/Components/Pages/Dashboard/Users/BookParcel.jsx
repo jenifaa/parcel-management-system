@@ -52,7 +52,7 @@ const BookParcel = () => {
         addressLongitude: parseFloat(data.addressLongitude),
         price: price,
         status: "Pending",
-        BookingDate: new Date(),
+        BookingDate: new Date()
       };
 
       const parcelItem = await axiosSecure.post("/parcel", parcel);
@@ -126,7 +126,7 @@ const BookParcel = () => {
               </label>
               <input
                 type="number"
-                defaultValue={useInfo.phoneNumber}
+                defaultValue={useInfo?.phoneNumber}
                 className="w-full h-12 px-4 border rounded-md shadow-sm"
                 placeholder="Enter Your Phone Number"
                 {...register("phoneNumber", { required: true })}

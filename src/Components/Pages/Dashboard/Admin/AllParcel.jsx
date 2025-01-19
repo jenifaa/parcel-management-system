@@ -30,6 +30,7 @@ import {
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import { toast, ToastContainer } from "react-toastify";
+import { FaSearch } from "react-icons/fa";
 
 const AllParcel = () => {
   const axiosSecure = useAxiosSecure();
@@ -86,7 +87,6 @@ const AllParcel = () => {
       if (res.data.modifiedCount > 0) {
         toast.success("Updated");
         refetch();
-       
       }
     } catch (error) {
       console.error("Error updating parcel:", error);
@@ -106,6 +106,21 @@ const AllParcel = () => {
         draggable
         theme="light"
       ></ToastContainer>
+      <div className="flex justify-between items-center  mb-10 mt-5">
+        <h2 className="text-3xl font-bold ">All Parcel</h2>
+
+       <div className="flex items-center">
+       <input
+          type="text"
+          placeholder="Search..."
+          className=" p-2 w-64 border-2"
+        />
+        <div className="bg-gray-800 text-white px-3 py-3">
+        <FaSearch className=" " />
+        </div>
+        
+       </div>
+      </div>
       <Table>
         <TableCaption>A list of all parcels.</TableCaption>
         <TableHeader>
@@ -113,6 +128,8 @@ const AllParcel = () => {
             <TableHead>Name</TableHead>
             <TableHead>Phone Number</TableHead>
             <TableHead>Booked Date</TableHead>
+            <TableHead>Requested delivery Date</TableHead>
+            <TableHead>cost</TableHead>
             <TableHead>Status</TableHead>
             <TableHead>Actions</TableHead>
           </TableRow>
@@ -122,8 +139,12 @@ const AllParcel = () => {
             <TableRow key={parcel._id}>
               <TableCell>{parcel.name}</TableCell>
               <TableCell>{parcel.phoneNumber}</TableCell>
+              <TableCell>{parcel.BookingDate}</TableCell>
               <TableCell>{parcel.requestedDeliveryDate}</TableCell>
-              <TableCell>{parcel.status}</TableCell>
+              <TableCell>cost</TableCell>
+              <TableCell>
+                <span className="text-sm font-semibold">{parcel.status}</span>
+              </TableCell>
               <TableCell>
                 <Dialog>
                   <DialogTrigger asChild>
@@ -131,7 +152,7 @@ const AllParcel = () => {
                       variant="outline"
                       onClick={() => setSelectedParcel(parcel)}
                     >
-                      Manage
+                      <span className="text-blue-600"> Manage</span>
                     </Button>
                   </DialogTrigger>
                   <DialogContent>

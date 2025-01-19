@@ -28,30 +28,21 @@ const AllUsers = () => {
       return res.data;
     },
   });
-  const handleUserDelete = (user) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        axiosSecure.delete(`/users/${user?._id}`).then((res) => {
-          if (res.data.deletedCount > 0) {
-            refetch();
-            Swal.fire({
-              title: "Deleted!",
-              text: "User has been deleted.",
-              icon: "success",
-            });
-          }
-        });
-      }
-    });
-  };
+  const { data: parcels = [] } = useQuery({
+    queryKey: ["parcels"],
+    queryFn: async () => {
+      const res = await axiosSecure.get("/parcel");
+      return res.data;
+    },
+  });
+  const userParcelCount = users.map((user) => {
+ 
+    const userParcels = parcels.filter((parcel) => parcel.email === user.email);
+  
+    return { ...user, parcelCount: userParcels.length, parcels: userParcels };
+  });
+  console.log(userParcelCount);
+ 
   const handleMakeAdmin = (user) => {
     axiosSecure.patch(`/users/admin/${user?._id}`).then((res) => {
       if (res.data.modifiedCount > 0) {
@@ -158,11 +149,12 @@ const AllUsers = () => {
               <th className="px-4 py-2 border border-gray-300">Total cost</th>
               <th className="px-4 py-2 border border-gray-300">Admin Role</th>
               <th className="px-4 py-2 border border-gray-300">Delivery Man</th>
+             
             </tr>
           </thead>
 
           <tbody>
-            {users.map((user, index) => (
+            {userParcelCount.map((user, index) => (
               <tr
                 key={user._id}
                 className={`${
@@ -177,6 +169,12 @@ const AllUsers = () => {
                 </td>
                 <td className="px-4 py-2 border border-gray-300">
                   {user.phoneNumber}
+                </td>
+                <td className="px-4 py-2 border border-gray-300">
+                {user.parcelCount} 
+                </td>
+                <td className="px-4 py-2 border border-gray-300">
+                cost
                 </td>
                 <td className="px-4 py-2 border border-gray-300 text-center">
                   {user.type === "admin" ? (
@@ -203,11 +201,7 @@ const AllUsers = () => {
                   )}
                 </td>
 
-                <td className="px-4 py-2 border border-gray-300 text-center">
-                  <button onClick={() => handleUserDelete(user)}>
-                    <FaTrashAlt className="text-xl text-red-600" />
-                  </button>
-                </td>
+               
               </tr>
             ))}
           </tbody>
