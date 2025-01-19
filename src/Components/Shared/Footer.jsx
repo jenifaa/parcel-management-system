@@ -27,7 +27,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="">
-            <div className=" px-8 pb-4 rounded-lg shadow-md flex gap-40 ">
+            <div className=" px-8 pb-4 rounded-lg shadow-md flex gap-20 lg:gap-40 ">
               <div>
                 <h2 className="text-xl font-semibold mb-4 border-b border-green-700 pb-2">
                   Company

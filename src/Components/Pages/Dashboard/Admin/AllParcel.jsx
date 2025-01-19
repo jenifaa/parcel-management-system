@@ -47,6 +47,7 @@ const AllParcel = () => {
     queryKey: ["parcels"],
     queryFn: async () => {
       const res = await axiosSecure.get("/parcel");
+      console.log(res.data);
       return res.data;
     },
   });

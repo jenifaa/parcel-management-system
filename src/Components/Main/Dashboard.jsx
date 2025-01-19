@@ -8,36 +8,38 @@ import useAdmin from "../Hooks/useAdmin";
 import useDeliveryMan from "../Hooks/useDeliveryMan";
 import Loading from "../Shared/Loading";
 const Dashboard = () => {
-  const { user ,loading} = useAuth();
+  const { user, loading } = useAuth();
   const [isAdmin] = useAdmin();
   const [isDeliveryMan] = useDeliveryMan();
-if(loading){
-  return <Loading></Loading>
-}
+  if (loading) {
+    return <Loading></Loading>;
+  }
   return (
     <div className="flex">
-      <div className="w-64 lg:p-5 p-2 min-h-screen text-white bg-green-700">
-        <ul className="menu">
+      <div className="lg:w-64  lg:px-5 sm:px-4 px-1 py-10 min-h-screen text-white bg-green-700">
+        <ul className="menu space-y-5">
           {isAdmin ? (
             // Admin Menu
             <>
               <li>
                 <NavLink to="/dashboard/adminHome">
-                  <FaHome></FaHome> Admin Home
+                  <FaHome></FaHome> Statistic
                 </NavLink>
               </li>
-             
+
               <li>
                 <NavLink to="/dashboard/manageItems">Manage Items</NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/allParcel">All Parcels</NavLink>
               </li>
-             
+
               <li>
-                <NavLink to="/dashboard/allDeliveryMan">All DeliveryMan</NavLink>
+                <NavLink to="/dashboard/allDeliveryMan">
+                  All DeliveryMan
+                </NavLink>
               </li>
-             
+
               <li>
                 <NavLink to="/dashboard/allUsers">All Users</NavLink>
               </li>
@@ -48,9 +50,10 @@ if(loading){
           ) : isDeliveryMan ? (
             // Delivery Man Menu
             <>
-             
               <li>
-                <NavLink to="/dashboard/deliveryHome">Delivery Man Home</NavLink>
+                <NavLink to="/dashboard/deliveryHome">
+                  Delivery Man Home
+                </NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/deliveryList">My Delivery List</NavLink>
@@ -67,20 +70,20 @@ if(loading){
             <>
               <li>
                 <NavLink
-                  to="/dashboard/booking"
-                  className="flex items-center gap-1"
-                >
-                  <IoBookmarksOutline />
-                  Book A Parcel
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
                   to="/dashboard/userHome"
                   className="flex items-center gap-1"
                 >
                   <IoBookmarksOutline />
                   User Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/booking"
+                  className="flex items-center gap-1"
+                >
+                  <IoBookmarksOutline />
+                  Book A Parcel
                 </NavLink>
               </li>
 
@@ -95,8 +98,15 @@ if(loading){
               </li>
 
               <li className="">
-               <Link to='/dashboard/myProfile' className="flex items-center gap-1"> <FaUserCircle /> My Profile</Link>
+                <Link
+                  to="/dashboard/myProfile"
+                  className="flex items-center gap-1"
+                >
+                  {" "}
+                  <FaUserCircle /> My Profile
+                </Link>
               </li>
+              <hr className=""/>
               <li>
                 <Link to="/" className="flex items-center gap-1">
                   <FaHome />

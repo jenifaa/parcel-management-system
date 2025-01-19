@@ -28,6 +28,15 @@ const Register = () => {
   const navigate = useNavigate();
   const { createNewUser, updateUserProfile } = useAuth();
   const onSubmit = (data) => {
+    if (!data.password.match(/(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/)) {
+      Swal.fire({
+        title: "Error",
+        text: "Password does not meet the required criteria (at least one uppercase letter, one lowercase letter, one number, and one special character).",
+        icon: "error",
+      });
+      return; // Prevent form submission if password is invalid
+    }
+  
     const type = data.type === "deliveryMan" ? "pending" : data.type;
     createNewUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
@@ -41,6 +50,7 @@ const Register = () => {
           type,
           phoneNumber: data.phoneNumber,
         };
+        console.log(userInfo);
         axiosPublic.post("/users", userInfo).then((res) => {
           if (res.data.insertedId) {
             reset();
@@ -171,6 +181,7 @@ const Register = () => {
                     />
                     {errors.password?.type === "required" && (
                       <p className="text-red-600">Password is required</p>
+                      
                     )}
                     {errors.password?.type === "minLength" && (
                       <p className="text-red-600">

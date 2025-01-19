@@ -176,7 +176,7 @@ const AllUsers = () => {
                   {user.name}
                 </td>
                 <td className="px-4 py-2 border border-gray-300">
-                  {user.email}
+                  {user.phoneNumber}
                 </td>
                 <td className="px-4 py-2 border border-gray-300 text-center">
                   {user.type === "admin" ? (
