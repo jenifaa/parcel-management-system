@@ -23,6 +23,7 @@ import AdminRoute from "./AdminRoute";
 import DeliveryManRoute from "./DeliveryManRoute";
 import PrivateRoutes from "./PrivateRoutes";
 import NotificationPage from "@/Components/Pages/Dashboard/Admin/NotificationPage";
+import DeliveryNotification from "@/Components/Pages/Dashboard/DeliveryMan/DeliveryNotification";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,14 @@ const router = createBrowserRouter([
           <AdminRoute>
             <NotificationPage></NotificationPage>
           </AdminRoute>
+        ),
+      },
+      {
+        path: "deliveryNotification",
+        element: (
+          <DeliveryManRoute>
+            <DeliveryNotification></DeliveryNotification>
+          </DeliveryManRoute>
         ),
       },
     ],

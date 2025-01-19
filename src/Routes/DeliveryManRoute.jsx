@@ -2,7 +2,7 @@ import useAuth from '@/Components/Hooks/useAuth';
 import useDeliveryMan from '@/Components/Hooks/useDeliveryMan';
 import Loading from '@/Components/Shared/Loading';
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 
 const DeliveryManRoute = ({children}) => {
     const {user, loading} = useAuth();

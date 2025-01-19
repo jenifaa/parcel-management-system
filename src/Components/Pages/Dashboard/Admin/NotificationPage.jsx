@@ -2,21 +2,19 @@ import React from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import useAxiosPublic from "@/Components/Hooks/useAxiosPublic";
+import useNotifications from "@/Components/Hooks/useNotifications";
+import useAxiosSecure from "@/Components/Hooks/useAxiosSecure";
 
 const NotificationPage = () => {
+  const axiosSecure = useAxiosSecure();
   const axiosPublic = useAxiosPublic();
- 
 
-  const { data: notification = [], refetch } = useQuery({
-    queryKey: ["notification"],
-    queryFn: async () => {
-      const res = await axiosPublic.get("/users");
-      console.log(res.data);
-      return res.data.filter((user) => user.type === "pending");
-    },
-  });
+  
+
+  const [notification, refetch] = useNotifications();
+  console.log(notification);
   const handleAccept = async (id) => {
-    const response = await axiosPublic.patch(`/users/deliveryMan/${id}`, {
+    const response = await axiosSecure.patch(`/users/deliveryMan/${id}`, {
       type: "deliveryMan",
     });
     refetch();
@@ -52,14 +50,14 @@ const NotificationPage = () => {
                     <strong>Phone:</strong> {notifications.phoneNumber || "N/A"}
                   </p>
                 </div>
-               <div>
-               <button
-                  onClick={() => handleAccept(notifications._id)}
-                  className="bg-green-700 px-3 py-1 rounded-md text-white"
-                >
-                  accept
-                </button>
-               </div>
+                <div>
+                  <button
+                    onClick={() => handleAccept(notifications._id)}
+                    className="bg-green-700 px-3 py-1 rounded-md text-white"
+                  >
+                    accept
+                  </button>
+                </div>
               </div>
             </li>
           ))}
