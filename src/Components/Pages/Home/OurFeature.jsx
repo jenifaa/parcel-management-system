@@ -15,7 +15,7 @@ const OurFeature = () => {
     queryKey: ["stats"],
     queryFn: async () => {
       const res = await axiosPublic.get("/parcel");
-      console.log(res.data);
+      // console.log(res.data);
       return res.data;
     },
   });
@@ -23,7 +23,7 @@ const OurFeature = () => {
     queryKey: ["users"],
     queryFn: async () => {
       const res = await axiosPublic.get("/users");
-      console.log(res.data);
+      // console.log(res.data);
       return res.data;
     },
   });

@@ -28,6 +28,7 @@ const Register = () => {
   const navigate = useNavigate();
   const { createNewUser, updateUserProfile } = useAuth();
   const onSubmit = (data) => {
+    const type = data.type === "deliveryMan" ? "pending" : data.type;
     createNewUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
@@ -37,7 +38,7 @@ const Register = () => {
           name: data.name,
           email: data.email,
           photoURL: data.photoURL,
-          type: data.type,
+          type,
           phoneNumber: data.phoneNumber,
         };
         axiosPublic.post("/users", userInfo).then((res) => {

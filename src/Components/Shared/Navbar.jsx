@@ -23,7 +23,6 @@ const Navbar = () => {
   const { user, logOut, loading } = useAuth();
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
-  
 
   const isAdmin = useAdmin();
   const isDeliveryMan = useDeliveryMan();
@@ -66,7 +65,10 @@ const Navbar = () => {
 
         <div className="flex items-center space-x-3">
           <div className="lg:hidden">
-            <button onClick={() => setMenuOpen(!menuOpen)} className="focus:outline-none">
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="focus:outline-none"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -85,71 +87,98 @@ const Navbar = () => {
           </div>
 
           <div>
-            {location.pathname !== "/login" && location.pathname !== "/register" && (
-              <div className="flex space-x-3 items-center">
-                <div className="lg:flex items-center space-x-3 hidden">
-                  <NavLink to="/" className="hover:font-bold text-sm">Home</NavLink>
-                  <NavLink to="#" className="hover:text-gray-200">
-                    <IoMdNotifications className="text-xl text-yellow-500" />
-                  </NavLink>
+            {location.pathname !== "/login" &&
+              location.pathname !== "/register" && (
+                <div className="flex space-x-3 items-center">
+                  <div className="lg:flex items-center space-x-3 hidden">
+                    <NavLink to="/" className="hover:font-bold text-sm">
+                      Home
+                    </NavLink>
+                    {user && isAdmin && (
+                      <NavLink
+                        to="notification"
+                        className="hover:text-gray-200"
+                      >
+                        <IoMdNotifications className="text-xl text-yellow-500" />
+                      </NavLink>
+                    )}
+                    {user && isDeliveryMan &&  (
+                      <NavLink className="hover:text-gray-200">
+                        <IoMdNotifications className="text-xl text-yellow-500" />
+                      </NavLink>
+                    )}
+                    {user && !isAdmin && !isDeliveryMan && (
+                      <NavLink className="hover:text-gray-200">
+                        <IoMdNotifications className="text-xl text-yellow-500" />
+                      </NavLink>
+                    )}
+                  </div>
+
+                  {user ? (
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <img
+                          className="w-10 h-10 rounded-full cursor-pointer"
+                          src={user?.photoURL}
+                        />
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent className="w-56">
+                        <DropdownMenuLabel>My Profile</DropdownMenuLabel>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuGroup>
+                          <DropdownMenuItem>
+                            <h2 className="font-bold text-green-800 text-xl">
+                              {user?.displayName}
+                            </h2>
+                          </DropdownMenuItem>
+                          <DropdownMenuItem>
+                            {isAdmin && (
+                              <NavLink to="/dashboard/adminHome">
+                                Admin Dashboard
+                              </NavLink>
+                            )}
+                            {isDeliveryMan && (
+                              <NavLink to="/dashboard/deliveryHome">
+                                Delivery Dashboard
+                              </NavLink>
+                            )}
+                            {!isAdmin && !isDeliveryMan && (
+                              <NavLink to="/dashboard/userHome">
+                                User Dashboard
+                              </NavLink>
+                            )}
+                          </DropdownMenuItem>
+                        </DropdownMenuGroup>
+
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem>
+                          <button
+                            onClick={handleLogOut}
+                            className="font-bold flex items-center gap-1"
+                          >
+                            <CiLogout /> LogOut
+                          </button>
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  ) : (
+                    <NavLink to="/login">
+                      <button className="text-white flex items-center gap-1">
+                        <CiLogin /> Sign In
+                      </button>
+                    </NavLink>
+                  )}
                 </div>
-
-                {user ? (
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <img
-                        className="w-10 h-10 rounded-full cursor-pointer"
-                        src={user?.photoURL}
-                       
-                      />
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent className="w-56">
-                      <DropdownMenuLabel>My Profile</DropdownMenuLabel>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuGroup>
-                        <DropdownMenuItem>
-                          <h2 className="font-bold text-green-800 text-xl">{user?.displayName}</h2>
-                        </DropdownMenuItem>
-                        <DropdownMenuItem>
-                          {isAdmin && (
-                            <NavLink to="/dashboard/adminHome">Admin Dashboard</NavLink>
-                          )}
-                          {isDeliveryMan && (
-                            <NavLink to="/dashboard/deliveryHome">Delivery Dashboard</NavLink>
-                          )}
-                          {!isAdmin && !isDeliveryMan && (
-                            <NavLink to="/dashboard/userHome">User Dashboard</NavLink>
-                          )}
-                        </DropdownMenuItem>
-                      </DropdownMenuGroup>
-
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem>
-                        <button
-                          onClick={handleLogOut}
-                          className="font-bold flex items-center gap-1"
-                        >
-                          <CiLogout /> LogOut
-                        </button>
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                ) : (
-                  <NavLink to="/login">
-                    <button className="text-white flex items-center gap-1">
-                      <CiLogin /> Sign In
-                    </button>
-                  </NavLink>
-                )}
-              </div>
-            )}
+              )}
           </div>
         </div>
       </nav>
 
       {menuOpen && (
         <div className="flex flex-col space-y-4 px-6 py-4 bg-gradient-to-r from-[#49b6a2] via-[#069b5d] to-[#4caf7f] text-white lg:hidden">
-          <NavLink to="/" className="hover:text-gray-200">Home</NavLink>
+          <NavLink to="/" className="hover:text-gray-200">
+            Home
+          </NavLink>
         </div>
       )}
     </div>

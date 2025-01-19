@@ -22,6 +22,7 @@ import Payment from "@/Components/Pages/Dashboard/Users/Payment";
 import AdminRoute from "./AdminRoute";
 import DeliveryManRoute from "./DeliveryManRoute";
 import PrivateRoutes from "./PrivateRoutes";
+import NotificationPage from "@/Components/Pages/Dashboard/Admin/NotificationPage";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,14 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login></Login>,
+      },
+      {
+        path: "notification",
+        element: (
+          <AdminRoute>
+            <NotificationPage></NotificationPage>
+          </AdminRoute>
+        ),
       },
     ],
   },
@@ -111,6 +120,7 @@ const router = createBrowserRouter([
           </AdminRoute>
         ),
       },
+
       //delivery man only
       {
         path: "deliveryHome",
