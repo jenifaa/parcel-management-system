@@ -2,10 +2,10 @@ import useAuth from "@/Components/Hooks/useAuth";
 import useAxiosPublic from "@/Components/Hooks/useAxiosPublic";
 import useAxiosSecure from "@/Components/Hooks/useAxiosSecure";
 import React from "react";
-
 import { useForm } from "react-hook-form";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+
 const UpdateBooking = () => {
   const {
     phoneNumber,
@@ -20,12 +20,13 @@ const UpdateBooking = () => {
     price,
     _id,
   } = useLoaderData();
- 
+
   const { user } = useAuth();
   const { register, handleSubmit, reset, watch } = useForm();
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
   const weight = watch("parcelWeight");
+  
   const calculatedPrice = (parcelWeight) => {
     if (parcelWeight <= 1) {
       return 50;
@@ -37,7 +38,9 @@ const UpdateBooking = () => {
       return 150;
     }
   };
+
   const dynamicPrice = weight ? calculatedPrice(parseFloat(weight)) : price;
+
   const onSubmit = async (data) => {
     const price = calculatedPrice(parseFloat(data.parcelWeight));
     try {
@@ -55,7 +58,6 @@ const UpdateBooking = () => {
         addressLongitude: parseFloat(data.addressLongitude),
         price: price,
       };
-      console.log(parcel);
 
       const parcelItem = await axiosSecure.patch(`/parcel/item/${_id}`, parcel);
 
@@ -76,147 +78,154 @@ const UpdateBooking = () => {
       });
     }
   };
+
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <h2>Book Your Parcel Here</h2>
-        <div className="flex gap-10 items-center my-5">
+    <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+        <h2 className="text-3xl font2 text-green-700 font-bold text-center">Update Your Parcel Booking</h2>
+        
+        {/* User Information */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <h2>Name</h2>
+            <h2 className="text-sm font-medium">Name</h2>
             <input
               type="text"
               {...register("name")}
-              className="w-72 h-10 px-6 rounded-md border-2 "
+              className="w-full h-12 px-4 border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={user?.displayName}
               readOnly
             />
           </div>
           <div>
-            <h2>Email</h2>
+            <h2 className="text-sm font-medium">Email</h2>
             <input
               type="text"
               {...register("email")}
-              className="w-72 h-10 px-6 rounded-md border-2 "
+              className="w-full h-12 px-4 border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={user?.email}
               readOnly
             />
           </div>
         </div>
-        <div className="flex gap-10 items-center my-5">
+
+        {/* Phone and Parcel Details */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <h2>Phone Number*</h2>
+            <h2 className="text-sm font-medium">Phone Number*</h2>
             <input
-            
               type="number"
-              className="w-72 h-10 px-6 rounded-md border-2 "
+              className="w-full h-12 px-4 border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               defaultValue={phoneNumber}
-            
               {...register("phoneNumber", { required: true })}
             />
           </div>
           <div>
-            <h2>Parcel Type*</h2>
-
+            <h2 className="text-sm font-medium">Parcel Type*</h2>
             <input
-            type="text"
-            defaultValue={parcelType}
+              type="text"
+              defaultValue={parcelType}
               {...register("parcelType", { required: true })}
-              className="w-72 h-10 px-6 rounded-md border-2 "
-             
+              className="w-full h-12 px-4 border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
         </div>
-        <div className="flex gap-10 items-center my-5">
+
+        {/* Weight and Receiver Details */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <h2>Parcel Weight*</h2>
+            <h2 className="text-sm font-medium">Parcel Weight*</h2>
             <input
               type="number"
               defaultValue={parcelWeight}
-              className="w-72 h-10 px-6 rounded-md border-2 "
-             
+              className="w-full h-12 px-4 border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               step="any"
               {...register("parcelWeight", { required: true })}
             />
           </div>
           <div>
-            <h2>Receiver Name*</h2>
+            <h2 className="text-sm font-medium">Receiver Name*</h2>
             <input
               type="text"
               defaultValue={receiverName}
-              className="w-72 h-10 px-6 rounded-md border-2 "
+              className="w-full h-12 px-4 border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               {...register("receiverName", { required: true })}
             />
           </div>
         </div>
-        <div className="flex gap-10 items-center my-5">
+
+        {/* Receiver Number and Delivery Address */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <h2>Receiver Number*</h2>
+            <h2 className="text-sm font-medium">Receiver Number*</h2>
             <input
-            defaultValue={receiverNumber}
               type="number"
-              className="w-72 h-10 px-6 rounded-md border-2 "
-              
+              defaultValue={receiverNumber}
+              className="w-full h-12 px-4 border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               {...register("receiverNumber", { required: true })}
             />
           </div>
           <div>
-            <h2>Parcel Delivery Address*</h2>
+            <h2 className="text-sm font-medium">Parcel Delivery Address*</h2>
             <input
               type="text"
               defaultValue={deliveryAddress}
-              className="w-72 h-10 px-6 rounded-md border-2 "
+              className="w-full h-12 px-4 border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               {...register("deliveryAddress", { required: true })}
             />
           </div>
         </div>
-        <div className="flex gap-10 items-center my-5">
+
+        {/* Date, Price, and Coordinates */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <h2>requested Delivery date*</h2>
+            <h2 className="text-sm font-medium">Requested Delivery Date*</h2>
             <input
               type="date"
               defaultValue={requestedDeliveryDate}
-              className="w-72 h-10 px-6 rounded-md border-2 "
+              className="w-full h-12 px-4 border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               {...register("requestedDeliveryDate", { required: true })}
             />
           </div>
           <div>
-            <h2>Price*</h2>
-
+            <h2 className="text-sm font-medium">Price*</h2>
             <input
               type="number"
               value={dynamicPrice}
-              className="w-72 h-10 px-6 rounded-md border-2"
-              {...register("price", { required: true })}
+              className="w-full h-12 px-4 border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               readOnly
             />
           </div>
         </div>
-        <div className="flex gap-10 items-center my-5">
+
+        {/* Latitude and Longitude */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <h2> Delivery Address Latitude*</h2>
+            <h2 className="text-sm font-medium">Delivery Address Latitude*</h2>
             <input
               type="text"
               defaultValue={addressLatitude}
-              className="w-72 h-10 px-6 rounded-md border-2 "
+              className="w-full h-12 px-4 border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               {...register("addressLatitude", { required: true })}
             />
           </div>
           <div>
-            <h2> Delivery Address Longitude*</h2>
+            <h2 className="text-sm font-medium">Delivery Address Longitude*</h2>
             <input
               type="text"
               defaultValue={addressLongitude}
-              className="w-72 h-10 px-6 rounded-md border-2 "
+              className="w-full h-12 px-4 border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               {...register("addressLongitude", { required: true })}
             />
           </div>
         </div>
 
-        <input
-          className="w-60 border-2 py-3  px-5"
-          type="submit"
-          value="Book"
-        />
+        <div className="flex justify-center">
+          <input
+            className="w-60 h-12 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition-all cursor-pointer"
+            type="submit"
+            value="Update Booking"
+          />
+        </div>
       </form>
     </div>
   );

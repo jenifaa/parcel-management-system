@@ -1,17 +1,20 @@
 import useAuth from "@/Components/Hooks/useAuth";
 import Loading from "@/Components/Shared/Loading";
-// import { Loader } from 'lucide-react';
-import React from "react";
 import { Input } from "../../../ui/input";
 import { Label } from "../../../ui/label";
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "@/Components/Hooks/useAxiosPublic";
 import useAxiosSecure from "@/Components/Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { updateProfile } from "firebase/auth";
+import auth from "@/firebase.init";
+
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+
 const MyProfile = () => {
   const { user, setUser, loading } = useAuth();
+
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
   const { register, handleSubmit, reset } = useForm();
@@ -19,66 +22,85 @@ const MyProfile = () => {
   const onSubmit = async (data) => {
     const formData = new FormData();
     formData.append("image", data.image[0]);
-    const res = await axiosPublic.post(image_hosting_api, formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
 
-    if (res.data.success) {
-      const updatedPhotoURL = res.data.data.display_url;
-      const myProfile = {
-        email: user.email,
-        photoURL: updatedPhotoURL,
-      };
-      const myUpdatedProfile = await axiosSecure.patch("/users", myProfile);
+    try {
+      const res = await axiosPublic.post(image_hosting_api, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
 
-      if (myUpdatedProfile.data.modifiedCount > 0) {
-        setUser((prevUser) => ({
-          ...prevUser,
+      if (res.data.success) {
+        const updatedPhotoURL = res.data.data.display_url;
+
+     
+        await updateProfile(auth.currentUser, {
           photoURL: updatedPhotoURL,
-        }));
-
-        reset();
-        Swal.fire({
-          title: "Good job!",
-          text: "Profile Updated",
-          icon: "success",
         });
+
+        
+        const myProfile = {
+          email: user.email,
+          photoURL: updatedPhotoURL,
+        };
+        const myUpdatedProfile = await axiosSecure.patch("/users", myProfile);
+
+        if (myUpdatedProfile.data.modifiedCount > 0) {
+          setUser((prevUser) => ({
+            ...prevUser,
+            photoURL: updatedPhotoURL,
+          }));
+
+          reset();
+          Swal.fire({
+            title: "Good job!",
+            text: "Profile Picture Updated Successfully",
+            icon: "success",
+          });
+        }
       }
+    } catch (error) {
+      console.error("Error updating profile picture:", error);
+      Swal.fire({
+        title: "Error",
+        text: "There was an issue updating your profile picture.",
+        icon: "error",
+      });
     }
   };
 
   if (loading) {
-    return <Loading></Loading>;
+    return <Loading />;
   }
-  console.log(user);
+
   return (
-    <div className="mx-auto w-10/12">
-      <h2 className="text-4xl text-center">Hello {user?.displayName}</h2>
+    <div className=" bg-gray-100">
+      <h2 className="text-4xl text-center pt-5 font-semibold mb-6 text-gray-800">
+       My Profile 
+      </h2>
       <div>
-        <section className="bg-gradient-to-br from-green-500 to-green-600 text-white py-16">
-          <div className="container mx-auto px-6 lg:px-20">
-            <div className=" ">
-              <div className="w-40 h-40 lg:w-52 lg:h-52 rounded-md overflow-hidden shadow-lg">
+        <section className=" py-16 rounded-lg shadow-lg">
+          <div className=" flex justify-center items-center">
+            <div className=" lg:flex lg:gap-32 space-y-5 px-3 lg:items-center">
+              <div className=" shadow-lg ">
                 <img
-                  src={user?.photoURL || updatedPhotoURL}
-                  className="w-full h-full object-cover"
+                  src={user?.photoURL}
+                  alt="Profile"
+                  className="lg:w-[350px] w-80 rounded-md object-cover"
                 />
               </div>
 
-              <div className="text-center lg:text-left">
-                <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-                  {user?.name}
+              <div className="">
+                <h2 className="text-xl lg:text-4xl font-bold mb-4">
+                 Name:  {user?.displayName || "Name not available"}
                 </h2>
-                <h3 className="text-xl lg:text-2xl font-semibold mb-6">
-                  hello wrold
+                <h3 className="text-sm lg:text-2xl font-semibold mb-6">
+                 Email: {user?.email || "Email not available"}
                 </h3>
-                <p className="text-lg leading-relaxed mb-6">Im a student</p>
+               
+               
                 <form onSubmit={handleSubmit(onSubmit)}>
-                  <div className="grid w-full max-w-sm items-center gap-1.5">
-                    <Label htmlFor="picture" className="text-white">
-                      Update Profile Picture
+                  <div className="grid w-full max-w-sm items-center gap-5">
+                    <Label htmlFor="picture" className="text-sm lg:text-lg">
+                      Update Profile Picture:
                     </Label>
                     <Input
                       id="picture"
