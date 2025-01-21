@@ -1,6 +1,6 @@
 import useAxiosSecure from "@/Components/Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Table,
   TableBody,
@@ -42,17 +42,43 @@ const AllParcel = () => {
   } = useForm();
   const [selectedDeliveryMan, setSelectedDeliveryMan] = useState(null);
   const [selectedParcel, setSelectedParcel] = useState(null);
+  const [filteredParcels, setFilteredParcels] = useState([]);
   const [deliveryDate, setDeliveryDate] = useState("");
+  const [fromDate, setFromDate] = useState("");
+  const [toDate, setToDate] = useState("");
 
   const { data: parcels = [], refetch } = useQuery({
     queryKey: ["parcels"],
     queryFn: async () => {
       const res = await axiosSecure.get("/parcel");
-      console.log(res.data);
+      // console.log(res.data);
       return res.data;
     },
   });
+  const fetchFilteredParcels = async () => {
+    if (!fromDate || !toDate) return;
 
+    try {
+      const isoFromDate = new Date(fromDate).toISOString();
+      const isoToDate = new Date(toDate).toISOString();
+      console.log("Formatted From Date:", isoFromDate);
+      console.log("Formatted To Date:", isoToDate);
+
+      const res = await axiosSecure.get(
+        `/parcel?fromDate=${isoFromDate}&toDate=${isoToDate}`
+      );
+      console.log(res.data);
+      setFilteredParcels(res.data);
+    } catch (error) {
+      console.error("Error fetching parcels:", error);
+    }
+  };
+
+  // handle search button click
+  const handleSearch = () => {
+    fetchFilteredParcels();
+  };
+  
   const { data: deliveryMan = [] } = useQuery({
     queryKey: ["deliveryMan"],
     queryFn: async () => {
@@ -109,17 +135,23 @@ const AllParcel = () => {
       <div className="flex justify-between items-center  mb-10 mt-5">
         <h2 className="text-3xl font-bold ">All Parcel</h2>
 
-       <div className="flex items-center">
-       <input
-          type="text"
-          placeholder="Search..."
-          className=" p-2 w-64 border-2"
-        />
-        <div className="bg-gray-800 text-white px-3 py-3">
-        <FaSearch className=" " />
+        <div className="flex items-center gap-2 mb-5">
+          <input
+            type="date"
+            className="p-2 border-2 rounded"
+            value={fromDate}
+            onChange={(e) => setFromDate(e.target.value)}
+          />
+          <input
+            type="date"
+            className="p-2 border-2 rounded"
+            value={toDate}
+            onChange={(e) => setToDate(e.target.value)}
+          />
+          <button  onClick={handleSearch} className="bg-gray-800 text-white px-4 py-2">
+            Search
+          </button>
         </div>
-        
-       </div>
       </div>
       <Table>
         <TableCaption>A list of all parcels.</TableCaption>

@@ -19,12 +19,20 @@ import {
 const MyParcel = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
-  const [selectedStatus, setSelectedStatus] = useState("All"); 
+  const [selectedStatus, setSelectedStatus] = useState("All");
 
   const { data: parcels = [], refetch } = useQuery({
     queryKey: ["parcels", user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(`/parcel/${user?.email}`);
+      return res.data;
+    },
+  });
+  const { data: paidData = [] } = useQuery({
+    queryKey: ["paidData", user?.email],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/payments/${user?.email}`);
+      console.log(res.data);
       return res.data;
     },
   });
@@ -64,16 +72,19 @@ const MyParcel = () => {
     });
   };
 
-  
   const filteredParcels =
     selectedStatus === "All"
       ? parcels
       : parcels.filter((parcel) => parcel.status === selectedStatus);
+  const isPaid = (parcelId) =>
+    paidData.some((payment) => payment.parcelId === parcelId);
 
   return (
     <div className="mb-20">
       <div className="flex justify-between items-center mb-8">
-        <h2 className="font-bold text-3xl">My Parcels: {filteredParcels.length}</h2>
+        <h2 className="font-bold text-3xl">
+          My Parcels: {filteredParcels.length}
+        </h2>
         <Select onValueChange={(value) => setSelectedStatus(value)}>
           <SelectTrigger className="w-[180px]">
             <SelectValue placeholder="Select a Status" />
@@ -96,7 +107,9 @@ const MyParcel = () => {
               <tr className="bg-gray-100 border-b">
                 <th className="px-4 py-2 text-left">Parcel Type</th>
                 <th className="px-4 py-2 text-left">Requested Date</th>
-                <th className="px-4 py-2 text-left">Approximate Delivery Date</th>
+                <th className="px-4 py-2 text-left">
+                  Approximate Delivery Date
+                </th>
                 <th className="px-4 py-2 text-left">Booking Date</th>
                 <th className="px-4 py-2 text-right">DeliveryManId</th>
                 <th className="px-4 py-2 text-right">Status</th>
@@ -110,7 +123,9 @@ const MyParcel = () => {
                 <tr key={parcel._id} className="border-b">
                   <td className="px-4 py-2">{parcel.parcelType}</td>
                   <td className="px-4 py-2">{parcel.requestedDeliveryDate}</td>
-                  <td className="px-4 py-2">{parcel.approximateDeliveryDate}</td>
+                  <td className="px-4 py-2">
+                    {parcel.approximateDeliveryDate}
+                  </td>
                   <td className="px-4 py-2 text-sm">{parcel.BookingDate}</td>
                   <td className="px-4 py-2 text-right text-sm">
                     {parcel.deliveryManId}
@@ -165,16 +180,16 @@ const MyParcel = () => {
                     )}
                   </td>
                   <td className="px-4 py-2 text-right">
-                    {parcel.status === "Canceled" ? (
+                    {parcel.status === "Canceled" || isPaid(parcel._id) ? (
                       <button
                         className="font-bold text-gray-500 cursor-not-allowed"
                         disabled
                       >
-                        Pay
+                        Paid
                       </button>
                     ) : (
                       <button className="font-bold">
-                        <Link to="/dashboard/payment">Pay</Link>
+                        <Link to={`/dashboard/payment/${parcel._id}`}>Pay</Link>
                       </button>
                     )}
                   </td>

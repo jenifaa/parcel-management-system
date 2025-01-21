@@ -24,6 +24,7 @@ import DeliveryManRoute from "./DeliveryManRoute";
 import PrivateRoutes from "./PrivateRoutes";
 import NotificationPage from "@/Components/Pages/Dashboard/Admin/NotificationPage";
 import DeliveryNotification from "@/Components/Pages/Dashboard/DeliveryMan/DeliveryNotification";
+import PaymentHistory from "@/Components/Pages/Dashboard/Users/PaymentHistory";
 
 const router = createBrowserRouter([
   {
@@ -87,8 +88,13 @@ const router = createBrowserRouter([
         element: <MyProfile></MyProfile>,
       },
       {
-        path: "payment",
+        path: "paymentHistory",
+        element: <PaymentHistory></PaymentHistory>,
+      },
+      {
+        path: "payment/:id",
         element: <Payment></Payment>,
+        loader: ({params})=>fetch(`http://localhost:5000/parcel/booked/${params.id}`)
       },
       {
         path: "update/:id",
