@@ -46,6 +46,14 @@ const AllParcel = () => {
   const [deliveryDate, setDeliveryDate] = useState("");
   const [fromDate, setFromDate] = useState("");
   const [toDate, setToDate] = useState("");
+  const { data: paidData = [] } = useQuery({
+    queryKey: ["paidData"],
+    queryFn: async () => {
+      const res = await axiosSecure.get("/payments");
+      // console.log(res.data);
+      return res.data;
+    },
+  });
 
   const { data: parcels = [], refetch } = useQuery({
     queryKey: ["parcels"],
@@ -74,11 +82,15 @@ const AllParcel = () => {
     }
   };
 
-  // handle search button click
+
+  
+    
+
+ 
   const handleSearch = () => {
     fetchFilteredParcels();
   };
-  
+
   const { data: deliveryMan = [] } = useQuery({
     queryKey: ["deliveryMan"],
     queryFn: async () => {
@@ -87,6 +99,11 @@ const AllParcel = () => {
     },
   });
 
+  const getCostForParcel = (parcelId) => {
+    const payment = paidData.find((payment) => payment.parcelId === parcelId);
+    return payment ? payment.price : "Not Paid";
+  };
+ 
   const handleUpdateStatus = async () => {
     if (!selectedDeliveryMan || !selectedParcel || !deliveryDate) {
       Swal.fire({
@@ -110,6 +127,7 @@ const AllParcel = () => {
         updatedParcel
       );
       console.log(res.data);
+      console.log(updatedParcel);
       if (res.data.modifiedCount > 0) {
         toast.success("Updated");
         refetch();
@@ -148,12 +166,15 @@ const AllParcel = () => {
             value={toDate}
             onChange={(e) => setToDate(e.target.value)}
           />
-          <button  onClick={handleSearch} className="bg-gray-800 text-white px-4 py-2">
+          <button
+            onClick={handleSearch}
+            className="bg-gray-800 text-white px-4 py-2"
+          >
             Search
           </button>
         </div>
       </div>
-      <Table>
+      {/* <Table>
         <TableCaption>A list of all parcels.</TableCaption>
         <TableHeader>
           <TableRow>
@@ -240,7 +261,121 @@ const AllParcel = () => {
             </TableRow>
           ))}
         </TableBody>
-      </Table>
+      </Table> */}
+      <div className="overflow-x-auto">
+        <table className="table-auto w-full border-collapse border border-gray-200">
+          <caption className="caption-top text-lg font-semibold mb-4">
+            A list of all parcels.
+          </caption>
+          <thead>
+            <tr className="bg-gray-100">
+              <th className="px-4 py-2 border border-gray-200 text-left">
+                Name
+              </th>
+              <th className="px-4 py-2 border border-gray-200 text-left">
+                Phone Number
+              </th>
+              <th className="px-4 py-2 border border-gray-200 text-left">
+                Booked Date
+              </th>
+              <th className="px-4 py-2 border border-gray-200 text-left">
+                Requested Delivery Date
+              </th>
+              <th className="px-4 py-2 border border-gray-200 text-left">
+                Cost
+              </th>
+              <th className="px-4 py-2 border border-gray-200 text-left">
+                Status
+              </th>
+              <th className="px-4 py-2 border border-gray-200 text-left">
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {parcels.map((parcel) => (
+              <tr key={parcel._id} className="hover:bg-gray-50">
+                <td className="px-4 py-2 border border-gray-200">
+                  {parcel.name}
+                </td>
+                <td className="px-4 py-2 border border-gray-200">
+                  {parcel.phoneNumber}
+                </td>
+                <td className="px-4 py-2 border border-gray-200">
+                  {new Date(parcel.BookingDate).toLocaleDateString()}
+                </td>
+                <td className="px-4 py-2 border border-gray-200">
+                  {parcel.requestedDeliveryDate}
+                </td>
+                <td className="px-4 py-2 border border-gray-200">
+                {getCostForParcel(parcel._id)}
+                </td>
+                <td className="px-4 py-2 border border-gray-200">
+                  <span className="text-sm font-semibold">{parcel.status}</span>
+                </td>
+                <td className="px-4 py-2 border border-gray-200">
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <button
+                        onClick={() => setSelectedParcel(parcel)}
+                        className="text-blue-600 underline"
+                      >
+                        Manage
+                      </button>
+                    </DialogTrigger>
+                    <DialogContent>
+                      <DialogHeader>
+                        <DialogTitle>Assign Delivery</DialogTitle>
+                      </DialogHeader>
+                      <div className="py-4">
+                        <div className="mb-4">
+                          <Select
+                            onValueChange={(value) =>
+                              setSelectedDeliveryMan(value)
+                            }
+                          >
+                            <SelectTrigger className="w-full">
+                              <SelectValue placeholder="Select a deliveryman" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectGroup>
+                                {deliveryMan.map((delivery) => (
+                                  <SelectItem
+                                    key={delivery._id}
+                                    value={delivery._id}
+                                  >
+                                    {delivery.name}
+                                  </SelectItem>
+                                ))}
+                              </SelectGroup>
+                            </SelectContent>
+                          </Select>
+                        </div>
+                        <div className="mb-4">
+                          <input
+                            type="date"
+                            className="w-full h-9 border rounded px-2"
+                            value={deliveryDate}
+                            onChange={(e) => setDeliveryDate(e.target.value)}
+                          />
+                        </div>
+                      </div>
+                      <DialogFooter>
+                        <button
+                          onClick={handleUpdateStatus}
+                          className="px-4 py-2 bg-green-700 text-white rounded hover:bg-green-800"
+                        >
+                          Assign
+                        </button>
+                      </DialogFooter>
+                    </DialogContent>
+                  </Dialog>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

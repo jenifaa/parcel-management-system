@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdDeleteForever } from "react-icons/md";
 import { useQuery } from "@tanstack/react-query";
 import { FaRegEdit } from "react-icons/fa";
@@ -15,11 +15,29 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../../../ui/select";
+import { Button } from "../../../ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "../../../ui/dialog";
+import { Input } from "../../../ui/input";
+import { Label } from "../../../ui/label";
+import { toast, ToastContainer } from "react-toastify";
 
 const MyParcel = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [selectedStatus, setSelectedStatus] = useState("All");
+  const [review, setReview] = useState("");
+  const [rating, setRating] = useState("");
+
+  const [userName, setUserName] = useState(user?.displayName || "");
+  const [deliveryManId, setDeliveryManId] = useState("");
 
   const { data: parcels = [], refetch } = useQuery({
     queryKey: ["parcels", user?.email],
@@ -49,9 +67,9 @@ const MyParcel = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axiosSecure
-          .patch(`/parcel/cancel/${id}`, { status: "Canceled" })
+          .delete(`/parcel/cancel/${id}`)
           .then((res) => {
-            if (res.data.modifiedCount > 0) {
+            if (res.data.deletedCount > 0) {
               Swal.fire({
                 title: "Canceled!",
                 text: "Parcel has been canceled successfully.",
@@ -78,9 +96,42 @@ const MyParcel = () => {
       : parcels.filter((parcel) => parcel.status === selectedStatus);
   const isPaid = (parcelId) =>
     paidData.some((payment) => payment.parcelId === parcelId);
+  useEffect(() => {
+    parcels.map((parcel) => {
+      setDeliveryManId(parcel.deliveryManId);
+    });
+  }, [parcels]);
+  const handleReview = async () => {
+    const reviewData = {
+      userName,
+      review,
+      rating,
+      deliveryManId,
+      userPhoto: user?.photoURL,
+    };
+    const res = await axiosSecure.post('/reviews',reviewData)
+    if(res.data.insertedId){
+      toast.success("Review Sent")
+      refetch()
+
+    }
+    console.log(res.data);
+    console.log(reviewData);
+  };
 
   return (
     <div className="mb-20">
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        theme="light"
+      ></ToastContainer>
       <div className="flex justify-between items-center mb-8">
         <h2 className="font-bold text-3xl">
           My Parcels: {filteredParcels.length}
@@ -141,18 +192,82 @@ const MyParcel = () => {
                         </button>
                       </Link>
                     ) : parcel.status === "Delivered" ? (
-                      <button
-                        onClick={() =>
-                          Swal.fire(
-                            "Review Clicked!",
-                            "You can write a review.",
-                            "info"
-                          )
-                        }
-                        className="text-sm text-green-600 font-bold"
-                      >
-                        Review
-                      </button>
+                      <Dialog>
+                        <DialogTrigger asChild>
+                          {/* <Button variant="outline">Review</Button> */}
+                          <button className="text-green-700 font-bold text-sm">
+                            Review
+                          </button>
+                        </DialogTrigger>
+                        <DialogContent className="sm:max-w-[425px]">
+                          <DialogHeader>
+                            <DialogTitle>Give Review!!</DialogTitle>
+                            <DialogDescription>
+                              Write your experience here...
+                            </DialogDescription>
+                          </DialogHeader>
+                          <div className="grid gap-4 py-4">
+                            <div className="grid grid-cols-4 items-center gap-4">
+                              <Label htmlFor="name" className="text-right">
+                                Users Name
+                              </Label>
+                              <Input
+                                id="name"
+                                defaultValue={user?.displayName}
+                                className="col-span-3"
+                              />
+                            </div>
+                            <div className="grid grid-cols-4 items-center gap-4">
+                              <Label className="text-right">Users Photo</Label>
+                              <img src={user?.photoURL} alt="" />
+                            </div>
+                            <div className="grid grid-cols-4 items-center gap-4">
+                              <Label htmlFor="rating" className="text-right">
+                                Rating
+                              </Label>
+                              <Input
+                                id="rating"
+                                placeholder="Rate Out of 5"
+                                className="col-span-3"
+                                onChange={(e) => setRating(e.target.value)}
+                              />
+                            </div>
+                            <div className="grid grid-cols-4 items-center gap-4">
+                              <Label htmlFor="feedback" className="text-right">
+                                Feedback
+                              </Label>
+                              <Input
+                                id="feedback"
+                                className="col-span-3"
+                                onChange={(e) => setReview(e.target.value)}
+                              />
+                            </div>
+                            <div className="grid grid-cols-4 items-center gap-4">
+                              <Label
+                                htmlFor="deliveryId"
+                                className="text-right"
+                              >
+                                DeliveryMan Id
+                              </Label>
+                              <Input
+                                id="deliveryId"
+                                // defaultValue={parcel.deliveryManId}
+                                value={deliveryManId}
+                                readOnly
+                                className="col-span-3"
+                                // onChange={(e) => {
+                                //   setDeliveryManId(e.target.value);
+                                // }}
+                              />
+                            </div>
+                          </div>
+                          <DialogFooter>
+                            <Button onClick={handleReview} type="submit">
+                              Send
+                            </Button>
+                          </DialogFooter>
+                        </DialogContent>
+                      </Dialog>
                     ) : (
                       <button
                         className="text-xl text-gray-500 font-bold cursor-not-allowed"

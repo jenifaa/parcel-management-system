@@ -2,7 +2,7 @@ import React from "react";
 import useAuth from "../Hooks/useAuth";
 import { IoBookmarksOutline } from "react-icons/io5";
 import { LuUserRoundPlus } from "react-icons/lu";
-import { FaHome, FaUserCircle } from "react-icons/fa";
+import { FaBoxes, FaHome, FaUserCircle } from "react-icons/fa";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../Hooks/useAdmin";
 import useDeliveryMan from "../Hooks/useDeliveryMan";
@@ -11,6 +11,7 @@ import { IoIosStats } from "react-icons/io";
 import { BsBoxes } from "react-icons/bs";
 import { MdGroups } from "react-icons/md";
 import { HiUserGroup } from "react-icons/hi2";
+import { ImHome } from "react-icons/im";
 const Dashboard = () => {
   const { user, loading } = useAuth();
   const [isAdmin] = useAdmin();
@@ -76,7 +77,7 @@ const Dashboard = () => {
                   to="/dashboard/userHome"
                   className="flex items-center gap-1"
                 >
-                  <IoBookmarksOutline />
+                  <ImHome />
                   User Home
                 </NavLink>
               </li>
@@ -95,7 +96,7 @@ const Dashboard = () => {
                   to="/dashboard/parcel"
                   className="flex items-center gap-1"
                 >
-                  <LuUserRoundPlus />
+                  <FaBoxes />
                   My Parcel
                 </Link>
               </li>
@@ -120,7 +121,7 @@ const Dashboard = () => {
           )}
         </ul>
       </div>
-      <div className="flex-1 p-8">
+      <div className="flex-1 p-8 min-h-screen">
         <Outlet></Outlet>
       </div>
     </div>
