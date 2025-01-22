@@ -11,12 +11,15 @@ import {
   TableHead,
   TableRow,
 } from "../../../ui/table";
+import "mapbox-gl/dist/mapbox-gl.css";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+
 const DeliveryList = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const [selectedParcels, setSelectedParcels] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
   const { data: parcels = [], refetch } = useQuery({
     queryKey: ["parcels-delivery"],
     queryFn: async () => {
@@ -76,7 +79,6 @@ const DeliveryList = () => {
               text: "Parcel has been canceled successfully.",
               icon: "success",
             });
-           
           } else {
             Swal.fire({
               title: "Error",
@@ -120,7 +122,6 @@ const DeliveryList = () => {
               text: "Parcel has been delivered successfully.",
               icon: "success",
             });
-            
           } else {
             Swal.fire({
               title: "Error",
@@ -174,7 +175,38 @@ const DeliveryList = () => {
                 <td className="px-4 py-2">{parcel.receiverNumber}</td>
                 <td className="px-4 py-2">{parcel.deliveryAddress}</td>
                 <td className="px-4 py-2">
-                  <button>View Location</button>
+                  <button
+                    className="text-blue-500 text-sm "
+                    onClick={() => setModalOpen(true)}
+                  >
+                    View Location
+                  </button>
+
+                  {/* Modal */}
+                  {modalOpen && (
+                    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+                      <div className="bg-white rounded-lg shadow-xl w-full sm:w-96 p-6">
+                        <div className="flex justify-between items-center">
+                          <h2 className="text-xl font-semibold">Location</h2>
+                          <button
+                            className="text-gray-500 text-2xl"
+                            onClick={() => setModalOpen(false)}
+                          >
+                            &times;
+                          </button>
+                        </div>
+                        
+                        <div className="mt-6 flex justify-end">
+                          <button
+                            className="px-3 py-1 bg-red-500 text-white rounded-md"
+                            onClick={() => setModalOpen(false)} // Close modal
+                          >
+                            Close
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </td>
                 <td className="px-4 py-2">
                   {parcel.status === "Cancelled" ||

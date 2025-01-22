@@ -11,7 +11,7 @@ const useDeliveryMan = () => {
     enabled: !loading,
     queryFn: async () => {
       const res = await axiosSecure.get(`/users/deliveryMan/${user?.email}`);
-      return res.data.deliveryMan;
+      return res.data?.deliveryMan;
     },
   });
   return [isDeliveryMan,isDeliveryManLoading]
