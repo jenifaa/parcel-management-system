@@ -14,20 +14,23 @@ const OurFeature = () => {
   const { data: stats = [], refetch } = useQuery({
     queryKey: ["stats"],
     queryFn: async () => {
-      const res = await axiosPublic.get("/parcel");
-      // console.log(res.data);
+      const res = await axiosPublic.get("/stat");
+      console.log(res.data);
       return res.data;
     },
   });
-  const { data: users = [] } = useQuery({
-    queryKey: ["users"],
-    queryFn: async () => {
-      const res = await axiosPublic.get("/users");
-      // console.log(res.data);
-      return res.data;
-    },
-  });
+
+  
+  // const { data: users = [] } = useQuery({
+  //   queryKey: ["users"],
+  //   queryFn: async () => {
+  //     const res = await axiosPublic.get("/users");
+  //     // console.log(res.data);
+  //     return res.data;
+  //   },
+  // });
   return (
+    
     <div className="bg-gray-50">
       <section className="pt-12 pb-8  px-6 ">
         <div className="max-w-screen-xl mx-auto text-center">
@@ -96,7 +99,7 @@ const OurFeature = () => {
                 </h3>
                 <CountUp
                   className="text-4xl font-bold text-green-600"
-                  end={stats.length}
+                  end={stats.parcels}
                   duration={2}
                   separator=","
                 />
@@ -112,7 +115,7 @@ const OurFeature = () => {
                 </h3>
                 <CountUp
                   className="text-4xl font-bold text-blue-600"
-                  end={stats.length}
+                  end={stats.delivered}
                   duration={2}
                   separator=","
                 />
@@ -128,7 +131,7 @@ const OurFeature = () => {
                 </h3>
                 <CountUp
                   className="text-4xl font-bold text-purple-600"
-                  end={users.length}
+                  end={stats.users}
                   duration={2}
                   separator=","
                 />

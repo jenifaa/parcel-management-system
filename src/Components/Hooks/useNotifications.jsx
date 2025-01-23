@@ -9,10 +9,11 @@ const useNotifications = () => {
   const { data: notification = [], refetch } = useQuery({
     queryKey: ["notification"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/users");
+      const res = await axiosSecure.get("/notification");
    
-      
-      return res.data.filter((user) => user.type === "pending");
+      console.log(notification);
+      console.log(res.data);
+      return res.data;
     },
   });
   return [notification, refetch];

@@ -73,7 +73,7 @@ const AllParcel = () => {
       console.log("Formatted To Date:", isoToDate);
 
       const res = await axiosSecure.get(
-        `/parcel?fromDate=${isoFromDate}&toDate=${isoToDate}`
+        `/parcels/all?fromDate=${isoFromDate}&toDate=${isoToDate}`
       );
       console.log(res.data);
       setFilteredParcels(res.data);
@@ -82,11 +82,6 @@ const AllParcel = () => {
     }
   };
 
-
-  
-    
-
- 
   const handleSearch = () => {
     fetchFilteredParcels();
   };
@@ -95,6 +90,7 @@ const AllParcel = () => {
     queryKey: ["deliveryMan"],
     queryFn: async () => {
       const res = await axiosSecure.get("/users/deliveryMan");
+      console.log(deliveryMan);
       return res.data;
     },
   });
@@ -103,7 +99,7 @@ const AllParcel = () => {
     const payment = paidData.find((payment) => payment.parcelId === parcelId);
     return payment ? payment.price : "Not Paid";
   };
- 
+
   const handleUpdateStatus = async () => {
     if (!selectedDeliveryMan || !selectedParcel || !deliveryDate) {
       Swal.fire({
@@ -114,7 +110,7 @@ const AllParcel = () => {
 
       return;
     }
-
+   
     try {
       const updatedParcel = {
         status: "On The Way",
@@ -123,20 +119,19 @@ const AllParcel = () => {
       };
 
       const res = await axiosSecure.put(
-        `/parcel/${selectedParcel._id}`,
+        `/managing/${selectedParcel._id}`,
         updatedParcel
       );
       console.log(res.data);
       console.log(updatedParcel);
       if (res.data.modifiedCount > 0) {
-        toast.success("Updated");
         refetch();
+        toast.success("Updated");
       }
     } catch (error) {
       console.error("Error updating parcel:", error);
     }
   };
-
   return (
     <div>
       <ToastContainer
@@ -308,7 +303,7 @@ const AllParcel = () => {
                   {parcel.requestedDeliveryDate}
                 </td>
                 <td className="px-4 py-2 border border-gray-200">
-                {getCostForParcel(parcel._id)}
+                  {getCostForParcel(parcel._id)}
                 </td>
                 <td className="px-4 py-2 border border-gray-200">
                   <span className="text-sm font-semibold">{parcel.status}</span>

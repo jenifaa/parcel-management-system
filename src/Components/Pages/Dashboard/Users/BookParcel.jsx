@@ -2,7 +2,7 @@ import useAuth from "@/Components/Hooks/useAuth";
 import useAxiosPublic from "@/Components/Hooks/useAxiosPublic";
 import useAxiosSecure from "@/Components/Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
@@ -12,19 +12,21 @@ const BookParcel = () => {
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
   const parcelWeight = watch("parcelWeight");
+  const [phoneNumber, setPhoneNumber] = useState('');
   const { data: users = [] } = useQuery({
-    queryKey: ["users"],
+    queryKey: [user?.email, "users"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/users");
-      // console.log(res.data);
+      const res = await axiosSecure.get(`/find/${user?.email}`);
+      console.log(res.data);
+      console.log(users);
       return res.data;
     },
+    // onSuccess: (data) => { // Update state in success callback
+    //   setPhoneNumber(data?.phoneNumber || '');
+    // },
   });
-  const useInfo = users.find((use) => use.email === user?.email);
-  console.log(useInfo);
-
-
-
+  
+//  console.log(users.phoneNumber);
   const calculatedPrice = (parcelWeight) => {
     if (parcelWeight <= 1) return 50;
     if (parcelWeight > 1 && parcelWeight <= 2) return 100;
@@ -52,7 +54,7 @@ const BookParcel = () => {
         addressLongitude: parseFloat(data.addressLongitude),
         price: price,
         status: "Pending",
-        BookingDate: new Date()
+        BookingDate: new Date(),
       };
 
       const parcelItem = await axiosSecure.post("/parcel", parcel);
@@ -126,7 +128,8 @@ const BookParcel = () => {
               </label>
               <input
                 type="number"
-                defaultValue={useInfo?.phoneNumber}
+                // value={phoneNumber}
+                // onChange={(e) => setPhoneNumber(e.target.value)}
                 className="w-full h-12 px-4 border rounded-md shadow-sm"
                 placeholder="Enter Your Phone Number"
                 {...register("phoneNumber", { required: true })}

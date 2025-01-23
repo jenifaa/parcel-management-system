@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useAxiosSecure from "@/Components/Hooks/useAxiosSecure";
 import useAuth from "@/Components/Hooks/useAuth";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import {
   Table,
@@ -23,36 +23,11 @@ const DeliveryList = () => {
   const { data: parcels = [], refetch } = useQuery({
     queryKey: ["parcels-delivery"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/parcels-delivery");
-      // console.log(res.data);
+      const res = await axiosSecure.get(`/deli-parcels/${user?.email}`);
+      console.log(res.data);
       return res.data;
     },
   });
-  const { data: allParcel = [] } = useQuery({
-    queryKey: ["allParcel"],
-    queryFn: async () => {
-      const res = await axiosSecure.get("/parcel");
-
-      return res.data;
-    },
-  });
-  const { data: allUsers = [] } = useQuery({
-    queryKey: ["allUsers"],
-    queryFn: async () => {
-      const res = await axiosSecure.get("/users");
-
-      return res.data;
-    },
-  });
-  // const deliveryMen = allUsers.filter((user) => user.type === "deliveryMan");
-  const deliveryMens = allUsers.filter((use) => use.email === user?.email);
-  console.log(deliveryMens);
-
-  const parcelsForDeliveryMen = allParcel.filter((parcel) =>
-    deliveryMens.some((deliveryMan) => deliveryMan._id === parcel.deliveryManId)
-  );
-
-  console.log(parcelsForDeliveryMen);
 
   const handleCancel = async (id) => {
     Swal.fire({
@@ -143,6 +118,7 @@ const DeliveryList = () => {
   return (
     <div className="overflow-x-auto">
       <h2 className="text-lg font-semibold mb-4">Parcels Assigned to me</h2>
+
       <table className="min-w-full table-auto">
         <TableCaption>my assigned parcels.</TableCaption>
         <thead>
@@ -159,14 +135,14 @@ const DeliveryList = () => {
           </tr>
         </thead>
         <tbody>
-          {parcelsForDeliveryMen.length === 0 ? (
+          {parcels.length === 0 ? (
             <tr>
               <td colSpan={5} className="text-center px-4 py-2">
                 No parcels assigned.
               </td>
             </tr>
           ) : (
-            parcelsForDeliveryMen.map((parcel) => (
+            parcels.map((parcel) => (
               <tr key={parcel._id}>
                 <td className="px-4 py-2">{parcel.name}</td>
                 <td className="px-4 py-2">{parcel.phoneNumber}</td>
@@ -195,7 +171,7 @@ const DeliveryList = () => {
                             &times;
                           </button>
                         </div>
-                        
+
                         <div className="mt-6 flex justify-end">
                           <button
                             className="px-3 py-1 bg-red-500 text-white rounded-md"
