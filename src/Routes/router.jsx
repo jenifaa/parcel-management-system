@@ -25,6 +25,8 @@ import PrivateRoutes from "./PrivateRoutes";
 import NotificationPage from "@/Components/Pages/Dashboard/Admin/NotificationPage";
 import DeliveryNotification from "@/Components/Pages/Dashboard/DeliveryMan/DeliveryNotification";
 import PaymentHistory from "@/Components/Pages/Dashboard/Users/PaymentHistory";
+import Blog from "@/Components/Pages/Home/Blog";
+import ContactUsPage from "@/Components/Pages/Home/ContactUsPage ";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +45,14 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login></Login>,
+      },
+      {
+        path: "blog",
+        element: <Blog></Blog>,
+      },
+      {
+        path: "contact",
+        element: <ContactUsPage></ContactUsPage>,
       },
       {
         path: "notification",
@@ -94,13 +104,13 @@ const router = createBrowserRouter([
       {
         path: "payment/:id",
         element: <Payment></Payment>,
-        loader: ({params})=>fetch(`http://localhost:5000/parcel/booked/${params.id}`)
+        loader: ({params})=>fetch(`https://parcel-management-server-six.vercel.app/parcel/booked/${params.id}`)
       },
       {
         path: "update/:id",
         element: <UpdateBooking></UpdateBooking>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/parcel/item/${params.id}`),
+          fetch(`https://parcel-management-server-six.vercel.app/parcel/item/${params.id}`),
       },
       //Admin Only
       {

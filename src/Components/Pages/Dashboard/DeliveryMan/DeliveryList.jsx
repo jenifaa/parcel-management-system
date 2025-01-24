@@ -11,21 +11,22 @@ import {
   TableHead,
   TableRow,
 } from "../../../ui/table";
-// import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
-import "mapbox-gl/dist/mapbox-gl.css";
+import "leaflet/dist/leaflet.css";
+import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
+
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 
 const DeliveryList = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
-  const [selectedParcels, setSelectedParcels] = useState(null);
+  const [selectedParcel, setSelectedParcel] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const { data: parcels = [], refetch } = useQuery({
     queryKey: ["parcels-delivery"],
     queryFn: async () => {
       const res = await axiosSecure.get(`/deli-parcels/${user?.email}`);
-      console.log(res.data);
+
       return res.data;
     },
   });
@@ -74,7 +75,6 @@ const DeliveryList = () => {
     });
   };
   const handleDeliver = async (id, deliveryManId) => {
-    console.log(deliveryManId);
     Swal.fire({
       title: "Are you sure?",
       text: "Parcel Delivery done?",
@@ -117,8 +117,10 @@ const DeliveryList = () => {
       }
     });
   };
-  const position = [51.505, -0.09];
 
+  const handleViewLocation = (parcel) => {
+    setSelectedParcel(parcel);
+  };
   return (
     <div className="overflow-x-auto">
       <h2 className="text-lg font-semibold mb-4">Parcels Assigned to me</h2>
@@ -156,52 +158,12 @@ const DeliveryList = () => {
                 <td className="px-4 py-2">{parcel.deliveryAddress}</td>
                 <td className="px-4 py-2">
                   <button
-                    className="text-blue-500 text-sm "
-                    onClick={() => setModalOpen(true)}
+                    className="text-blue-500 text-sm"
+                    onClick={() => handleViewLocation(parcel)}
                   >
                     View Location
                   </button>
 
-                  {/* Modal */}
-                  {modalOpen && (
-                    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-                      <div className="bg-white rounded-lg shadow-xl w-full sm:w-96 p-6">
-                        <div className="flex justify-between items-center">
-                          <h2 className="text-xl font-semibold">Location</h2>
-                          <button
-                            className="text-gray-500 text-2xl"
-                            onClick={() => setModalOpen(false)}
-                          >
-                            &times;
-                          </button>
-                        </div>
-                        {/* <MapContainer
-                          center={position}
-                          zoom={13}
-                          scrollWheelZoom={false}
-                        >
-                          <TileLayer
-                            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                          />
-                          <Marker position={position}>
-                            <Popup>
-                              A pretty CSS3 popup. <br /> Easily customizable.
-                            </Popup>
-                          </Marker>
-                        </MapContainer> */}
-
-                        <div className="mt-6 flex justify-end">
-                          <button
-                            className="px-3 py-1 bg-red-500 text-white rounded-md"
-                            onClick={() => setModalOpen(false)} // Close modal
-                          >
-                            Close
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  )}
                 </td>
                 <td className="px-4 py-2">
                   {parcel.status === "Cancelled" ||
@@ -253,6 +215,55 @@ const DeliveryList = () => {
           )}
         </tbody>
       </table>
+      {selectedParcel && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white rounded-lg shadow-xl w-full sm:w-96 p-6">
+            <div className="flex justify-between items-center">
+              <h2 className="text-xl font-semibold">Location</h2>
+              <button
+                className="text-gray-500 text-2xl"
+                onClick={() => setSelectedParcel(null)}
+              >
+                &times;
+              </button>
+            </div>
+            <MapContainer
+              center={[
+                selectedParcel.addressLatitude,
+                selectedParcel.addressLongitude,
+              ]}
+              zoom={13}
+              scrollWheelZoom={false}
+              style={{ height: "400px", width: "100%" }}
+            >
+              <TileLayer
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+              <Marker
+                position={[
+                  selectedParcel.addressLatitude,
+                  selectedParcel.addressLongitude,
+                ]}
+              >
+                <Popup>
+                  {selectedParcel.receiverName}'s Parcel Location <br />
+                  {selectedParcel.deliveryAddress}
+                </Popup>
+              </Marker>
+            </MapContainer>
+
+            <div className="mt-6 flex justify-end">
+              <button
+                className="px-3 py-1 bg-red-500 text-white rounded-md"
+                onClick={() => setSelectedParcel(null)}
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

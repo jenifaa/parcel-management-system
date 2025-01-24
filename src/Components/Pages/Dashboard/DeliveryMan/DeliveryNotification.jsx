@@ -6,12 +6,8 @@ import { FaTrash } from "react-icons/fa6";
 const DeliveryNotification = () => {
   const { user } = useAuth();
   const [notifications, refetch] = useDeliveryManNotifications();
-  console.log(notifications);
-//   const handleDelete = (notificationId) => {
-//     notifications.filter((notification) => notification._id !== notificationId);
 
-//     refetch();
-//   };
+
   return (
     <div className="p-4 my-24 lg:pl-64 lg:pr-[550px]">
       <h1 className="text-2xl font-bold mb-6">

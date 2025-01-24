@@ -4,7 +4,7 @@ import img2 from "../../assets/icons/instagram (1).png";
 import img4 from "../../assets/icons/linkedin (2).png";
 import img3 from "../../assets/icons/twitter (2).png";
 import img5 from "../../assets/images/icons8-parcel-delivery-55.png";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 // import img1 from '../../assets/icons/facebook (1).png'
 const Footer = () => {
   const location = useLocation();
@@ -13,102 +13,113 @@ const Footer = () => {
   const isRegisterPage = location.pathname === "/register";
   return (
     !isLoginPage &&
-    !isRegisterPage && ( 
+    !isRegisterPage && (
       <div className="bg-green-950 text-white">
         <div className="lg:flex  lg:justify-between w-11/12  mx-auto py-8 space-y-10 lg:space-y-0">
-         <div className="md:flex md:justify-between lg:gap-60  space-y-10 md:space-y-2">
-         <div className="px-6 lg:px-0">
-            <h2 className="text-2xl font-bold mb-3">Follow us</h2>
-            <div className="flex items-center gap-3">
-              <img className="w-8" src={img1} alt="" />
-              <img className="w-8" src={img2} alt="" />
-              <img className="w-8" src={img3} alt="" />
-              <img className="w-8" src={img4} alt="" />
-            </div>
-          </div>
-          <div className="">
-            <div className=" px-8 pb-4 rounded-lg shadow-md flex gap-20 lg:gap-40 ">
-              <div>
-                <h2 className="text-xl font-semibold mb-4 border-b border-green-700 pb-2">
-                  Company
-                </h2>
-                <ul className="space-y-2">
-                  <li>
-                    <a
-                      href="#"
-                      className="block text-sm hover:text-green-300 transition duration-200"
-                    >
-                      About Us
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="block text-sm hover:text-green-300 transition duration-200"
-                    >
-                      Blog
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="block text-sm hover:text-green-300 transition duration-200"
-                    >
-                      Our Services
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="block text-sm hover:text-green-300 transition duration-200"
-                    >
-                      Privacy Policy
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h2 className="text-xl font-semibold mb-4 border-b border-green-700 pb-2">
-                  Get Help
-                </h2>
-                <ul className="space-y-2">
-                  <li>
-                    <a
-                      href="#"
-                      className="block text-sm hover:text-green-300 transition duration-200"
-                    >
-                      Helpline
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="block text-sm hover:text-green-300 transition duration-200"
-                    >
-                      FAQ
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="block text-sm hover:text-green-300 transition duration-200"
-                    >
-                      Documents
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="block text-sm hover:text-green-300 transition duration-200"
-                    >
-                      Contact Us
-                    </a>
-                  </li>
-                </ul>
+          <div className="md:flex md:justify-between lg:gap-60  space-y-10 md:space-y-2">
+            <div className="px-6 lg:px-0">
+              <h2 className="text-2xl font-bold mb-3">Follow us</h2>
+              <div className="flex items-center gap-3">
+                <Link to="https://www.facebook.com">
+                  {" "}
+                  <img className="w-8" src={img1} alt="" />
+                </Link>
+                <Link to='https://www.instagram.com'>
+                  <img className="w-8" src={img2} alt="" />
+                </Link>
+                <Link to='https://x.com/?lang=en&mx=2'>
+                  <img className="w-8" src={img3} alt="" />
+                </Link>
+
+                <Link to="https://www.linkedin.com">
+                  {" "}
+                  <img className="w-8" src={img4} alt="" />
+                </Link>
               </div>
             </div>
+            <div className="">
+              <div className=" px-8 pb-4 rounded-lg shadow-md flex gap-20 lg:gap-40 ">
+                <div>
+                  <h2 className="text-xl font-semibold mb-4 border-b border-green-700 pb-2">
+                    Company
+                  </h2>
+                  <ul className="space-y-2">
+                    <li>
+                      <a
+                        href="#"
+                        className="block text-sm hover:text-green-300 transition duration-200"
+                      >
+                        About Us
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        className="block text-sm hover:text-green-300 transition duration-200"
+                      >
+                        Blog
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        className="block text-sm hover:text-green-300 transition duration-200"
+                      >
+                        Our Services
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        className="block text-sm hover:text-green-300 transition duration-200"
+                      >
+                        Privacy Policy
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h2 className="text-xl font-semibold mb-4 border-b border-green-700 pb-2">
+                    Get Help
+                  </h2>
+                  <ul className="space-y-2">
+                    <li>
+                      <a
+                        href="#"
+                        className="block text-sm hover:text-green-300 transition duration-200"
+                      >
+                        Helpline
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        className="block text-sm hover:text-green-300 transition duration-200"
+                      >
+                        FAQ
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        className="block text-sm hover:text-green-300 transition duration-200"
+                      >
+                        Documents
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        className="block text-sm hover:text-green-300 transition duration-200"
+                      >
+                        Contact Us
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
-         </div>
           <div className="px-6 lg:px-0">
             <div className="flex items-center mb-4">
               <img src={img5} alt="" />

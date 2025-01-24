@@ -1,12 +1,14 @@
 import useAuth from "@/Components/Hooks/useAuth";
 import useAxiosPublic from "@/Components/Hooks/useAxiosPublic";
 import useAxiosSecure from "@/Components/Hooks/useAxiosSecure";
+import useParcel from "@/Components/Hooks/useParcel";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const UpdateBooking = () => {
+  const [parcels,refetch] = useParcel()
   const {
     phoneNumber,
     parcelType,
@@ -62,7 +64,7 @@ const UpdateBooking = () => {
       const parcelItem = await axiosSecure.patch(`/parcel/item/${_id}`, parcel);
 
       if (parcelItem.data.modifiedCount > 0) {
-        reset();
+        refetch();
         Swal.fire({
           title: "Good job!",
           text: "Item Updated",

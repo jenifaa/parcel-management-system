@@ -12,13 +12,13 @@ const NotificationPage = () => {
   
 
   const [notification, refetch] = useNotifications();
-  console.log(notification);
+
   const handleAccept = async (id) => {
     const response = await axiosSecure.patch(`/users/deliveryMan/${id}`, {
       type: "deliveryMan",
     });
     refetch();
-    console.log("User accepted:", response.data);
+   
   };
   return (
     <div className="p-4 my-24 lg:pl-64 lg:pr-[550px]">

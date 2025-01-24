@@ -53,7 +53,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+      className={`fixed top-0  left-0 w-full z-50 transition-all duration-500 ${
         scrolled ? "bg-white text-black shadow-lg" : "bg-green-950 text-white"
       }`}
     >
@@ -91,7 +91,7 @@ const Navbar = () => {
           <div>
             {location.pathname !== "/login" &&
               location.pathname !== "/register" && (
-                <div className="flex space-x-6 items-center">
+                <div className="flex space-x-4 items-center">
                   <div className="flex items-center space-x-4">
                     <NavLink
                       to="/"
@@ -99,6 +99,19 @@ const Navbar = () => {
                     >
                       Home
                     </NavLink>
+                    <NavLink
+                      to="/blog"
+                      className="hover:font-bold text-sm lg:flex hidden"
+                    >
+                      Our Blog
+                    </NavLink>
+                    <NavLink
+                      to="/contact"
+                      className="hover:font-bold text-sm lg:flex hidden"
+                    >
+                      Contact Us
+                    </NavLink>
+
                     {user ? (
                       <>
                         {isAdmin && (
@@ -212,6 +225,18 @@ const Navbar = () => {
         <div className="flex flex-col space-y-4 px-6 py-4 bg-gradient-to-r from-[#49b6a2] via-[#069b5d] to-[#4caf7f] text-white lg:hidden">
           <NavLink to="/" className="hover:text-gray-200">
             Home
+          </NavLink>
+          <NavLink
+            to="/blog"
+            className="hover:font-bold text-sm lg:flex hidden"
+          >
+            Our Blog
+          </NavLink>
+          <NavLink
+            to="/contact"
+            className="hover:font-bold text-sm lg:flex hidden"
+          >
+            Contact Us
           </NavLink>
         </div>
       )}

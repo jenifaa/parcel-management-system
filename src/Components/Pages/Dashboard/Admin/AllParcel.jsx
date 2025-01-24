@@ -50,7 +50,7 @@ const AllParcel = () => {
     queryKey: ["paidData"],
     queryFn: async () => {
       const res = await axiosSecure.get("/payments");
-      // console.log(res.data);
+    
       return res.data;
     },
   });
@@ -59,7 +59,7 @@ const AllParcel = () => {
     queryKey: ["parcels"],
     queryFn: async () => {
       const res = await axiosSecure.get("/parcel");
-      // console.log(res.data);
+   
       return res.data;
     },
   });
@@ -69,13 +69,12 @@ const AllParcel = () => {
     try {
       const isoFromDate = new Date(fromDate).toISOString();
       const isoToDate = new Date(toDate).toISOString();
-      console.log("Formatted From Date:", isoFromDate);
-      console.log("Formatted To Date:", isoToDate);
+     
 
       const res = await axiosSecure.get(
         `/parcels/all?fromDate=${isoFromDate}&toDate=${isoToDate}`
       );
-      console.log(res.data);
+    
       setFilteredParcels(res.data);
     } catch (error) {
       console.error("Error fetching parcels:", error);
@@ -90,7 +89,7 @@ const AllParcel = () => {
     queryKey: ["deliveryMan"],
     queryFn: async () => {
       const res = await axiosSecure.get("/users/deliveryMan");
-      console.log(deliveryMan);
+
       return res.data;
     },
   });
@@ -122,8 +121,7 @@ const AllParcel = () => {
         `/managing/${selectedParcel._id}`,
         updatedParcel
       );
-      console.log(res.data);
-      console.log(updatedParcel);
+    
       if (res.data.modifiedCount > 0) {
         refetch();
         toast.success("Updated");

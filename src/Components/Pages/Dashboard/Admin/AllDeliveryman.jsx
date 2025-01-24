@@ -14,20 +14,12 @@ import {
 import { FaSearch } from "react-icons/fa";
 const AllDeliveryman = () => {
   const axiosSecure = useAxiosSecure();
-  // const [mail, setMail] = useState("");
-  // const { data: deliveryMan = [], refetch } = useQuery({
-  //   queryKey: ["deliveryMan"],
-  //   queryFn: async () => {
-  //     const res = await axiosSecure.get("/users/deliveryMan");
-  //     console.log(res.data);
-  //     return res.data;
-  //   },
-  // });
+ 
   const { data: parcels = [] } = useQuery({
     queryKey: ["parcels"],
     queryFn: async () => {
       const res = await axiosSecure.get("/parcel");
-      console.log(res.data);
+    
       return res.data;
     },
   });
@@ -40,15 +32,12 @@ const AllDeliveryman = () => {
     queryKey: ["deliveryMen"],
     queryFn: async () => {
       const res = await axiosSecure.get("/users/deliveryMan");
-      console.log(res.data);
+   
       return res.data;
     },
   });
-  const pp = parcels.filter((par) => par.status === "Delivered");
- const result =  pp.map((p) => {
-    deliveryMenData.filter((del) => del._id === pp.deliveryManId);
-  });
-  console.log(result);
+
+
   const {
     data: reviewsData,
     isLoading: isLoadingReviews,
@@ -57,7 +46,7 @@ const AllDeliveryman = () => {
     queryKey: ["reviews"],
     queryFn: async () => {
       const res = await axiosSecure.get("/reviews");
-      console.log(res.data);
+   
       return res.data;
     },
   });

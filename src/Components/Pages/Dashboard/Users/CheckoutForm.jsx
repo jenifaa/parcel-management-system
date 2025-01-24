@@ -10,7 +10,7 @@ const CheckoutForm = () => {
   const axiosSecure = useAxiosSecure();
   const data = useLoaderData();
   const [parcels, refetch] = useParcel();
-  console.log(data);
+ 
   const { user } = useAuth();
   const [transactionId, setTransactionId] = useState("");
 
@@ -62,7 +62,7 @@ const CheckoutForm = () => {
     if (confirmError) {
       console.log(confirmError);
     } else {
-      console.log("PaymentIntent", paymentIntent);
+    
       if (paymentIntent.status === "succeeded") {
         setTransactionId(paymentIntent.id);
         const payment = {

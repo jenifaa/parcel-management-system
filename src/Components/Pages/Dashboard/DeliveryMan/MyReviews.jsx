@@ -17,23 +17,12 @@ const MyReviews = () => {
     queryKey: ["reviews"],
     queryFn: async () => {
       const res = await axiosSecure.get(`/reviews/${user?.email}`);
-      console.log(res.data);
+    
       return res.data;
     },
   });
 
-  // const {
-  //   data: users = [],
-  //   isLoading: isLoadingUsers,
-  //   isError: isErrorUsers,
-  // } = useQuery({
-  //   queryKey: ["users"],
-  //   queryFn: async () => {
-  //     const res = await axiosSecure.get("/users");
-  //     console.log(res.data);
-  //     return res.data;
-  //   },
-  // });
+ 
 
   return (
     <div>

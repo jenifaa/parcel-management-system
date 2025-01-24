@@ -36,7 +36,7 @@ const AllUsers = () => {
     queryKey: ["paid"],
     queryFn: async () => {
       const res = await axiosSecure.get("/payments");
-      console.log(res.data);
+      
       return res.data;
     },
   });
@@ -54,7 +54,7 @@ const AllUsers = () => {
 
     return { ...user, parcelCount: userParcels.length, parcels: userParcels };
   });
-  console.log(userParcelCount);
+ 
 
   const handleMakeAdmin = (user) => {
     axiosSecure.patch(`/users/admin/${user?._id}`).then((res) => {

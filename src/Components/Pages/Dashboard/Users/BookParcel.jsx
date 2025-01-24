@@ -17,16 +17,13 @@ const BookParcel = () => {
     queryKey: [user?.email, "users"],
     queryFn: async () => {
       const res = await axiosSecure.get(`/find/${user?.email}`);
-      console.log(res.data);
-      console.log(users);
+     
       return res.data;
     },
-    // onSuccess: (data) => { // Update state in success callback
-    //   setPhoneNumber(data?.phoneNumber || '');
-    // },
+   
   });
   
-//  console.log(users.phoneNumber);
+
   const calculatedPrice = (parcelWeight) => {
     if (parcelWeight <= 1) return 50;
     if (parcelWeight > 1 && parcelWeight <= 2) return 100;

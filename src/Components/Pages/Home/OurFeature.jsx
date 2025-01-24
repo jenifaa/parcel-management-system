@@ -15,15 +15,12 @@ const OurFeature = () => {
     queryKey: ["stats"],
     queryFn: async () => {
       const res = await axiosPublic.get("/stat");
-   
+
       return res.data;
     },
   });
 
-  
- 
   return (
-    
     <div className="bg-gray-50">
       <section className="pt-12 pb-8  px-6 ">
         <div className="max-w-screen-xl mx-auto text-center">
@@ -33,9 +30,12 @@ const OurFeature = () => {
           <h2 className="text-5xl font-bold mb-10">Our Services at a Glance</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* card 1 */}
-            <div className="bg-white px-6 pb-3 rounded-lg shadow-lg">
+            <div className="bg-white px-4 pb-5  rounded-lg shadow-lg">
               <div className="flex justify-center items-center">
-                <Lottie animationData={secure} className="w-48"></Lottie>
+                <Lottie
+                  animationData={secure}
+                  className="w-40 object-cover"
+                ></Lottie>
               </div>
               <h3 className="text-xl font-semibold mb-2">
                 Secure & Safe Delivery
@@ -47,7 +47,7 @@ const OurFeature = () => {
             </div>
 
             {/* card 2 */}
-            <div className="bg-white pt-6 px-6  rounded-lg shadow-lg">
+            <div className="bg-white  px-4 pb-5   rounded-lg shadow-lg">
               <div className="flex justify-center items-center">
                 <Lottie animationData={rocket} className="w-36 mb-3"></Lottie>
               </div>
@@ -59,9 +59,12 @@ const OurFeature = () => {
             </div>
 
             {/* card 3 */}
-            <div className="bg-white px-6 pb-3 rounded-lg shadow-lg">
+            <div className="bg-white px-4 pb-5 rounded-lg shadow-lg">
               <div className="flex justify-center items-center">
-                <Lottie animationData={map} className="w-48"></Lottie>
+                <Lottie
+                  animationData={map}
+                  className="w-40 object-cover"
+                ></Lottie>
               </div>
               <h3 className="text-xl font-semibold mb-2">Track Your Parcel</h3>
               <p className="text-gray-600">

@@ -40,7 +40,7 @@ const Register = () => {
     const type = data.type === "deliveryMan" ? "pending" : data.type;
     createNewUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
-      console.log(loggedUser);
+     
 
       updateUserProfile(data.name, data.photoURL).then(() => {
         const userInfo = {
@@ -50,7 +50,7 @@ const Register = () => {
           type,
           phoneNumber: data.phoneNumber,
         };
-        console.log(userInfo);
+      
         axiosPublic.post("/users", userInfo).then((res) => {
           if (res.data.insertedId) {
             reset();
