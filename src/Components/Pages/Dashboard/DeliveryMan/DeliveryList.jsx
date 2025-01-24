@@ -11,6 +11,7 @@ import {
   TableHead,
   TableRow,
 } from "../../../ui/table";
+// import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
@@ -72,7 +73,8 @@ const DeliveryList = () => {
       }
     });
   };
-  const handleDeliver = async (id) => {
+  const handleDeliver = async (id, deliveryManId) => {
+    console.log(deliveryManId);
     Swal.fire({
       title: "Are you sure?",
       text: "Parcel Delivery done?",
@@ -84,7 +86,7 @@ const DeliveryList = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const updatedDelivery = { status: "Delivered" };
+          const updatedDelivery = { status: "Delivered", deliveryManId };
           const res = await axiosSecure.patch(
             `/parcel/delivery/${id}`,
             updatedDelivery
@@ -115,6 +117,8 @@ const DeliveryList = () => {
       }
     });
   };
+  const position = [51.505, -0.09];
+
   return (
     <div className="overflow-x-auto">
       <h2 className="text-lg font-semibold mb-4">Parcels Assigned to me</h2>
@@ -171,6 +175,21 @@ const DeliveryList = () => {
                             &times;
                           </button>
                         </div>
+                        {/* <MapContainer
+                          center={position}
+                          zoom={13}
+                          scrollWheelZoom={false}
+                        >
+                          <TileLayer
+                            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                          />
+                          <Marker position={position}>
+                            <Popup>
+                              A pretty CSS3 popup. <br /> Easily customizable.
+                            </Popup>
+                          </Marker>
+                        </MapContainer> */}
 
                         <div className="mt-6 flex justify-end">
                           <button
@@ -220,7 +239,9 @@ const DeliveryList = () => {
                     </button>
                   ) : (
                     <button
-                      onClick={() => handleDeliver(parcel._id)}
+                      onClick={() =>
+                        handleDeliver(parcel._id, parcel.deliveryManId)
+                      }
                       className="text-blue-700 text-sm hover:text-blue-800"
                     >
                       Deliver

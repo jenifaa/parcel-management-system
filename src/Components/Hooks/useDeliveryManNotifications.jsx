@@ -9,9 +9,9 @@ const useDeliveryManNotifications = () => {
     queryKey: ["notifications"],
     queryFn: async () => {
       const res = await axiosSecure.get("/delivery/notifications");
-      console.log(res.data);
+    
       const notify = res.data.filter((use) => use.email === user?.email);
-      console.log(notify);
+    
       return notify;
     },
   });

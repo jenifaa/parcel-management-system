@@ -11,8 +11,7 @@ const useNotifications = () => {
     queryFn: async () => {
       const res = await axiosSecure.get("/notification");
    
-      console.log(notification);
-      console.log(res.data);
+    
       return res.data;
     },
   });

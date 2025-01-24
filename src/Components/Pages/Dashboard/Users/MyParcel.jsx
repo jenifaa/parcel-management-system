@@ -38,6 +38,7 @@ const MyParcel = () => {
 
   const [userName, setUserName] = useState(user?.displayName || "");
   const [deliveryManId, setDeliveryManId] = useState("");
+  const [deliveryManEmail, setDeliveryManEmail] = useState("");
 
   const { data: parcels = [], refetch } = useQuery({
     queryKey: ["parcels", user?.email],
@@ -99,6 +100,7 @@ const MyParcel = () => {
   useEffect(() => {
     parcels.map((parcel) => {
       setDeliveryManId(parcel.deliveryManId);
+      setDeliveryManEmail(parcel.deliveryManDetails);
     });
   }, [parcels]);
   const handleReview = async () => {
@@ -107,13 +109,14 @@ const MyParcel = () => {
       review,
       rating,
       deliveryManId,
+      deliveryManEmail,
       userPhoto: user?.photoURL,
+      date: new Date(),
     };
-    const res = await axiosSecure.post('/reviews',reviewData)
-    if(res.data.insertedId){
-      toast.success("Review Sent")
-      refetch()
-
+    const res = await axiosSecure.post("/reviews", reviewData);
+    if (res.data.insertedId) {
+      toast.success("Review Sent");
+      refetch();
     }
     console.log(res.data);
     console.log(reviewData);

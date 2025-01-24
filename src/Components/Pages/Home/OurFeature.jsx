@@ -15,20 +15,13 @@ const OurFeature = () => {
     queryKey: ["stats"],
     queryFn: async () => {
       const res = await axiosPublic.get("/stat");
-      console.log(res.data);
+   
       return res.data;
     },
   });
 
   
-  // const { data: users = [] } = useQuery({
-  //   queryKey: ["users"],
-  //   queryFn: async () => {
-  //     const res = await axiosPublic.get("/users");
-  //     // console.log(res.data);
-  //     return res.data;
-  //   },
-  // });
+ 
   return (
     
     <div className="bg-gray-50">
@@ -82,7 +75,7 @@ const OurFeature = () => {
       <section className="">
         <div className=" py-10">
           <div className="bg-gray-100 ">
-            <h2 className="text-5xl font-extrabold text-center pt-8 mb-4 ">
+            <h2 className="text-5xl font-bold text-center pt-8 mb-4 ">
               Why Choose Us?
             </h2>
             <p className="text-center text-sm text-green-600 font-bold mb-12">
