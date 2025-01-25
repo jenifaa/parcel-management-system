@@ -1,4 +1,4 @@
-# Parcel Delivery Management System
+# Packify
 
 A complete parcel delivery management system designed to streamline parcel tracking, delivery requests, and admin management. The platform includes dedicated pages for admins, users, and delivery men, offering a seamless experience for all stakeholders.
 
@@ -118,7 +118,6 @@ parcel-delivery-management
 
 ## Future Enhancements
 - Add payment gateway integration.
-- Implement live chat support for users and delivery men.
 - Introduce delivery analytics for admins.
 
 ## Live Demo
