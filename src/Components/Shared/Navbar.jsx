@@ -210,7 +210,7 @@ const Navbar = () => {
                     </DropdownMenu>
                   ) : (
                     <NavLink to="/login">
-                      <button className="text-white flex items-center gap-1">
+                      <button className=" flex items-center gap-1">
                         <CiLogin /> Sign In
                       </button>
                     </NavLink>
@@ -228,13 +228,13 @@ const Navbar = () => {
           </NavLink>
           <NavLink
             to="/blog"
-            className="hover:font-bold text-sm lg:flex hidden"
+            className=""
           >
             Our Blog
           </NavLink>
           <NavLink
             to="/contact"
-            className="hover:font-bold text-sm lg:flex hidden"
+            className=""
           >
             Contact Us
           </NavLink>

@@ -44,6 +44,7 @@ const MyParcel = () => {
     queryKey: ["parcels", user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(`/parcel/${user?.email}`);
+      console.log(res.data);
       return res.data;
     },
   });
@@ -51,7 +52,7 @@ const MyParcel = () => {
     queryKey: ["paidData", user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(`/payments/${user?.email}`);
-     
+
       return res.data;
     },
   });
@@ -100,8 +101,10 @@ const MyParcel = () => {
   useEffect(() => {
     parcels.map((parcel) => {
       setDeliveryManId(parcel.deliveryManId);
+
       setDeliveryManEmail(parcel.deliveryManDetails);
     });
+   
   }, [parcels]);
   const handleReview = async () => {
     const reviewData = {
@@ -118,7 +121,6 @@ const MyParcel = () => {
       toast.success("Review Sent");
       refetch();
     }
- 
   };
 
   return (
@@ -253,13 +255,9 @@ const MyParcel = () => {
                               </Label>
                               <Input
                                 id="deliveryId"
-                                // defaultValue={parcel.deliveryManId}
-                                value={deliveryManId}
+                                value={parcel.deliveryManId}
                                 readOnly
                                 className="col-span-3"
-                                // onChange={(e) => {
-                                //   setDeliveryManId(e.target.value);
-                                // }}
                               />
                             </div>
                           </div>

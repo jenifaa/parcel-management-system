@@ -4,6 +4,7 @@ import OurFeature from './OurFeature';
 import TopDeliveryMan from './TopDeliveryMan';
 import Faq from './Faq';
 import CustomerReview from './CustomerReview';
+import AboutUs from './AboutUs';
 
 const Home = () => {
     return (
@@ -13,6 +14,7 @@ const Home = () => {
             <TopDeliveryMan></TopDeliveryMan>
             <CustomerReview></CustomerReview>
             <Faq></Faq>
+            <AboutUs></AboutUs>
         </div>
     );
 };
