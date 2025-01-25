@@ -79,7 +79,7 @@ const OurFeature = () => {
         <div className=" py-10">
           <div className="bg-gray-100 ">
             <h2 className="text-5xl font-bold text-center pt-8 mb-4 ">
-              Why Choose Us?
+               Achievements Unlocked
             </h2>
             <p className="text-center text-sm text-green-600 font-bold mb-12">
               See what makes us the most reliable delivery service.
