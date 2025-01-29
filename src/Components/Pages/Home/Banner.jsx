@@ -1,17 +1,19 @@
 import React from "react";
 import bannerImg from "../../../assets/images/banner2.jpeg";
 import { FaSearch } from "react-icons/fa";
-
+import banner from '../../../assets/lottie/banner2.json'
+import Lottie from "lottie-react";
 const Banner = () => {
   return (
-    <div className="relative mt-16">
-      <img
-        className="h-[400px] lg:h-[550px] w-full object-cover"
+    <div className="relative ">
+      {/* <img
+        className="h-[500px] lg:h-[600px] w-full object-cover"
         src={bannerImg}
         alt=""
-      />
+      /> */}
+      <Lottie className="h-[600px]" animationData={banner}></Lottie>
 
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-white bg-black bg-opacity-40 px-4">
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-white bg-black bg-opacity-70 px-4">
         <h1 className="text-2xl md:text-4xl lg:text-6xl font-bold mb-6 text-center">
           Find Your Perfect Parcel Delivery
         </h1>

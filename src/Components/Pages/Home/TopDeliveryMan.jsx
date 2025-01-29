@@ -21,7 +21,7 @@ const TopDeliveryMan = () => {
         <p className="text-sm text-green-800 font-bold mb-2">
           Meet our deliveryman---
         </p>
-        <h2 className="text-5xl font-bold font2 mb-2">
+        <h2 className="text-5xl font-bold font2 mb-12">
           Our Top Three DeliveryMan
         </h2>
       </div>

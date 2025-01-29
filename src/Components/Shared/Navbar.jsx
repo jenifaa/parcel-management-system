@@ -54,10 +54,10 @@ const Navbar = () => {
   return (
     <div
       className={`fixed top-0  left-0 w-full z-50 transition-all duration-500 ${
-        scrolled ? "bg-white text-black shadow-lg" : "bg-green-950 text-white"
+        scrolled ? "bg-white text-black shadow-lg" : "bg-black bg-opacity-20 text-white"
       }`}
     >
-      <nav className="flex items-center justify-between px-8 py-3">
+      <nav className="flex items-center justify-between px-8 py-4">
         <div className="flex items-center">
           <img className="w-12" src={logo} alt="Logo" />
           <Link to="/" className="text-3xl font-bold tracking-widest">
@@ -95,19 +95,25 @@ const Navbar = () => {
                   <div className="flex items-center space-x-4">
                     <NavLink
                       to="/"
-                      className="hover:font-bold text-sm lg:flex hidden"
+                      className="hover:font-bold text-md lg:flex hidden"
                     >
                       Home
                     </NavLink>
                     <NavLink
-                      to="/blog"
-                      className="hover:font-bold text-sm lg:flex hidden"
+                      to="/about"
+                      className="hover:font-bold text-md lg:flex hidden"
                     >
-                      Our Blog
+                      About Us
+                    </NavLink>
+                    <NavLink
+                      to="/blog"
+                      className="hover:font-bold text-md lg:flex hidden"
+                    >
+                       Blog
                     </NavLink>
                     <NavLink
                       to="/contact"
-                      className="hover:font-bold text-sm lg:flex hidden"
+                      className="hover:font-bold text-md lg:flex hidden"
                     >
                       Contact Us
                     </NavLink>
@@ -230,13 +236,19 @@ const Navbar = () => {
             to="/blog"
             className=""
           >
-            Our Blog
+            Blog
           </NavLink>
           <NavLink
             to="/contact"
             className=""
           >
             Contact Us
+          </NavLink>
+          <NavLink
+            to="/about"
+            className=""
+          >
+            About Us
           </NavLink>
         </div>
       )}
