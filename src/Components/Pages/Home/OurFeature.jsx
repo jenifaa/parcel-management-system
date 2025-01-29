@@ -34,14 +34,14 @@ const OurFeature = () => {
   return (
     <div className="bg-gray-50">
       <section className="pt-12 pb-8  px-6">
-        <div className="w-11/12 mx-auto text-center">
+        <div className="lg:w-11/12 mx-auto text-center">
           <h2 className="text-sm font-bold mb-2 text-green-700">
             Our Features---
           </h2>
           <h2 className="text-5xl font-bold mb-16">Our Services at a Glance</h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4  gap-5 ">
-            <div className="bg-white px-4 pb-5 w-72 rounded-lg shadow-lg">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-5 ">
+            <div className="bg-white px-4 pb-5 md:w-60  lg:w-72 rounded-lg shadow-lg">
               <div className="flex justify-center items-center">
                 <Lottie
                   animationData={secure}
@@ -57,7 +57,7 @@ const OurFeature = () => {
               </p>
             </div>
 
-            <div className="bg-white  px-4 pb-5  w-72  rounded-lg shadow-lg">
+            <div className="bg-white  px-4 pb-5 md:w-60  lg:w-72  rounded-lg shadow-lg">
               <div className="flex justify-center items-center">
                 <Lottie animationData={rocket} className="w-36 mb-3"></Lottie>
               </div>
@@ -68,7 +68,7 @@ const OurFeature = () => {
               </p>
             </div>
 
-            <div className="bg-white px-4 pb-5 w-72 rounded-lg shadow-lg">
+            <div className="bg-white px-4 pb-5 md:w-60  lg:w-72 rounded-lg shadow-lg">
               <div className="flex justify-center items-center">
                 <Lottie
                   animationData={map}
@@ -81,7 +81,7 @@ const OurFeature = () => {
                 ensuring peace of mind throughout the journey.
               </p>
             </div>
-            <div className="bg-white px-4 pb-5 w-72 rounded-lg shadow-lg">
+            <div className="bg-white px-4 pb-5 md:w-60  lg:w-72  rounded-lg shadow-lg">
               <div className="flex justify-center items-center">
                 <Lottie
                   animationData={boXLottie}
@@ -94,34 +94,19 @@ const OurFeature = () => {
                 ensuring peace of mind throughout the journey.
               </p>
             </div>
-            {/* <div className="bg-white px-4 pb-5 w-72 rounded-lg shadow-lg">
-              <div className="flex justify-center items-center">
-                <Lottie
-                  animationData={payment}
-                  className="w-40 object-cover"
-                ></Lottie>
-              </div>
-              <h3 className="text-xl font-semibold mb-2">
-                Flexible Payment Options
-              </h3>
-              <p className="text-gray-600">
-                Know exactly where your parcel is with live tracking updates,
-                ensuring peace of mind throughout the journey.
-              </p>
-            </div>
-            */}
+           
           </div>
          
         </div>
       </section>
 
       <div
-        className="h-screen bg-fixed bg-cover bg-center relative mt-20"
+        className="h-screen bg-fixed bg-cover bg-center relative mt-20  mb-20 sm:mb-5"
         style={{ backgroundImage: `url(${image})` }}
       >
         <div className="absolute inset-0 bg-black opacity-80"></div>
 
-        <div className="relative z-10 px-64 py-10">
+        <div className="relative z-10 lg:px-64 py-10">
           <h2 className="text-5xl font-bold text-center font2 text-white mb-8">
             Achievements Unlocked
           </h2>
@@ -163,7 +148,7 @@ const OurFeature = () => {
               </div>
             </div>
 
-            <div className="w-full flex justify-between items-center border-b">
+            <div className="w-full flex justify-between items-center sm:border-b">
               <div className="text-center w-1/3 px-4 py-4 border-r flex flex-col justify-center items-center">
                 <div className="text-6xl  mb-4">
                   <HiOutlineUserGroup className="text-[#be1b16]" />
@@ -200,7 +185,7 @@ const OurFeature = () => {
                 </p>
               </div>
             </div>
-            <div className="w-full flex justify-between items-center">
+            <div className="w-full sm:flex justify-between items-center hidden">
               <div className="text-center w-1/3 px-4 py-4 border-r-2 flex flex-col justify-center items-center">
                 <div className="text-6xl  mb-4">
                   <IoTicketSharp className="text-[#13ab9d]" />

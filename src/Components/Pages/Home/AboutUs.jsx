@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 const AboutUs = () => {
   return (
     <section className=" py-16 w-11/12 mx-auto">
-      <div className="flex justify-between items-start gap-20">
-        <div className=" text-center px-6 w-1/2">
+      <div className="flex flex-col-reverse lg:flex-row justify-between items-start gap-20">
+        <div className=" text-center px-6 lg:w-1/2">
           
-          <div className="grid grid-cols-2 gap-10">
+          <div className="grid sm:grid-cols-2 gap-10">
             <div className="">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -111,7 +111,7 @@ const AboutUs = () => {
             <Link to='/about' className="text-green-800 border-b-2 border-green-800 rounded-xl font-bold py-2">See More...</Link>
           </div>
         </div>
-        <div className="w-1/2">
+        <div className="lg:w-1/2">
           <img className="" src={about} alt="" />
         </div>
       </div>
