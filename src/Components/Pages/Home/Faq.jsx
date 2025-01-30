@@ -21,7 +21,7 @@ const Faq = () => {
 
         <div className="w-full lg:w-1/2">
           <div className="">
-            <h2 className="mb-5 font-bold text-2xl text-green-800">Some Common Questions...</h2>
+            <h2 className="mb-5 font-bold text-4xl text-green-800">Some Common Questions...</h2>
             <div className="border  rounded-lg overflow-hidden shadow-sm mb-4">
               <Accordion className="bg-gray-200 px-5" type="single" collapsible>
                 <AccordionItem value="item-1">

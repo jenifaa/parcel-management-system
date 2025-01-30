@@ -12,6 +12,7 @@ import { BsBoxes } from "react-icons/bs";
 import { MdGroups } from "react-icons/md";
 import { HiUserGroup } from "react-icons/hi2";
 import { ImHome } from "react-icons/im";
+import { FaList, FaStar } from "react-icons/fa6";
 const Dashboard = () => {
   const { user, loading } = useAuth();
   const [isAdmin] = useAdmin();
@@ -60,13 +61,14 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/deliveryList">My Delivery List</NavLink>
+                <NavLink className="flex items-center gap-1" to="/dashboard/deliveryList"><FaList></FaList> My Delivery List</NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/myReviews">My Reviews</NavLink>
+                <NavLink className="flex items-center gap-1" to="/dashboard/myReviews"><FaStar></FaStar> My Reviews</NavLink>
               </li>
+              <hr />
               <li>
-                <NavLink to="/">Home</NavLink>
+              <NavLink className="flex items-center gap-1" to="/"><FaHome></FaHome>Home</NavLink>
               </li>
             </>
           ) : (
