@@ -1,9 +1,9 @@
 import React from "react";
 import bannerImg from "../../../assets/images/banner2.jpeg";
 import { FaSearch } from "react-icons/fa";
-// import banner from "../../../assets/lottie/banner2.json";
+import banner from "../../../assets/lottie/banner2.json";
 import Lottie from "lottie-react";
-import vid from "../../../assets/video/banner.mp4";
+// import vid from "../../../assets/video/banner.mp4";
 const Banner = () => {
   return (
     <div className="relative ">
@@ -12,14 +12,14 @@ const Banner = () => {
         src={bannerImg}
         alt=""
       /> */}
-      {/* <Lottie className="h-[600px]" animationData={banner}></Lottie> */}
-      <video
+      <Lottie className="h-[600px]" animationData={banner}></Lottie>
+      {/* <video
         src={vid} // If placed in the 'public' folder
         autoPlay
         loop
         muted
         className="w-full h-[600px] object-cover"
-      ></video>
+      ></video> */}
 
       <div className="absolute inset-0 flex flex-col items-center justify-center text-white bg-black bg-opacity-80 px-4">
         <h1 className="text-2xl md:text-4xl lg:text-6xl font-bold mb-6 text-center">

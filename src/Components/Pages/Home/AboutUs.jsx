@@ -12,7 +12,7 @@ const AboutUs = () => {
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 
       {/* Content Wrapper */}
-      <div className="relative w-11/12 mx-auto flex justify-center  items-center ">
+      <div className="relative w-11/12 mx-auto flex justify-center  items-center">
         <div className="grid sm:grid-cols-2 gap-10 bg-white bg-opacity-90 p-8 rounded-2xl shadow-lg max-w-4xl">
           {/* Card 1 */}
           <div className="text-center max-w-md p-6 bg-white shadow-md rounded-xl">

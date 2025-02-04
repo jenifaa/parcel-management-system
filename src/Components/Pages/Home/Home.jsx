@@ -6,6 +6,7 @@ import Faq from './Faq';
 import CustomerReview from './CustomerReview';
 import AboutUs from './AboutUs';
 import OurPartner from './OurPartner';
+import Reaction from './Reaction';
 
 const Home = () => {
     return (
@@ -14,6 +15,7 @@ const Home = () => {
             <OurFeature></OurFeature>
             <TopDeliveryMan></TopDeliveryMan>
             <CustomerReview></CustomerReview>
+            <Reaction></Reaction>
             <OurPartner></OurPartner>
             <Faq></Faq>
             <AboutUs></AboutUs>
