@@ -8,6 +8,12 @@ This project simplifies parcel delivery operations, enabling:
 - Delivery men to accept and manage delivery tasks.
 - Admins to monitor and control the entire system, including delivery requests and user management.
 
+
+
+## **📷 Screenshot**
+![Parcel Delivery Management Website](https://i.ibb.co.com/Zt8Hs4z/packify.png)
+
+
 ## Features
 
 ### Admin Features:
