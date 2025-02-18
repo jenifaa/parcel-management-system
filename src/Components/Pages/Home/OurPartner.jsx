@@ -10,10 +10,10 @@ import dash from '../../../assets/images/images (1).png'
 import allCargo from '../../../assets/images/AllcargoGati-_logo-1.jpg'
 const OurPartner = () => {
   return (
-    <div className="py-14">
+    <div className="py-10 font">
       <div className="text-center mb-12">
-        <p className="text-xs text-green-700 font-bold mb-3">Official Partner Across The Globe---</p>
-        <h2 className="text-5xl font-bold font2">Our Partners</h2>
+        <p className="text-xs text-blue-500 font-bold mb-3">Official Partner Across The Globe---</p>
+        <h2 className="text-5xl font-bold ">Our Partners</h2>
       </div>
       <Marquee>
         <div>

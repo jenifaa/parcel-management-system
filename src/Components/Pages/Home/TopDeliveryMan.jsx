@@ -112,11 +112,11 @@ const TopDeliveryMan = () => {
                
                 
                
-                <p className="text-lg text-blue-700 font-bold">
+                <p className="text-base text-blue-700 font-bold">
                   <span className="font-bold text-gray-800"></span>{" "}
                   Completed {delivery.deliveryCount}+ Deliveries
                 </p>
-                <p className="text-lg mt-1 text-blue-700 font-bold ">
+                <p className="text-lg mt-1  font-bold ">
                   <span className="font-bold text-gray-800">
                     Total Reviews:
                   </span>{" "}

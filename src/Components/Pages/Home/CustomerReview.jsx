@@ -51,9 +51,9 @@ const CustomerReview = () => {
 
   return (
     <div>
-      <section className="customer-reviews py-16 bg-gray-50">
+      <section className="customer-reviews py-10 font bg-gray-50">
         <div className="container mx-auto text-center">
-          <p className="text-sm font-bold text-green-700 mb-3">
+          <p className="text-sm font-bold text-blue-500 mb-3">
             Meet our customers---
           </p>
           <h2 className="text-5xl font-bold mb-8">
