@@ -14,7 +14,7 @@ const Footer = () => {
   return (
     !isLoginPage &&
     !isRegisterPage && (
-      <div className="bg-green-950 text-white">
+      <div className="bg-black text-white">
         <div className="lg:flex  lg:justify-between w-11/12  mx-auto py-8 space-y-10 lg:space-y-0">
           <div className="md:flex md:justify-between lg:gap-60  space-y-10 md:space-y-2">
             <div className="px-6 lg:px-0">
@@ -40,14 +40,14 @@ const Footer = () => {
             <div className="">
               <div className=" px-8 pb-4 rounded-lg shadow-md flex gap-20 lg:gap-40 ">
                 <div>
-                  <h2 className="text-xl font-semibold mb-4 border-b border-green-700 pb-2">
+                  <h2 className="text-xl font-semibold mb-4 border-b border-blue-700 pb-2">
                     Company
                   </h2>
                   <ul className="space-y-2">
                     <li>
                       <a
                         href="#"
-                        className="block text-sm hover:text-green-300 transition duration-200"
+                        className="block text-sm hover:text-blue-300 transition duration-200"
                       >
                         About Us
                       </a>
@@ -55,7 +55,7 @@ const Footer = () => {
                     <li>
                       <a
                         href="#"
-                        className="block text-sm hover:text-green-300 transition duration-200"
+                        className="block text-sm hover:text-blue-300 transition duration-200"
                       >
                         Blog
                       </a>
@@ -63,7 +63,7 @@ const Footer = () => {
                     <li>
                       <a
                         href="#"
-                        className="block text-sm hover:text-green-300 transition duration-200"
+                        className="block text-sm hover:text-blue-300 transition duration-200"
                       >
                         Our Services
                       </a>
@@ -71,7 +71,7 @@ const Footer = () => {
                     <li>
                       <a
                         href="#"
-                        className="block text-sm hover:text-green-300 transition duration-200"
+                        className="block text-sm hover:text-blue-300 transition duration-200"
                       >
                         Privacy Policy
                       </a>
@@ -79,14 +79,14 @@ const Footer = () => {
                   </ul>
                 </div>
                 <div>
-                  <h2 className="text-xl font-semibold mb-4 border-b border-green-700 pb-2">
+                  <h2 className="text-xl font-semibold mb-4 border-b border-blue-700 pb-2">
                     Get Help
                   </h2>
                   <ul className="space-y-2">
                     <li>
                       <a
                         href="#"
-                        className="block text-sm hover:text-green-300 transition duration-200"
+                        className="block text-sm hover:text-blue-300 transition duration-200"
                       >
                         Helpline
                       </a>
@@ -94,7 +94,7 @@ const Footer = () => {
                     <li>
                       <a
                         href="#"
-                        className="block text-sm hover:text-green-300 transition duration-200"
+                        className="block text-sm hover:text-blue-300 transition duration-200"
                       >
                         FAQ
                       </a>
@@ -102,7 +102,7 @@ const Footer = () => {
                     <li>
                       <a
                         href="#"
-                        className="block text-sm hover:text-green-300 transition duration-200"
+                        className="block text-sm hover:text-blue-300 transition duration-200"
                       >
                         Documents
                       </a>
@@ -110,7 +110,7 @@ const Footer = () => {
                     <li>
                       <a
                         href="#"
-                        className="block text-sm hover:text-green-300 transition duration-200"
+                        className="block text-sm hover:text-blue-300 transition duration-200"
                       >
                         Contact Us
                       </a>
@@ -133,11 +133,11 @@ const Footer = () => {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="w-full px-4 py-2 rounded-l bg-gray-200  text-black focus:ring focus:ring-green-700 outline-none"
+                className="w-full px-4 py-2 rounded-l bg-gray-200  text-black focus:ring focus:ring-blue-700 outline-none"
               />
               <button
                 type="submit"
-                className=" w-full bg-green-600 text-white py-2 rounded-r hover:bg-green-700 transition"
+                className=" w-full bg-blue-600 text-white py-2 rounded-r hover:bg-blue-700 transition"
               >
                 Get Your Subscription
               </button>
@@ -145,7 +145,7 @@ const Footer = () => {
           </div>
         </div>
         <hr className="opacity-15" />
-        <div className="container mx-auto text-center text-sm py-5 text-gray-400">
+        <div className="container mx-auto text-center text-sm py-5 text-white">
           © 2025 Packify. All rights reserved. |{" "}
           <a href="#" className="hover:text-white">
             Privacy Policy

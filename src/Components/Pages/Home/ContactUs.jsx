@@ -6,7 +6,8 @@ import Lottie from "lottie-react";
 const ContactUs = () => {
   return (
     <div className="my-16 font w-11/12 mx-auto">
-      <div className="my-10">
+      <div className="my-4">
+      <p className="text-sm font-bold text-blue-500 mb-3 text-center">Connect with  us--</p>
         <h2 className="text-center font font-bold text-5xl">Contact us</h2>
       </div>
       <div className=" mx-auto px-4">
@@ -56,6 +57,10 @@ const ContactUs = () => {
             </button>
           </div>
         </div>
+      </div>
+      <div className="text-center  mt-7">
+        <p className="text-sm font-bold text-blue-500 mb-3">Learn more about us--</p>
+        <h2 className="font-bold text-5xl">About Us</h2>
       </div>
     </div>
   );
