@@ -10,7 +10,7 @@ import {
 const Faq = () => {
   return (
     <div className=" lg:overflow-y-hidden">
-      <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16 p-8 lg:p-16 bg-gray-100 lg:h-[600px]">
+      <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16 p-8 lg:p-16  lg:h-[600px]">
         <div className="w-full lg:w-1/2">
           <img
             src={img}

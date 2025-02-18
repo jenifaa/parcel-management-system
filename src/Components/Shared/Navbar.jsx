@@ -53,14 +53,14 @@ const Navbar = () => {
 
   return (
     <div
-      className={`fixed top-0  left-0 w-full z-50 transition-all duration-500 ${
-        scrolled ? "bg-white text-black shadow-lg" : "bg-black bg-opacity-20 text-white"
+      className={`fixed top-0 font  left-0 w-full z-50 transition-all duration-500 ${
+        scrolled ? "bg-white text-black shadow-lg" : "bg-black bg-opacity-40 text-white"
       }`}
     >
-      <nav className="flex items-center justify-between px-8 py-4">
+      <nav className="flex items-center justify-between px-10 py-4">
         <div className="flex items-center">
           <img className="w-12" src={logo} alt="Logo" />
-          <Link to="/" className="text-3xl font-bold tracking-widest">
+          <Link to="/" className="text-3xl font-bold tracking-widest font3">
             Packify
           </Link>
         </div>
@@ -92,7 +92,7 @@ const Navbar = () => {
             {location.pathname !== "/login" &&
               location.pathname !== "/register" && (
                 <div className="flex space-x-4 items-center">
-                  <div className="flex items-center space-x-4">
+                  <div className="flex items-center space-x-6">
                     <NavLink
                       to="/"
                       className="hover:font-bold text-md lg:flex hidden"
