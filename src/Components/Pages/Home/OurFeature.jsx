@@ -1,18 +1,15 @@
 import React from "react";
-import icon from "../../../assets/icons/map.png";
-import secure from "../../../assets/lottie/secure.json";
-import boXLottie from "../../../assets/lottie/box.json";
-import payment from "../../../assets/lottie/payment.json";
-import map from "../../../assets/lottie/map.json";
-import banner from "../../../assets/lottie/banner2.json";
-import rocket from "../../../assets/lottie/rocket.json";
+import icon from "../../../assets/icons/globe-location.png";
+import secure from "../../../assets/icons/safety.png";
+import boXLottie from "../../../assets/icons/protect.png";
+
 import { FaTruck, FaUserFriends, FaBoxOpen } from "react-icons/fa";
 import Lottie from "lottie-react";
 import CountUp from "react-countup";
 import con from "../../../assets/icons/confetti.png";
 import box from "../../../assets/icons/box.png";
 import boxes from "../../../assets/icons/boxes.png";
-import parcel from "../../../assets/images/Messenger-pana.png";
+import parcel from "../../../assets/icons/rocket.png";
 import truck from "../../../assets/icons/vehicle.png";
 import useAxiosPublic from "@/Components/Hooks/useAxiosPublic";
 import image from "../../../assets/images/del.png";
@@ -33,21 +30,18 @@ const OurFeature = () => {
   });
 
   return (
-    <div className="bg-gray-50">
+    <div className="bg-gray-50 font mb-20">
       <section className="pt-12 pb-8  px-6">
         <div className="lg:w-11/12 mx-auto text-center">
-          <h2 className="text-sm font-bold mb-2 text-green-700">
+          <h2 className="text-sm  font-bold mb-2 text-blue-500">
             Our Features---
           </h2>
           <h2 className="text-5xl font-bold mb-16">Our Services at a Glance</h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-5 ">
             <div className="bg-white px-4 pb-5 md:w-60  lg:w-72 rounded-lg shadow-lg">
-              <div className="flex justify-center items-center">
-                <Lottie
-                  animationData={secure}
-                  className="w-40 object-cover"
-                ></Lottie>
+              <div className="flex justify-center p-5 items-center">
+                <img src={secure} className="w-full h-52" alt="" />
               </div>
               <h3 className="text-xl font-semibold mb-2">
                 Secure & Safe Delivery
@@ -59,8 +53,8 @@ const OurFeature = () => {
             </div>
 
             <div className="bg-white  px-4 pb-5 md:w-60  lg:w-72  rounded-lg shadow-lg">
-              <div className="flex justify-center items-center">
-                <Lottie animationData={rocket} className="w-36 mb-3"></Lottie>
+              <div className="flex justify-center p-5 items-center">
+                <img src={parcel} className="w-full h-52 " alt="" />
               </div>
               <h3 className="text-xl font-semibold mb-3">Speedy Service</h3>
               <p className="text-gray-600 text-sm">
@@ -70,11 +64,8 @@ const OurFeature = () => {
             </div>
 
             <div className="bg-white px-4 pb-5 md:w-60  lg:w-72 rounded-lg shadow-lg">
-              <div className="flex justify-center items-center">
-                <Lottie
-                  animationData={map}
-                  className="w-40 object-cover"
-                ></Lottie>
+              <div className="flex justify-center p-5 items-center">
+                <img src={icon} className="w-full h-52" alt="" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Track Your Parcel</h3>
               <p className="text-gray-600 text-sm">
@@ -83,11 +74,8 @@ const OurFeature = () => {
               </p>
             </div>
             <div className="bg-white px-4 pb-5 md:w-60  lg:w-72  rounded-lg shadow-lg">
-              <div className="flex justify-center items-center">
-                <Lottie
-                  animationData={boXLottie}
-                  className="w-40 object-cover"
-                ></Lottie>
+              <div className="flex justify-center p-5 items-center">
+                <img src={boXLottie} className="w-full h-52" alt="" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Package Insurance</h3>
               <p className="text-gray-600 text-sm">
@@ -99,19 +87,17 @@ const OurFeature = () => {
         </div>
       </section>
 
-      <div style={{
-        backgroundImage: `url(${image})`
-      }} className="h-screen bg-fixed bg-cover  bg-center relative mt-20  mb-20 sm:mb-5">
-        {/* <Lottie
-          animationData={banner}
-          loop
-          autoplay
-          className="absolute inset-0 w-full h-full object-cover z-0"
-        /> */}
+      <div
+        style={{
+          backgroundImage: `url(${image})`,
+        }}
+        className="h-screen bg-fixed bg-cover  bg-center relative mt-20  mb-20 sm:mb-5"
+      >
+        
         <div className="absolute inset-0 bg-black opacity-80"></div>
 
         <div className="relative z-10 lg:px-64 py-10">
-          <h2 className="text-5xl font-bold text-center font2 text-white mb-8">
+          <h2 className="text-5xl font-bold text-center font text-white mb-12">
             Achievements Unlocked
           </h2>
 
@@ -178,7 +164,7 @@ const OurFeature = () => {
               </div>
 
               <div className="text-center w-1/3 px-4 py-4  flex flex-col justify-center items-center">
-                <div className="text-6xl text-[#19e41c] mb-4">
+                <div className="text-6xl text-blue-500 mb-4">
                   <IoPersonSharp />
                 </div>
                 <h3 className="text-md font-semibold  mb-2">

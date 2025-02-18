@@ -20,11 +20,11 @@ const Banner = () => {
           Find Your Perfect Parcel Delivery
         </h1>
 
-        <div className="relative w-full max-w-md">
+        <div className="relative w-full max-w-xl">
           <input
             type="text"
             placeholder="Enter your tracking ID..."
-            className="w-full py-3 pl-4 pr-28 rounded-lg text-gray-800 focus:outline-none"
+            className="w-full py-3 pl-4 pr-28 rounded-md text-gray-800 font focus:outline-none"
           />
           <button className="flex items-center gap-1 absolute right-2 top-1/2 transform -translate-y-1/2 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
             <FaSearch />
