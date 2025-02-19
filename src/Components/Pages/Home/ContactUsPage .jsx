@@ -3,10 +3,10 @@ import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa6';
 
 const ContactUsPage = () => {
   return (
-    <div className="bg-gray-100 py-16 my-10">
+    <div className="bg-gray-100 dark:bg-gray-800 dark:text-white font py-28">
       <div className="container mx-auto px-6 md:px-12">
-        <h1 className="text-5xl font-bold text-center text-gray-900 mb-8">Contact Us</h1>
-        <p className="text-xl text-center text-gray-700 mb-16 max-w-3xl mx-auto">
+        <h1 className="text-5xl font-bold text-center text-gray-900 dark:text-white mb-8">Contact Us</h1>
+        <p className="text-xl text-center text-gray-700 dark:text-white mb-16 max-w-3xl mx-auto">
           We’re here to help! Whether you have questions, feedback, or need assistance with our parcel management services, feel free to reach out. Our team is ready to assist you.
         </p>
 
@@ -51,7 +51,7 @@ const ContactUsPage = () => {
               <div className="flex justify-center">
                 <button
                   type="submit"
-                  className="bg-green-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-green-800 transition-colors duration-300"
+                  className="bg-blue-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-800 transition-colors duration-300"
                 >
                   Send Message
                 </button>
@@ -69,7 +69,7 @@ const ContactUsPage = () => {
               <strong>Phone:</strong> +123 456 7890
             </p>
             <p className="text-lg text-gray-700 mb-6">
-              <strong>Email:</strong> support@parcelmanager.com
+              <strong>Email:</strong> packify@parcelmanager.com
             </p>
             <p className="text-lg text-gray-700 mb-6">
               <strong>Business Hours:</strong> Mon-Fri, 9 AM - 6 PM

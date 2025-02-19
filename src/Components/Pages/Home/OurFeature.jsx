@@ -30,7 +30,7 @@ const OurFeature = () => {
   });
 
   return (
-    <div className="bg-gray-50 font mb-20">
+    <div className="bg-gray-50 dark:bg-black font mb-20">
       <section className="pt-12 pb-8  px-6">
         <div className="lg:w-11/12 mx-auto text-center">
           <h2 className="text-sm  font-bold mb-2 text-blue-500">
@@ -39,7 +39,7 @@ const OurFeature = () => {
           <h2 className="text-5xl font-bold mb-16">Our Services at a Glance</h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-5 ">
-            <div className="bg-white px-4 pb-5 md:w-60  lg:w-72 rounded-lg shadow-lg">
+            <div className="bg-white px-4 pb-5 md:w-56  lg:w-72 rounded-lg shadow-lg">
               <div className="flex justify-center p-5 items-center">
                 <img src={secure} className="w-full h-52" alt="" />
               </div>
@@ -52,7 +52,7 @@ const OurFeature = () => {
               </p>
             </div>
 
-            <div className="bg-white  px-4 pb-5 md:w-60  lg:w-72  rounded-lg shadow-lg">
+            <div className="bg-white  px-4 pb-5 md:w-56  lg:w-72  rounded-lg shadow-lg">
               <div className="flex justify-center p-5 items-center">
                 <img src={parcel} className="w-full h-52 " alt="" />
               </div>
@@ -63,7 +63,7 @@ const OurFeature = () => {
               </p>
             </div>
 
-            <div className="bg-white px-4 pb-5 md:w-60  lg:w-72 rounded-lg shadow-lg">
+            <div className="bg-white px-4 pb-5 md:w-56  lg:w-72 rounded-lg shadow-lg">
               <div className="flex justify-center p-5 items-center">
                 <img src={icon} className="w-full h-52" alt="" />
               </div>
@@ -73,7 +73,7 @@ const OurFeature = () => {
                 ensuring peace of mind throughout the journey.
               </p>
             </div>
-            <div className="bg-white px-4 pb-5 md:w-60  lg:w-72  rounded-lg shadow-lg">
+            <div className="bg-white px-4 pb-5 md:w-56  lg:w-72  rounded-lg shadow-lg">
               <div className="flex justify-center p-5 items-center">
                 <img src={boXLottie} className="w-full h-52" alt="" />
               </div>

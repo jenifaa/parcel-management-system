@@ -51,7 +51,7 @@ const CustomerReview = () => {
 
   return (
     <div>
-      <section className="customer-reviews py-10 font bg-gray-50">
+      <section className="customer-reviews py-10 font bg-gray-50 dark:bg-black">
         <div className="container mx-auto text-center">
           <p className="text-sm font-bold text-blue-500 mb-3">
             Meet our customers---
@@ -62,12 +62,12 @@ const CustomerReview = () => {
 
           {/* Filter & Sort Options */}
           <div className="mb-8">
-            <label htmlFor="sort-reviews" className="mr-4">
+            <label htmlFor="sort-reviews" className="mr-4 ">
               Sort by:
             </label>
             <select
               id="sort-reviews"
-              className="py-2 px-4 border rounded-lg"
+              className="py-2 px-4 border rounded-lg text-black"
               value={sortOption}
               onChange={(e) => setSortOption(e.target.value)}
             >

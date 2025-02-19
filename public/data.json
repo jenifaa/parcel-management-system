@@ -1,0 +1,110 @@
+{
+    "features": [
+      {
+        "title": "Secure & Safe Delivery",
+        "image": "/secure.png",
+        "description": "We prioritize security with advanced tracking and strict safety protocols. Your parcel is monitored from pickup to delivery, ensuring complete protection against loss or damage."
+      },
+      {
+        "title": "Speedy Service",
+        "image": "/parcel.png",
+        "description": "Our optimized logistics and efficient routes guarantee ultra-fast delivery. We offer same-day, next-day, and express delivery options to cater to urgent requirements."
+      },
+      {
+        "title": "Real-Time Tracking",
+        "image": "/icon.png",
+        "description": "Get instant updates on your parcel’s journey with our real-time GPS tracking system. You can monitor the location, estimated arrival time, and current status of your package."
+      },
+      {
+        "title": "Package Insurance",
+        "image": "/boXLottie.png",
+        "description": "Your valuables are safe with us! We offer insurance coverage for lost, stolen, or damaged packages."
+      },
+      {
+        "title": "24/7 Customer Support",
+        "image": "/support.png",
+        "description": "Our dedicated support team is available round the clock to assist you with tracking, bookings, or any inquiries you may have."
+      },
+      {
+        "title": "Eco-Friendly Packaging",
+        "image": "/eco.png",
+        "description": "We promote sustainability with eco-friendly, biodegradable packaging options to minimize environmental impact."
+      },
+      {
+        "title": "Cash on Delivery (COD)",
+        "image": "/cod.png",
+        "description": "Customers can choose the COD option for a seamless and convenient payment experience."
+      },
+      {
+        "title": "Bulk & Business Shipping",
+        "image": "/business.png",
+        "description": "Special pricing and dedicated logistics support for businesses handling bulk shipments regularly."
+      },
+      {
+        "title": "International Shipping",
+        "image": "/global.png",
+        "description": "We provide international shipping services, making it easy to send parcels across borders with customs assistance."
+      },
+      {
+        "title": "Door-to-Door Pickup",
+        "image": "/pickup.png",
+        "description": "Convenience at its best! Schedule a pickup from your location, and our team will collect your parcel at your preferred time."
+      }
+    ],
+    "achievements": {
+      "backgroundImage": "/achievement-bg.jpg",
+      "stats": [
+        {
+          "title": "Users Registered",
+          "icon": "users",
+          "value": 75000
+        },
+        {
+          "title": "Parcels Delivered",
+          "icon": "team",
+          "value": 118500
+        },
+        {
+          "title": "Revenue Generated",
+          "icon": "revenue",
+          "value": 400000
+        },
+        {
+          "title": "Drivers Assigned",
+          "icon": "drivers",
+          "value": 25
+        },
+        {
+          "title": "Support Tickets Resolved",
+          "icon": "tickets",
+          "value": 18000
+        },
+        {
+          "title": "Businesses Partnered",
+          "icon": "team",
+          "value": 500
+        },
+        {
+          "title": "Positive Customer Reviews",
+          "icon": "users",
+          "value": 50000
+        },
+        {
+          "title": "Packages Picked Up",
+          "icon": "users",
+          "value": 35000
+        },
+        {
+          "title": "Global Reach (Countries Served)",
+          "icon": "team",
+          "value": 25
+        },
+        {
+          "title": "Express Deliveries Completed",
+          "icon": "drivers",
+          "value": 82000
+        }
+      ]
+    }
+  }
+  

@@ -13,6 +13,7 @@ import { MdGroups } from "react-icons/md";
 import { HiUserGroup } from "react-icons/hi2";
 import { ImHome } from "react-icons/im";
 import { FaList, FaStar } from "react-icons/fa6";
+import DashNavbar from "../Pages/Dashboard/DashNav/DashNavbar";
 const Dashboard = () => {
   const { user, loading } = useAuth();
   const [isAdmin] = useAdmin();
@@ -22,34 +23,51 @@ const Dashboard = () => {
   }
   return (
     <div className="flex">
-      <div className="lg:w-64  lg:px-5 sm:px-4 px-1 py-10 min-h-screen text-white bg-green-700">
+      <div className="lg:w-56  lg:px-5 sm:px-4 px-1 py-10 min-h-screen text-white bg-blue-500">
         <ul className="menu space-y-5">
           {isAdmin ? (
             // Admin Menu
             <>
               <li>
-                <NavLink to="/dashboard/adminHome" className="flex items-center gap-1">
+                <NavLink
+                  to="/dashboard/adminHome"
+                  className="flex items-center gap-1"
+                >
                   <IoIosStats></IoIosStats> Statistic
                 </NavLink>
               </li>
 
-             
               <li>
-                <NavLink to="/dashboard/allParcel" className="flex items-center gap-1"><BsBoxes></BsBoxes>All Parcels</NavLink>
-              </li>
-
-              <li>
-                <NavLink className="flex items-center gap-1" to="/dashboard/allDeliveryMan">
-                 <MdGroups></MdGroups> All DeliveryMan
+                <NavLink
+                  to="/dashboard/allParcel"
+                  className="flex items-center gap-1"
+                >
+                  <BsBoxes></BsBoxes>All Parcels
                 </NavLink>
               </li>
 
               <li>
-                <NavLink className="flex items-center gap-1" to="/dashboard/allUsers"><HiUserGroup></HiUserGroup>All Users</NavLink>
+                <NavLink
+                  className="flex items-center gap-1"
+                  to="/dashboard/allDeliveryMan"
+                >
+                  <MdGroups></MdGroups> All DeliveryMan
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink
+                  className="flex items-center gap-1"
+                  to="/dashboard/allUsers"
+                >
+                  <HiUserGroup></HiUserGroup>All Users
+                </NavLink>
               </li>
               <hr />
               <li>
-                <NavLink className="flex items-center gap-1" to="/"><FaHome></FaHome>Home</NavLink>
+                <NavLink className="flex items-center gap-1" to="/">
+                  <FaHome></FaHome>Home
+                </NavLink>
               </li>
             </>
           ) : isDeliveryMan ? (
@@ -61,14 +79,26 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink className="flex items-center gap-1" to="/dashboard/deliveryList"><FaList></FaList> My Delivery List</NavLink>
+                <NavLink
+                  className="flex items-center gap-1"
+                  to="/dashboard/deliveryList"
+                >
+                  <FaList></FaList> My Delivery List
+                </NavLink>
               </li>
               <li>
-                <NavLink className="flex items-center gap-1" to="/dashboard/myReviews"><FaStar></FaStar> My Reviews</NavLink>
+                <NavLink
+                  className="flex items-center gap-1"
+                  to="/dashboard/myReviews"
+                >
+                  <FaStar></FaStar> My Reviews
+                </NavLink>
               </li>
               <hr />
               <li>
-              <NavLink className="flex items-center gap-1" to="/"><FaHome></FaHome>Home</NavLink>
+                <NavLink className="flex items-center gap-1" to="/">
+                  <FaHome></FaHome>Home
+                </NavLink>
               </li>
             </>
           ) : (
@@ -112,7 +142,7 @@ const Dashboard = () => {
                   <FaUserCircle /> My Profile
                 </Link>
               </li>
-              <hr className=""/>
+              <hr className="" />
               <li>
                 <Link to="/" className="flex items-center gap-1">
                   <FaHome />
@@ -123,8 +153,11 @@ const Dashboard = () => {
           )}
         </ul>
       </div>
-      <div className="flex-1 p-8 min-h-screen">
-        <Outlet></Outlet>
+      <div className="flex-1 p-8  min-h-screen">
+        {/* <DashNavbar></DashNavbar> */}
+        <ThemeProvider>
+          <Outlet></Outlet>
+        </ThemeProvider>
       </div>
     </div>
   );

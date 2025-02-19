@@ -16,7 +16,7 @@ const OurPartner = () => {
         <h2 className="text-5xl font-bold ">Our Partners</h2>
       </div>
       <Marquee>
-        <div>
+        <div className="dark:text-black">
           <div className="flex gap-14">
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <img

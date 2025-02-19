@@ -62,7 +62,7 @@ const Login = () => {
           </div>
           <div className="mx-auto px-5 lg:w-1/2 max-w-sm font-semibold">
             <div className="mb-10 text-center text-green-700">
-              <h2 className=" text-4xl  font2 font-bold mb-2">Welcome</h2>
+              <h2 className=" text-5xl  font font-bold mb-2">Welcome</h2>
               <p className="text-sm">Login to your Account to continue...</p>
             </div>
             <form onSubmit={handleLogin}>
@@ -72,7 +72,7 @@ const Login = () => {
                   type="email"
                   name="email"
                   placeholder="email"
-                  className=" border-2 rounded-md py-2 px-3 w-full mt-2 mb-5"
+                  className="text-black border-2 rounded-md py-2 px-3 w-full mt-2 mb-5"
                   required
                 />
               </div>
@@ -82,7 +82,7 @@ const Login = () => {
                   type="password"
                   name="password"
                   placeholder="password"
-                  className=" border-2 rounded-md py-2 px-3 w-full mt-2"
+                  className="text-black border-2 rounded-md py-2 px-3 w-full mt-2"
                   required
                 />
               </div>

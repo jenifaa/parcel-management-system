@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import {
   DropdownMenu,
@@ -19,8 +19,11 @@ import Swal from "sweetalert2";
 import Loading from "./Loading";
 import useNotifications from "../Hooks/useNotifications";
 import useDeliveryManNotifications from "../Hooks/useDeliveryManNotifications";
+import { ThemeContext } from "../Pages/Home/ThemeProvider";
+import { Moon, Sun } from "lucide-react";
 
 const Navbar = () => {
+  const { theme, toggleTheme } = useContext(ThemeContext);
   const [menuOpen, setMenuOpen] = useState(false);
   const { user, logOut, loading } = useAuth();
   const location = useLocation();
@@ -52,9 +55,11 @@ const Navbar = () => {
   }
 
   return (
-    <div 
+    <div
       className={`fixed top-0 font   left-0 w-full z-50 transition-all duration-500 ${
-        scrolled ? "bg-white text-black shadow-lg" : "bg-black bg-opacity-40 text-white"
+        scrolled
+          ? "bg-white text-black shadow-lg"
+          : "bg-black bg-opacity-40 text-white"
       }`}
     >
       <nav className="flex items-center px-12 justify-between py-4">
@@ -93,6 +98,16 @@ const Navbar = () => {
               location.pathname !== "/register" && (
                 <div className="flex space-x-4 items-center">
                   <div className="flex items-center space-x-6">
+                    <button
+                      onClick={toggleTheme}
+                      className="p-2 bg-gray-200 dark:bg-gray-700 rounded-full transition-all"
+                    >
+                      {theme === "dark" ? (
+                        <Sun className="w-6 h-6 text-yellow-400" />
+                      ) : (
+                        <Moon className="w-6 h-6 text-gray-900" />
+                      )}
+                    </button>
                     <NavLink
                       to="/"
                       className="hover:font-bold text-md lg:flex hidden"
@@ -109,7 +124,7 @@ const Navbar = () => {
                       to="/blog"
                       className="hover:font-bold text-md lg:flex hidden"
                     >
-                       Blog
+                      Blog
                     </NavLink>
                     <NavLink
                       to="/contact"
@@ -117,6 +132,24 @@ const Navbar = () => {
                     >
                       Contact Us
                     </NavLink>
+                    {user ? (
+                      <>
+                        <NavLink
+                          to="/service"
+                          className="hover:font-bold text-md lg:flex hidden"
+                        >
+                          Our Services
+                        </NavLink>
+                        {/* <NavLink
+                          to="/allProduct"
+                          className="hover:font-bold text-md lg:flex hidden"
+                        >
+                          All Product
+                        </NavLink> */}
+                      </>
+                    ) : (
+                      ""
+                    )}
 
                     {user ? (
                       <>
@@ -175,7 +208,8 @@ const Navbar = () => {
                           src={user?.photoURL}
                         />
                       </DropdownMenuTrigger>
-                      <DropdownMenuContent className="w-56">
+
+                      <DropdownMenuContent className="w-56 bg-white overflow-hidden">
                         <DropdownMenuLabel>My Profile</DropdownMenuLabel>
                         <DropdownMenuSeparator />
                         <DropdownMenuGroup>
@@ -228,26 +262,17 @@ const Navbar = () => {
       </nav>
 
       {menuOpen && (
-        <div className="flex flex-col space-y-4 px-6 py-4 bg-gradient-to-r from-[#49b6a2] via-[#069b5d] to-[#4caf7f] text-white lg:hidden">
+        <div className="flex flex-col space-y-4 px-6 py-4 bg-gradient-to-r from-[#49b6a2] via-[#3694db] to-[#3086c8] text-white lg:hidden">
           <NavLink to="/" className="hover:text-gray-200">
             Home
           </NavLink>
-          <NavLink
-            to="/blog"
-            className=""
-          >
+          <NavLink to="/blog" className="">
             Blog
           </NavLink>
-          <NavLink
-            to="/contact"
-            className=""
-          >
+          <NavLink to="/contact" className="">
             Contact Us
           </NavLink>
-          <NavLink
-            to="/about"
-            className=""
-          >
+          <NavLink to="/about" className="">
             About Us
           </NavLink>
         </div>

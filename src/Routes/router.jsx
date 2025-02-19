@@ -28,6 +28,8 @@ import PaymentHistory from "@/Components/Pages/Dashboard/Users/PaymentHistory";
 import Blog from "@/Components/Pages/Home/Blog";
 import ContactUsPage from "@/Components/Pages/Home/ContactUsPage ";
 import About from "@/Components/Pages/Home/About";
+import OurServices from "@/Components/Pages/Home/OurServices";
+
 
 const router = createBrowserRouter([
   {
@@ -58,6 +60,11 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: <About></About>,
+      },
+      
+      {
+        path: "/service",
+        element: <OurServices></OurServices>,
       },
       {
         path: "notification",

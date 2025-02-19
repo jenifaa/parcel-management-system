@@ -68,7 +68,7 @@ const TopDeliveryMan = () => {
                 {deliveryMen[index]?.rank || "🚴 Delivery Man"}
               </div>
               <div
-                className={`absolute top-3 -right-4 px-4 py-2 text-white text-sm font-semibold rounded-full shadow-md ${
+                className={`absolute lg:top-3 -top-5 -right-4 px-4 py-2 text-white text-sm font-semibold rounded-full shadow-md ${
                   deliveryMen[index]?.color || "bg-gray-400"
                 }`}
               >

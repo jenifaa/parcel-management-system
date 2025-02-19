@@ -4,7 +4,7 @@ import React from 'react';
 const DeliveryManHome = () => {
   const {user} = useAuth()
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen  p-6">
       <div className="bg-white p-8 rounded-lg shadow-xl max-w-4xl mx-auto mb-6">
         <h1 className="text-4xl font-semibold text-gray-800 mb-6">
           Welcome, {user?.displayName}!

@@ -26,7 +26,7 @@ const Faq = () => {
           <h2 className="mb-5 font-bold text-5xl text-white font">
             Some Common Questions...
           </h2>
-          <div className="border rounded-lg overflow-hidden shadow-sm mb-4">
+          <div className="border dark:text-black rounded-lg overflow-hidden shadow-sm mb-4">
             <Accordion className="bg-gray-50 px-5" type="single" collapsible>
               <AccordionItem value="item-1">
                 <AccordionTrigger>
@@ -40,7 +40,7 @@ const Faq = () => {
               </AccordionItem>
             </Accordion>
           </div>
-          <div className="border rounded-lg overflow-hidden shadow-sm mb-4">
+          <div className="border dark:text-black rounded-lg overflow-hidden shadow-sm mb-4">
             <Accordion className="bg-gray-50 px-5" type="single" collapsible>
               <AccordionItem value="item-2">
                 <AccordionTrigger>How do I track my parcel?</AccordionTrigger>
@@ -52,7 +52,7 @@ const Faq = () => {
               </AccordionItem>
             </Accordion>
           </div>
-          <div className="border rounded-lg overflow-hidden shadow-sm mb-4">
+          <div className="border dark:text-black rounded-lg overflow-hidden shadow-sm mb-4">
             <Accordion className="bg-gray-50 px-5" type="single" collapsible>
               <AccordionItem value="item-3">
                 <AccordionTrigger>
@@ -65,7 +65,7 @@ const Faq = () => {
               </AccordionItem>
             </Accordion>
           </div>
-          <div className="border rounded-lg overflow-hidden shadow-sm mb-4">
+          <div className="border dark:text-black rounded-lg overflow-hidden shadow-sm mb-4">
             <Accordion className="bg-gray-50 px-5" type="single" collapsible>
               <AccordionItem value="item-4">
                 <AccordionTrigger>
@@ -79,7 +79,7 @@ const Faq = () => {
               </AccordionItem>
             </Accordion>
           </div>
-          <div className="border rounded-lg overflow-hidden shadow-sm mb-4">
+          <div className="border dark:text-black rounded-lg overflow-hidden shadow-sm mb-4">
             <Accordion className="bg-gray-50 px-5" type="single" collapsible>
               <AccordionItem value="item-5">
                 <AccordionTrigger>

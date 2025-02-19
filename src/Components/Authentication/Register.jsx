@@ -70,7 +70,7 @@ const Register = () => {
       <div className="mt-20 mb-10 ">
         <div className="   flex flex-col-reverse lg:flex-row  items-center lg:w-10/12 mx-auto">
           <div className=" md:w-8/12 w-10/12  lg:w-1/2 mx-auto lg:max-w-xs">
-            <h2 className="text-center text-4xl font2 mb-8 text-green-800 font-bold">
+            <h2 className="text-center text-4xl font mb-8 text-green-800 font-bold">
               Sign Up
             </h2>
             <form onSubmit={handleSubmit(onSubmit)} className="">
@@ -83,7 +83,7 @@ const Register = () => {
                       {...register("name", { required: true })}
                       name="name"
                       placeholder="Your Name"
-                      className=" border-b-2 rounded-md py-2 px-3 w-full mt-2 mb-5"
+                      className="text-black border-b-2 rounded-md py-2 px-3 w-full mt-2 mb-5"
                     />
                     {errors.name && (
                       <span className="text-red-600">
@@ -98,7 +98,7 @@ const Register = () => {
                       {...register("email", { required: true })}
                       name="email"
                       placeholder="Your email"
-                      className=" border-b-2 rounded-md py-2 px-3 w-full mt-2 mb-2"
+                      className="text-black border-b-2 rounded-md py-2 px-3 w-full mt-2 mb-2"
                     />
                     {errors.name && (
                       <span className="text-red-600">
@@ -111,7 +111,7 @@ const Register = () => {
                     <select
                       defaultValue="default"
                       {...register("type", { required: true })}
-                      className=" border-b-2 rounded-md py-2 px-2 w-full mt-2 mb-2 text-sm"
+                      className="text-black border-b-2 rounded-md py-2 px-2 w-full mt-2 mb-2 text-sm"
                     >
                       <option disabled value="default">
                         Select A Type
@@ -146,7 +146,7 @@ const Register = () => {
                       type="url"
                       {...register("photoURL", { required: true })}
                       placeholder="Your PhotoURL"
-                      className=" border-b-2 rounded-md py-2 px-3 w-full mt-2 mb-5"
+                      className="text-black border-b-2 rounded-md py-2 px-3 w-full mt-2 mb-5"
                     />
                     {errors.photoURL && (
                       <span className="text-red-600">
@@ -160,7 +160,7 @@ const Register = () => {
                       type="number"
                       {...register("phoneNumber", { required: true })}
                       placeholder="Your phone Number"
-                      className=" border-b-2 rounded-md py-2 px-3 w-full mt-2 mb-5"
+                      className="text-black border-b-2 rounded-md py-2 px-3 w-full mt-2 mb-5"
                     />
                   </div>
 
@@ -177,7 +177,7 @@ const Register = () => {
                       })}
                       name="password"
                       placeholder="password"
-                      className=" border-b-2 rounded-md py-2 px-3 w-full mt-2 mb-5"
+                      className="text-black border-b-2 rounded-md py-2 px-3 w-full mt-2 mb-5"
                     />
                     {errors.password?.type === "required" && (
                       <p className="text-red-600">Password is required</p>

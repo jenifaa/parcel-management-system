@@ -12,19 +12,15 @@ const ContactUs = () => {
       </div>
       <div className=" mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center justify-center gap-20">
-          {/* Contact Image */}
+          
           <div className="w-full ">
-            {/* <img
-              src={contactImage}
-              alt="Contact Us"
-              className="rounded-lg shadow-xl w-full h-[300px] "
-            /> */}
-            <Lottie animationData={contactImage} className="w-[450px]"></Lottie>
+           
+            <Lottie animationData={contactImage} className="lg:w-[450px]"></Lottie>
           </div>
 
           {/* Contact Information */}
-          <div className="w-full  ">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-6">
+          <div className="w-full  bg-gray-100 dark:text-black px-10 py-7 rounded-xl">
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
               Get in Touch
             </h2>
             <p className="mb-6 text-lg">
@@ -32,7 +28,7 @@ const ContactUs = () => {
               following channels:
             </p>
 
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-3">
               {/* Phone */}
               <div className="flex items-center gap-4">
                 <FaPhoneAlt className="text-3xl text-blue-400" />
@@ -58,7 +54,7 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
-      <div className="text-center  mt-7">
+      <div className="text-center  mt-4">
         <p className="text-sm font-bold text-blue-500 mb-3">Learn more about us--</p>
         <h2 className="font-bold text-5xl">About Us</h2>
       </div>
