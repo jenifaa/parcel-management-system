@@ -1,90 +1,136 @@
-import { useEffect, useState } from "react";
-import CountUp from "react-countup";
-
-
 const OurServices = () => {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    fetch("/data.json")
-      .then((response) => response.json())
-      .then((data) => setData(data))
-      .catch((error) => console.error("Error fetching data:", error));
-  }, []);
-
-  if (!data) {
-    return <div className="text-center text-xl font-bold py-10">Loading...</div>;
-  }
+  const data = {
+    features: [
+      {
+        title: "Secure & Safe Delivery",
+        image: "/secure.png",
+        description:
+          "We prioritize security with advanced tracking and strict safety protocols. Your parcel is monitored from pickup to delivery, ensuring complete protection against loss or damage.",
+      },
+      {
+        title: "Speedy Service",
+        image: "/parcel.png",
+        description:
+          "Our optimized logistics and efficient routes guarantee ultra-fast delivery. We offer same-day, next-day, and express delivery options to cater to urgent requirements.",
+      },
+      {
+        title: "Real-Time Tracking",
+        image: "/icon.png",
+        description:
+          "Get instant updates on your parcel’s journey with our real-time GPS tracking system. You can monitor the location, estimated arrival time, and current status of your package.",
+      },
+      {
+        title: "Package Insurance",
+        image: "/boXLottie.png",
+        description:
+          "Your valuables are safe with us! We offer insurance coverage for lost, stolen, or damaged packages.",
+      },
+      {
+        title: "24/7 Customer Support",
+        image: "/support.png",
+        description:
+          "Our dedicated support team is available round the clock to assist you with tracking, bookings, or any inquiries you may have.",
+      },
+      {
+        title: "Eco-Friendly Packaging",
+        image: "/eco.png",
+        description:
+          "We promote sustainability with eco-friendly, biodegradable packaging options to minimize environmental impact.",
+      },
+      {
+        title: "Cash on Delivery (COD)",
+        image: "/cod.png",
+        description:
+          "Customers can choose the COD option for a seamless and convenient payment experience.",
+      },
+      {
+        title: "Bulk & Business Shipping",
+        image: "/business.png",
+        description:
+          "Special pricing and dedicated logistics support for businesses handling bulk shipments regularly.",
+      },
+      {
+        title: "International Shipping",
+        image: "/global.png",
+        description:
+          "We provide international shipping services, making it easy to send parcels across borders with customs assistance.",
+      },
+      {
+        title: "Door-to-Door Pickup",
+        image: "/pickup.png",
+        description:
+          "Convenience at its best! Schedule a pickup from your location, and our team will collect your parcel at your preferred time.",
+      },
+    ],
+    achievements: {
+      backgroundImage: "/achievement-bg.jpg",
+      stats: [
+        { title: "Users Registered", icon: "👥", value: 75000 },
+        { title: "Parcels Delivered", icon: "📦", value: 118500 },
+        { title: "Revenue Generated", icon: "💰", value: "$400K" },
+        { title: "Drivers Assigned", icon: "🚛", value: 25 },
+        { title: "Support Tickets Resolved", icon: "🎫", value: 18000 },
+        { title: "Businesses Partnered", icon: "🏢", value: 500 },
+        { title: "Positive Customer Reviews", icon: "🌟", value: 50000 },
+        { title: "Packages Picked Up", icon: "📍", value: 35000 },
+        { title: "Countries Served", icon: "🌍", value: 25 },
+        { title: "Express Deliveries Completed", icon: "⚡", value: 82000 },
+      ],
+    },
+  };
 
   return (
-    <div className="bg-gray-50 dark:bg-black font mb-20">
+    <section className="py-28 px-6 bg-gray-100 dark:bg-gray-800 dark:text-white">
       {/* Features Section */}
-      {/* <section className="pt-12 pb-8 px-6">
-        <div className="lg:w-11/12 mx-auto text-center">
-          <h2 className="text-sm font-bold mb-2 text-blue-500">Our Features</h2>
-          <h2 className="text-5xl font-bold mb-16">Our Services at a Glance</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-            {data.features.map((feature) => (
-              <div
-                key={feature.id}
-                className="bg-white px-4 pb-5 rounded-lg shadow-lg transform hover:scale-105 transition duration-300"
-              >
-                <div className="flex justify-center p-5 items-center">
-                  <img
-                    src={feature.image}
-                    className="w-full h-52 object-cover rounded-md"
-                    alt={feature.title}
-                  />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-gray-600 text-sm">{feature.description}</p>
-              </div>
-            ))}
-          </div>
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-5xl font dark:text-white font-bold text-center mb-6">
+          🚀 Our Key Services
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {data.features.map((feature, index) => (
+            <div
+              key={index}
+              className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition"
+            >
+              {/* <img
+                src={feature.image}
+                alt={feature.title}
+                className="w-16 h-16 mx-auto mb-4"
+              /> */}
+              <h3 className="text-lg dark:text-black font-semibold text-center">
+                {feature.title}
+              </h3>
+              <p className="text-gray-600 text-center mt-2">
+                {feature.description}
+              </p>
+            </div>
+          ))}
         </div>
-      </section>
+      </div>
 
-    
+      {/* Achievements Section */}
       <div
-        style={{ backgroundImage: `url(/achievement-bg.jpg)` }}
-        className="h-screen bg-fixed bg-cover bg-center relative mt-20 mb-20 sm:mb-5"
+        className="max-w-6xl mx-auto mt-12 p-10 rounded-lg bg-cover bg-center text-white"
+        style={{
+          backgroundImage: `url(${data.achievements.backgroundImage})`,
+        }}
       >
-        <div className="absolute inset-0 bg-black opacity-80"></div>
-        <div className="relative z-10 lg:px-64 py-10">
-          <h2 className="text-5xl font-bold text-center text-white mb-12">
-            Achievements Unlocked
-          </h2>
-          <div className="w-full text-white grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-            {data.achievements.map((stat) => (
-              <div
-                key={stat.id}
-                className="text-center px-4 py-4 border rounded-lg flex flex-col justify-center items-center bg-gray-900 bg-opacity-75"
-              >
-                <div className="text-6xl mb-4">{getIcon(stat.icon)}</div>
-                <h3 className="text-md font-semibold mb-2">{stat.title}</h3>
-                <p className="text-3xl font-bold">
-                  <CountUp end={stat.count} duration={3} separator="," />
-                </p>
-                <p className="text-sm mt-2">{stat.description}</p>
-              </div>
-            ))}
-          </div>
+        <h2 className="text-3xl font-bold text-center mb-6">🏆 Achievements</h2>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          {data.achievements.stats.map((stat, index) => (
+            <div
+              key={index}
+              className="bg-black/60 p-6 rounded-lg text-center shadow-lg"
+            >
+              <p className="text-3xl">{stat.icon}</p>
+              <h3 className="text-lg font-semibold mt-2">{stat.title}</h3>
+              <p className="text-2xl font-bold mt-2">{stat.value}</p>
+            </div>
+          ))}
         </div>
-      </div> */}
-    </div>
+      </div>
+    </section>
   );
 };
-
-
-// const getIcon = (icon) => {
-//   const icons = {
-//     FaUserFriends: <FaUserFriends className="text-[#8613ab]" />,
-//     HiOutlineUserGroup: <HiOutlineUserGroup className="text-[#be1b16]" />,
-//     MdOutlineAttachMoney: <MdOutlineAttachMoney className="text-yellow-500" />,
-//     IoPersonSharp: <IoPersonSharp className="text-blue-500" />,
-//     IoTicketSharp: <IoTicketSharp className="text-[#13ab9d]" />,
-//   };
-//   return icons[icon] || <IoTicketSharp className="text-white" />;
-// };
 
 export default OurServices;

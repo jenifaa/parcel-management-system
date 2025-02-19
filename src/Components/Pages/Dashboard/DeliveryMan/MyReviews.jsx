@@ -26,7 +26,7 @@ const MyReviews = () => {
 
   return (
     <div className="min-h-screen px-10 py-8">
-      <h2 className="text-5xl font-bold font-bold">My Reviews</h2>
+      <h2 className="text-5xl font-bold font">My Reviews</h2>
       <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-10 my-10">
         {reviews.map((review) => (
           <div
