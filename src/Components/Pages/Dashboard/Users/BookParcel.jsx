@@ -81,9 +81,9 @@ const BookParcel = () => {
   };
 
   return (
-    <div className="lg:px-10 px-2 bg-gray-100 py-10">
+    <div className="lg:px-10 px-2 bg-gray-100 dark:bg-black dark:text-black py-10">
       <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-10">
-        <h2 className="text-4xl font-semibold text-green-800 mb-8 text-center">
+        <h2 className="text-5xl font font-semibold text-blue-500 mb-8 text-center">
           Book A Parcel
         </h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
@@ -243,7 +243,7 @@ const BookParcel = () => {
 
           <div className="flex justify-center mt-6">
             <input
-              className="w-40 py-3 bg-green-700 text-white font-semibold rounded-md transition duration-300 transform hover:bg-green-600 hover:scale-105"
+              className="w-40 py-3 bg-blue-700 text-white font-semibold rounded-md transition duration-300 transform hover:bg-blue-600 hover:scale-105"
               type="submit"
               value="Book Parcel"
             />

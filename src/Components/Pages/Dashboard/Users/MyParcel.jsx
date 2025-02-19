@@ -124,7 +124,7 @@ const MyParcel = () => {
   };
 
   return (
-    <div className="mb-20">
+    <div className=" py-8 min-h-screen">
       <ToastContainer
         position="top-right"
         autoClose={5000}
@@ -144,7 +144,7 @@ const MyParcel = () => {
           <SelectTrigger className="w-[180px]">
             <SelectValue placeholder="Select a Status" />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent className="bg-white">
             <SelectGroup>
               <SelectLabel>Status</SelectLabel>
               <SelectItem value="All">All</SelectItem>
@@ -159,8 +159,8 @@ const MyParcel = () => {
         <div className="overflow-x-auto">
           <table className="min-w-full table-auto border-collapse">
             <thead>
-              <tr className="bg-gray-100 border-b">
-                <th className="px-4 py-2 text-left">Parcel Type</th>
+              <tr className="bg-gray-100 border-b text-black">
+                <th className="px-4 py-2 text-left ">Parcel Type</th>
                 <th className="px-4 py-2 text-left">Requested Date</th>
                 <th className="px-4 py-2 text-left">
                   Approximate Delivery Date

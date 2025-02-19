@@ -122,7 +122,7 @@ const DeliveryList = () => {
     setSelectedParcel(parcel);
   };
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto min-h-screen">
       <h2 className="text-lg font-semibold mb-4">Parcels Assigned to me</h2>
 
       <table className="min-w-full table-auto">

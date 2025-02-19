@@ -8,7 +8,7 @@ const UserHome = () => {
   const { user } = useAuth();
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50 dark:bg-black dark:text-white py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="bg-white p-6 rounded-xl shadow-lg md:flex items-center gap-3 md:space-x-6">
           <div className="flex-shrink-0">
@@ -27,10 +27,10 @@ const UserHome = () => {
         </div>
 
         <div className="mt-10 text-center">
-          <h1 className="text-4xl font-semibold text-gray-800">
-            Your Dashboard Overview
+          <h1 className="text-4xl font-semibold dark:text-white text-gray-800">
+             Dashboard Overview
           </h1>
-          <p className="text-lg text-gray-500 mt-2">
+          <p className="text-lg text-gray-500 dark:text-white mt-2">
             Here, you can manage your activities, see recent updates, and more.
           </p>
         </div>
@@ -99,7 +99,7 @@ const UserHome = () => {
         </div>
 
         <div className="mt-12 text-center">
-          <Link  to="/dashboard/myProfile" className="bg-green-600 text-white py-2 px-6 rounded-full text-xl hover:bg-green-700 transition">
+          <Link  to="/dashboard/myProfile" className="bg-blue-600 text-white py-2 px-6 rounded-full text-xl hover:bg-green-700 transition">
             Edit Profile
           </Link>
         </div>
