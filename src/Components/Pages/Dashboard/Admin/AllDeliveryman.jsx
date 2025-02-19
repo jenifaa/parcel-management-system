@@ -91,15 +91,15 @@ const AllDeliveryman = () => {
   }
 
   return (
-    <div>
-      <h2 className="text-3xl font-bold my-5 text-center">All Delivery Men</h2>
+    <div className="min-h-screen py-8">
+      <h2 className="text-5xl font font-bold my-8 text-center">All Delivery Men</h2>
       <div className="overflow-x-auto">
         <table className="table-auto w-full border-collapse border border-gray-200 text-left">
           <thead className="bg-gray-200">
             <tr>
-              <th className="px-4 py-2 border border-gray-300">Name</th>
-              <th className="px-4 py-2 border border-gray-300">Phone Number</th>
-              <th className="px-4 py-2 border border-gray-300">
+              <th className="px-4 py-2 border border-gray-300 dark:text-black">Name</th>
+              <th className="px-4 py-2 border border-gray-300 dark:text-black">Phone Number</th>
+              <th className="px-4 py-2 border border-gray-300 dark:text-black">
                 Total Delivered parcel
               </th>
               <th className="px-4 py-2 border border-gray-300">Total Review</th>

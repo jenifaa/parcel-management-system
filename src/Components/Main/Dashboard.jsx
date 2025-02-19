@@ -14,8 +14,11 @@ import { HiUserGroup } from "react-icons/hi2";
 import { ImHome } from "react-icons/im";
 import { FaList, FaStar } from "react-icons/fa6";
 import DashNavbar from "../Pages/Dashboard/DashNav/DashNavbar";
+import ThemeProvider from "../Pages/Home/ThemeProvider";
+
 const Dashboard = () => {
   const { user, loading } = useAuth();
+
   const [isAdmin] = useAdmin();
   const [isDeliveryMan] = useDeliveryMan();
   if (loading) {
@@ -35,6 +38,15 @@ const Dashboard = () => {
                 >
                   <IoIosStats></IoIosStats> Statistic
                 </NavLink>
+              </li>
+              <li className="">
+                <Link
+                  to="/dashboard/myProfile"
+                  className="flex items-center gap-1"
+                >
+                  {" "}
+                  <FaUserCircle /> My Profile
+                </Link>
               </li>
 
               <li>
@@ -77,6 +89,15 @@ const Dashboard = () => {
                 <NavLink to="/dashboard/deliveryHome">
                   Delivery Man Home
                 </NavLink>
+              </li>
+              <li className="">
+                <Link
+                  to="/dashboard/myProfile"
+                  className="flex items-center gap-1"
+                >
+                  {" "}
+                  <FaUserCircle /> My Profile
+                </Link>
               </li>
               <li>
                 <NavLink
@@ -153,10 +174,12 @@ const Dashboard = () => {
           )}
         </ul>
       </div>
-      <div className="flex-1 p-8  min-h-screen">
-        {/* <DashNavbar></DashNavbar> */}
+      <div className="flex-1   min-h-screen">
         <ThemeProvider>
-          <Outlet></Outlet>
+          <DashNavbar></DashNavbar>
+          <div className="dark:bg-black dark:text-white">
+            <Outlet></Outlet>
+          </div>
         </ThemeProvider>
       </div>
     </div>

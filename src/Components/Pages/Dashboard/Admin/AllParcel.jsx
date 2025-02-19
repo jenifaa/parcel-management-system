@@ -130,7 +130,7 @@ const AllParcel = () => {
     }
   };
   return (
-    <div>
+    <div className="py-9 px-10">
       <ToastContainer
         position="top-right"
         autoClose={5000}
@@ -142,19 +142,19 @@ const AllParcel = () => {
         draggable
         theme="light"
       ></ToastContainer>
-      <div className="flex justify-between items-center  mb-10 mt-5">
+      <div className="flex justify-between items-center   mb-10 mt-5">
         <h2 className="text-5xl font font-bold ">All Parcel</h2>
 
         <div className="flex items-center gap-2 mb-5">
           <input
             type="date"
-            className="p-2 border-2 rounded"
+            className="p-2 border-2 rounded text-black"
             value={fromDate}
             onChange={(e) => setFromDate(e.target.value)}
           />
           <input
             type="date"
-            className="p-2 border-2 rounded"
+            className="p-2 border-2 rounded text-black"
             value={toDate}
             onChange={(e) => setToDate(e.target.value)}
           />

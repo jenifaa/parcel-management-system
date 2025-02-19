@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { ThemeContext } from "../../Home/ThemeProvider";
+import { Moon, Sun } from "lucide-react";
 
 const DashNavbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useContext(ThemeContext);
   return (
     <div>
       <nav className="flex items-center px-12 justify-between py-2">
@@ -38,6 +41,16 @@ const DashNavbar = () => {
           <div>
             <div className="flex space-x-4 items-center">
               <div className="flex items-center space-x-6">
+                <button
+                  onClick={toggleTheme}
+                  className="p-2 bg-gray-200 dark:bg-gray-700 rounded-full transition-all"
+                >
+                  {theme === "dark" ? (
+                    <Sun className="w-6 h-6 text-yellow-400" />
+                  ) : (
+                    <Moon className="w-6 h-6 text-gray-900" />
+                  )}
+                </button>
                 <NavLink
                   to="/"
                   className="hover:font-bold text-md lg:flex hidden"

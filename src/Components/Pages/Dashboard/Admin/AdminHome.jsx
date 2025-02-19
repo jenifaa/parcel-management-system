@@ -176,8 +176,8 @@ const AdminHome = () => {
   }, [parcels]);
 
   return (
-    <div className="admin-home px-4 sm:px-6 md:px-8 lg:px-10 bg-gray-100 min-h-screen">
-      <h1 className="text-center text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-6">
+    <div className="admin-home px-4 sm:px-6 md:px-8 lg:px-10 bg-gray-100  dark:bg-black dark:text-white min-h-screen">
+      <h1 className="text-center text-lg sm:text-xl md:text-2xl   dark:text-white font-bold text-gray-800 mb-6">
         Admin Dashboard
       </h1>
 

@@ -72,8 +72,8 @@ const MyProfile = () => {
   }
 
   return (
-    <div className=" bg-gray-100">
-      <h2 className="text-4xl text-center pt-5 font-semibold mb-6 text-gray-800">
+    <div className=" bg-gray-100 dark:bg-black min-h-screen font">
+      <h2 className="text-5xl text-center dark:text-white pt-5 font font-semibold mb-6 text-gray-800">
        My Profile 
       </h2>
       <div>
@@ -112,7 +112,7 @@ const MyProfile = () => {
 
                   <button
                     type="submit"
-                    className="bg-white text-green-600 px-6 py-2 rounded-md mt-4 font-bold hover:bg-gray-200"
+                    className="bg-white text-blue-600 px-6 py-2 rounded-md mt-4 font-bold hover:bg-gray-200"
                   >
                     Update
                   </button>

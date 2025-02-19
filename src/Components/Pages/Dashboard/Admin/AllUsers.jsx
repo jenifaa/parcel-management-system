@@ -92,10 +92,10 @@ const AllUsers = () => {
   };
   return (
    
-    <div className="p-6 bg-gray-50 rounded-lg shadow-lg">
+    <div className="p-6 bg-gray-50 rounded-lg font min-h-screen shadow-lg  dark:bg-black dark:text-black">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-3xl font-bold text-gray-700">All Users</h2>
-        <h2 className="text-3xl font-bold text-gray-700">
+        <h2 className="text-3xl font-bold text-gray-700 dark:text-white ">All Users</h2>
+        <h2 className="text-3xl font-bold text-gray-700 dark:text-white">
           Total Users ({users.length})
         </h2>
       </div>
