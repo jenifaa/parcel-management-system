@@ -81,7 +81,7 @@ const BookParcel = () => {
   };
 
   return (
-    <div className="lg:px-10 px-2 bg-gray-100 dark:bg-black dark:text-black py-10">
+    <div className="lg:px-20 px-2 bg-gray-100 w-full dark:bg-black dark:text-black py-10">
       <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-10">
         <h2 className="text-5xl font font-semibold text-blue-500 mb-8 text-center">
           Book A Parcel

@@ -31,17 +31,17 @@ const OurFeature = () => {
 
   return (
     <div className="bg-gray-50 dark:bg-black font mb-20">
-      <section className="pt-12 pb-8  px-6">
+      <section className="pt-12 pb-5  ">
         <div className="lg:w-11/12 mx-auto text-center">
           <h2 className="text-sm  font-bold mb-2 text-blue-500">
             Our Features---
           </h2>
           <h2 className="text-5xl font-bold mb-16">Our Services at a Glance</h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-5 ">
-            <div className="bg-white px-4 pb-5 md:w-56  lg:w-72 rounded-lg shadow-lg">
-              <div className="flex justify-center p-5 items-center">
-                <img src={secure} className="w-full h-52" alt="" />
+          <div className="grid grid-cols-2 px-5 lg:px-0 sm:grid-cols-3 lg:grid-cols-5  gap-3 ">
+            <div className="bg-white px-2 pb-2 md:w-56   rounded-lg shadow-lg">
+              <div className="flex justify-center px-3 py-2 items-center">
+                <img src={secure} className="w-full h-36" alt="" />
               </div>
               <h3 className="text-xl font-semibold mb-2">
                 Secure & Safe Delivery
@@ -52,9 +52,9 @@ const OurFeature = () => {
               </p>
             </div>
 
-            <div className="bg-white  px-4 pb-5 md:w-56  lg:w-72  rounded-lg shadow-lg">
-              <div className="flex justify-center p-5 items-center">
-                <img src={parcel} className="w-full h-52 " alt="" />
+            <div className="bg-white px-2 pb-2 md:w-56    rounded-lg shadow-lg">
+              <div className="flex justify-center px-5 py-3 items-center">
+                <img src={parcel} className="w-full h-36 " alt="" />
               </div>
               <h3 className="text-xl font-semibold mb-3">Speedy Service</h3>
               <p className="text-gray-600 text-sm">
@@ -63,9 +63,9 @@ const OurFeature = () => {
               </p>
             </div>
 
-            <div className="bg-white px-4 pb-5 md:w-56  lg:w-72 rounded-lg shadow-lg">
-              <div className="flex justify-center p-5 items-center">
-                <img src={icon} className="w-full h-52" alt="" />
+            <div className="bg-white px-2 pb-2 md:w-56   rounded-lg shadow-lg">
+              <div className="flex justify-center px-3 py-2 items-center">
+                <img src={icon} className="w-full h-36" alt="" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Track Your Parcel</h3>
               <p className="text-gray-600 text-sm">
@@ -73,9 +73,9 @@ const OurFeature = () => {
                 ensuring peace of mind throughout the journey.
               </p>
             </div>
-            <div className="bg-white px-4 pb-5 md:w-56  lg:w-72  rounded-lg shadow-lg">
-              <div className="flex justify-center p-5 items-center">
-                <img src={boXLottie} className="w-full h-52" alt="" />
+            <div className="bg-white px-2 pb-2 md:w-56   rounded-lg shadow-lg">
+              <div className="flex justify-center py-2 px-3 items-center">
+                <img src={boXLottie} className="w-full h-36" alt="" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Package Insurance</h3>
               <p className="text-gray-600 text-sm">
@@ -83,6 +83,17 @@ const OurFeature = () => {
                 ensuring peace of mind throughout the journey.
               </p>
             </div>
+            <div className="bg-white px-2 pb-2 md:w-56   rounded-lg shadow-lg">
+              <div className="flex justify-center py-2 px-5 items-center">
+                <img src={boXLottie} className="w-full h-36" alt="" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Package Insurance</h3>
+              <p className="text-gray-600 text-sm">
+                Know exactly where your parcel is with live tracking updates,
+                ensuring peace of mind throughout the journey.
+              </p>
+            </div>
+           
           </div>
         </div>
       </section>
@@ -109,7 +120,7 @@ const OurFeature = () => {
                 </div>
                 <h3 className="text-md font-semibold mb-2">Parcels Booked</h3>
                 <p className="text-3xl font-bold">
-                  <CountUp end={stats.parcels} duration={3} separator="," />
+                  <CountUp end={stats.parcels} duration={5} separator="," />
                 </p>
               </div>
 
@@ -121,7 +132,7 @@ const OurFeature = () => {
                   Parcels Delivered
                 </h3>
                 <p className="text-3xl font-bold">
-                  <CountUp end={stats.delivered} duration={3} separator="," />
+                  <CountUp end={stats.delivered} duration={5} separator="," />
                 </p>
               </div>
 
@@ -133,7 +144,7 @@ const OurFeature = () => {
                   Users Registered
                 </h3>
                 <p className="text-3xl font-bold">
-                  <CountUp end={stats.users} duration={3} separator="," />
+                  <CountUp end={stats.users} duration={5} separator="," />
                 </p>
               </div>
             </div>
@@ -147,7 +158,7 @@ const OurFeature = () => {
                   Teamwork and Collaboration
                 </h3>
                 <p className="text-3xl font-bold">
-                  <CountUp end={30} duration={3} separator="," />
+                  <CountUp end={30} duration={5} separator="," />
                 </p>
               </div>
 
@@ -159,7 +170,7 @@ const OurFeature = () => {
                   Revenue Generated
                 </h3>
                 <p className="text-3xl font-bold">
-                  <CountUp end={400} duration={3} separator="," />
+                  <CountUp end={400} duration={5} separator="," />
                 </p>
               </div>
 
@@ -171,7 +182,7 @@ const OurFeature = () => {
                   Drivers Assigned
                 </h3>
                 <p className="text-3xl font-bold">
-                  <CountUp end={25} duration={3} separator="," />
+                  <CountUp end={25} duration={5} separator="," />
                 </p>
               </div>
             </div>
@@ -184,7 +195,7 @@ const OurFeature = () => {
                   Support Tickets Resolved
                 </h3>
                 <p className="text-3xl font-bold">
-                  <CountUp end={18} duration={3} separator="," />
+                  <CountUp end={18} duration={5} separator="," />
                 </p>
               </div>
 
@@ -196,7 +207,7 @@ const OurFeature = () => {
                   Customers Served
                 </h3>
                 <p className="text-3xl font-bold">
-                  <CountUp end={stats.delivered} duration={3} separator="," />
+                  <CountUp end={stats.delivered} duration={5} separator="," />
                 </p>
               </div>
 
@@ -208,7 +219,7 @@ const OurFeature = () => {
                   Packages Picked Up
                 </h3>
                 <p className="text-3xl font-bold ">
-                  <CountUp end={35} duration={3} separator="," />
+                  <CountUp end={35} duration={5} separator="," />
                 </p>
               </div>
             </div>

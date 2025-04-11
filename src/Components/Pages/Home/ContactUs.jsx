@@ -2,20 +2,24 @@ import React from "react";
 import contactImage from "../../../assets/lottie/contact.json";
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import Lottie from "lottie-react";
+import { Link } from "react-router-dom";
 
 const ContactUs = () => {
   return (
     <div className="my-16 font w-11/12 mx-auto">
       <div className="my-4">
-      <p className="text-sm font-bold text-blue-500 mb-3 text-center">Connect with  us--</p>
+        <p className="text-sm font-bold text-blue-500 mb-3 text-center">
+          Connect with us--
+        </p>
         <h2 className="text-center font font-bold text-5xl">Contact us</h2>
       </div>
       <div className=" mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center justify-center gap-20">
-          
           <div className="w-full ">
-           
-            <Lottie animationData={contactImage} className="lg:w-[450px]"></Lottie>
+            <Lottie
+              animationData={contactImage}
+              className="lg:w-[450px]"
+            ></Lottie>
           </div>
 
           {/* Contact Information */}
@@ -48,14 +52,21 @@ const ContactUs = () => {
               </div>
             </div>
 
-            <button className="mt-8 py-3 px-6 font-bold text-white  bg-blue-500  rounded-xl shadow-lg hover:bg-blue-400 transition-all duration-300">
-              Contact Us
-            </button>
+            <div className="mt-5">
+              <Link
+                to="/contact"
+                className=" py-3 px-6 font-bold text-white  bg-blue-500  rounded-md shadow-lg hover:bg-blue-400 transition-all duration-300"
+              >
+                Contact Us
+              </Link>
+            </div>
           </div>
         </div>
       </div>
       <div className="text-center  mt-4">
-        <p className="text-sm font-bold text-blue-500 mb-3">Learn more about us--</p>
+        <p className="text-sm font-bold text-blue-500 mb-3">
+          Learn more about us--
+        </p>
         <h2 className="font-bold text-5xl">About Us</h2>
       </div>
     </div>

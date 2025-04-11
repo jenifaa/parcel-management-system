@@ -99,7 +99,7 @@ const UserHome = () => {
         </div>
 
         <div className="mt-12 text-center">
-          <Link  to="/dashboard/myProfile" className="bg-blue-600 text-white py-2 px-6 rounded-full text-xl hover:bg-green-700 transition">
+          <Link  to="/dashboard/myProfile" className="bg-blue-600 text-white py-2 px-6 rounded-full text-xl hover:bg-blue-700 transition">
             Edit Profile
           </Link>
         </div>

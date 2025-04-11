@@ -124,7 +124,7 @@ const MyParcel = () => {
   };
 
   return (
-    <div className=" py-8 min-h-screen">
+    <div className=" py-8 px-10 min-h-screen">
       <ToastContainer
         position="top-right"
         autoClose={5000}

@@ -62,7 +62,7 @@ const Navbar = () => {
           : "bg-black bg-opacity-40 text-white"
       }`}
     >
-      <nav className="flex items-center px-12 justify-between py-4">
+      <nav className="flex items-center md:px-8 px-5 lg:px-12 justify-between py-4">
         <div className="flex items-center">
           <img className="w-12" src={logo} alt="Logo" />
           <Link to="/" className="text-3xl font-bold tracking-widest font3">

@@ -78,8 +78,8 @@ const MyProfile = () => {
       </h2>
       <div>
         <section className=" py-16 rounded-lg shadow-lg">
-          <div className=" flex justify-center items-center">
-            <div className=" lg:flex lg:gap-32 space-y-5 px-3 lg:items-center">
+          <div className="  flex justify-center items-center">
+            <div className=" md:flex md:gap-12 lg:gap-32 space-y-5 px-3 lg:items-center">
               <div className=" shadow-lg ">
                 <img
                   src={user?.photoURL}

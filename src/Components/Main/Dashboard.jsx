@@ -26,8 +26,8 @@ const Dashboard = () => {
   }
   return (
     <div className="flex">
-      <div className="lg:w-56  lg:px-5 sm:px-4 px-1 py-10 min-h-screen text-white bg-blue-500">
-        <ul className="menu space-y-5">
+      <div className="lg:w-56  lg:px-5 sm:px-4 px-1 py-10 min-h-screen text-white fixed bg-blue-500">
+        <ul className="menu space-y-5 ">
           {isAdmin ? (
             // Admin Menu
             <>
@@ -174,7 +174,7 @@ const Dashboard = () => {
           )}
         </ul>
       </div>
-      <div className="flex-1   min-h-screen">
+      <div className=" flex-1 lg:pl-56 pl-36  min-h-screen">
         <ThemeProvider>
           <DashNavbar></DashNavbar>
           <div className="dark:bg-black dark:text-white">

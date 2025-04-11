@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 
-import bgImg from "../../assets/images/Computer login-rafiki.png";
+import bgImg from "../../assets/images/Computer login-rafiki (2).png";
 
 // import {
 //   loadCaptchaEnginge,
@@ -61,7 +61,7 @@ const Login = () => {
             <img src={bgImg} alt="" />
           </div>
           <div className="mx-auto px-5 lg:w-1/2 max-w-sm font-semibold">
-            <div className="mb-10 text-center text-green-700">
+            <div className="mb-10 text-center text-blue-500">
               <h2 className=" text-5xl  font font-bold mb-2">Welcome</h2>
               <p className="text-sm">Login to your Account to continue...</p>
             </div>
@@ -87,7 +87,7 @@ const Login = () => {
                 />
               </div>
             
-              <p className=" text-green-700 mb-2">
+              <p className=" text-blue-500 mb-2">
                 <small>
                   New Here? Create an Account -
                   <Link className="font-bold" to="/register">
@@ -98,14 +98,14 @@ const Login = () => {
               <div className="">
                 <input
                   //   disabled={disable}
-                  className="w-full py-2 my-2 bg-opacity-90 rounded-lg text-white font-bold bg-green-900"
+                  className="w-full py-2 my-2 bg-opacity-90 rounded-lg text-white font-bold bg-blue-900"
                   type="submit"
                   value="Login"
                 />
               </div>
             </form>
 
-            <div className="text-center text-green-700 ">
+            <div className="text-center text-blue-500 ">
               <small>Or Sign in with</small>
               <SocialLogin></SocialLogin>
             </div>

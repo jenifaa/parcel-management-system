@@ -14,8 +14,8 @@ const About = () => {
       </div>
 
       <div className="md:flex justify-between gap-20 items-center mb-20">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-semibold ">Who We Are</h2>
+        <div className=" mb-12">
+          <h2 className="text-3xl font-semibold text-center">Who We Are</h2>
           <p className="text-lg text-gray-600 mt-4 dark:text-white">
             At <span className="text-indigo-600">Packify</span>, we are a team
             of passionate professionals committed to transforming the logistics
@@ -31,8 +31,8 @@ const About = () => {
       
       <div className="md:flex justify-between mb-20">
         <div><Lottie animationData={robo}></Lottie></div>
-      <div className="text-center  lg:px-24">
-        <h2 className="text-3xl font-semibold text-gray-800 dark:text-white">What We Do</h2>
+      <div className=" lg:pl-28">
+        <h2 className="text-3xl font-semibold text-gray-800 dark:text-white text-center">What We Do</h2>
         <p className="text-lg text-gray-600 dark:text-white mt-4">
           - <strong>Fast and Reliable Delivery:</strong> We provide swift
           delivery services that guarantee the safe and on-time arrival of your
@@ -60,9 +60,9 @@ const About = () => {
       </div>
       </div>
 
-      {/* Our Values Section */}
-      <div className="text-center mb-12">
-        <h2 className="text-3xl font-semibold text-gray-800 dark:text-white">Our Values</h2>
+      
+      <div className="mb-12">
+        <h2 className="text-3xl font-semibold text-center  text-gray-800 dark:text-white">Our Values</h2>
         <p className="text-lg text-gray-600 mt-4 dark:text-white">
           - <strong>Customer-Centric Approach:</strong> We believe in delivering
           exceptional customer service, ensuring every interaction is friendly,
@@ -80,9 +80,9 @@ const About = () => {
         </p>
       </div>
 
-      {/* Why Choose Us Section */}
-      <div className="text-center mb-12">
-        <h2 className="text-3xl font-semibold text-gray-800 dark:text-white">Why Choose Us?</h2>
+     
+      <div className="mb-12">
+        <h2 className="text-3xl font-semibold text-gray-800 dark:text-white text-center ">Why Choose Us?</h2>
         <p className="text-lg text-gray-600 mt-4 dark:text-white">
           - <strong>Expert Delivery Personnel:</strong> Our team consists of
           trained professionals who are dedicated to handling each parcel with

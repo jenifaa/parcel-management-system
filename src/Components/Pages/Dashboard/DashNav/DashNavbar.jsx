@@ -8,7 +8,7 @@ const DashNavbar = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   return (
     <div>
-      <nav className="flex items-center px-12 justify-between py-2">
+      <nav className="flex items-center md:px-12 justify-between py-2">
         <div className="flex items-center">
           <Link to="/" className="text-3xl font-bold tracking-widest font3">
             Packify

@@ -132,8 +132,8 @@ const CheckoutForm = () => {
           </div>
         </div>
       </div>
-      <h2 className="text-2xl font-semibold my-8">Pay Here</h2>
-      <div className="lg:w-8/12 px-5">
+      <h2 className="text-2xl font-semibold px-10 my-8">Pay Here</h2>
+      <div className="lg:w-8/12 px-10">
         <form onSubmit={handleSubmit}>
           <CardElement
             options={{
@@ -153,7 +153,7 @@ const CheckoutForm = () => {
           />
 
           <button
-            className="px-8 py-2 text-white rounded-md bg-green-600 my-10"
+            className="px-8 py-2 text-white rounded-md bg-blue-600 my-10"
             type="submit"
             disabled={!stripe || !clientSecret}
           >
@@ -161,7 +161,7 @@ const CheckoutForm = () => {
           </button>
           <p className="text-red-600 my-4">{error}</p>
           {transactionId && (
-            <p className="text-green-500">
+            <p className="text-blue-500">
               Your Transaction id: {transactionId}
             </p>
           )}

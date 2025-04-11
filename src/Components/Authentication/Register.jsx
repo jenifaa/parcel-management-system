@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import useAuth from "../Hooks/useAuth";
 import SocialLogin from "../Hooks/SocialLogin";
-import img2 from "../../assets/images/Sign up-rafiki (1).png";
+import img2 from "../../assets/images/Sign up-rafiki.svg";
 
 import { FaArrowLeft } from "react-icons/fa";
 const Register = () => {
@@ -67,17 +67,17 @@ const Register = () => {
   };
   return (
     <div>
-      <div className="mt-20 mb-10 ">
+      <div className="pt-20 mb-10 ">
         <div className="   flex flex-col-reverse lg:flex-row  items-center lg:w-10/12 mx-auto">
           <div className=" md:w-8/12 w-10/12  lg:w-1/2 mx-auto lg:max-w-xs">
-            <h2 className="text-center text-4xl font mb-8 text-green-800 font-bold">
+            <h2 className="text-center text-4xl font mb-8 text-blue-500 font-bold">
               Sign Up
             </h2>
             <form onSubmit={handleSubmit(onSubmit)} className="">
               {step === 1 && (
                 <>
                   <div className="form-control">
-                    <h2 className="text-green-800">Name*</h2>
+                    <h2 className="text-blue-500">Name*</h2>
                     <input
                       type="text"
                       {...register("name", { required: true })}
@@ -92,7 +92,7 @@ const Register = () => {
                     )}
                   </div>
                   <div className="form-control">
-                    <h2 className="text-green-800">Email*</h2>
+                    <h2 className="text-blue-500">Email*</h2>
                     <input
                       type="email"
                       {...register("email", { required: true })}
@@ -107,7 +107,7 @@ const Register = () => {
                     )}
                   </div>
                   <div className="form-control">
-                    <h2 className="text-green-800">Type*</h2>
+                    <h2 className="text-blue-500">Type*</h2>
                     <select
                       defaultValue="default"
                       {...register("type", { required: true })}
@@ -130,7 +130,7 @@ const Register = () => {
                   <div className="flex items-center justify-end mb-5 mt-3">
                     <button
                       type="button"
-                      className=" text-sm font-bold text-green-800 flex items-center gap-3"
+                      className=" text-sm font-bold text-blue-500 flex items-center gap-3"
                       onClick={handleNext}
                     >
                       Continue <FaArrowRightLong className="text-sm" />
@@ -141,7 +141,7 @@ const Register = () => {
               {step === 2 && (
                 <>
                   <div className="form-control">
-                    <h2 className="text-green-800">PhotoUrl*</h2>
+                    <h2 className="text-blue-500">PhotoUrl*</h2>
                     <input
                       type="url"
                       {...register("photoURL", { required: true })}
@@ -155,7 +155,7 @@ const Register = () => {
                     )}
                   </div>
                   <div className="form-control">
-                    <h2 className="text-green-800">Phone Number*</h2>
+                    <h2 className="text-blue-500">Phone Number*</h2>
                     <input
                       type="number"
                       {...register("phoneNumber", { required: true })}
@@ -165,7 +165,7 @@ const Register = () => {
                   </div>
 
                   <div className="form-control">
-                    <h2 className="text-green-800">Password*</h2>
+                    <h2 className="text-blue-500">Password*</h2>
                     <input
                       type="password"
                       {...register("password", {
@@ -204,7 +204,7 @@ const Register = () => {
                     <div className="flex items-center ">
                       <button
                         type="button"
-                        className=" text-sm font-bold text-green-800 flex items-center gap-2"
+                        className=" text-sm font-bold text-blue-500 flex items-center gap-2"
                         onClick={handleBack}
                       >
                         <FaArrowLeft className="text-sm " /> Back
@@ -212,7 +212,7 @@ const Register = () => {
                     </div>
                     <input
                       //   disabled={disable}
-                      className="w-full py-2 my-2 bg-opacity-90 rounded-lg text-white font-bold bg-green-900"
+                      className="w-full py-2 my-2 bg-opacity-90 rounded-lg text-white font-bold bg-blue-700"
                       type="submit"
                       value="Sign Up"
                     />
@@ -220,7 +220,7 @@ const Register = () => {
                 </>
               )}
 
-              <p className="text-center text-green-800">
+              <p className="text-center text-blue-700">
                 <small>
                   New Here? Create an Account -
                   <Link className="font-bold" to="/login">
@@ -230,7 +230,7 @@ const Register = () => {
               </p>
             </form>
 
-            <div className="text-center text-green-700 ">
+            <div className="text-center text-blue-500 ">
               <p>Or </p>
               <SocialLogin></SocialLogin>
             </div>
