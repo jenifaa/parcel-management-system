@@ -10,6 +10,7 @@ import con from "../../../assets/icons/confetti.png";
 import box from "../../../assets/icons/box.png";
 import boxes from "../../../assets/icons/boxes.png";
 import parcel from "../../../assets/icons/rocket.png";
+import customer from "../../../assets/icons/customer-service.png";
 import truck from "../../../assets/icons/vehicle.png";
 import useAxiosPublic from "@/Components/Hooks/useAxiosPublic";
 import image from "../../../assets/images/del.png";
@@ -50,7 +51,7 @@ const OurFeature = () => {
           </h2>
           <h2 className="text-5xl font-bold mb-16">Our Services at a Glance</h2>
 
-          <div className="grid xxs:grid-cols-2 px-5 lg:px-0 sm:grid-cols-3 lg:grid-cols-5  gap-3 ">
+          <div className="grid xxs:grid-cols-2 px-5 lg:px-0 sm:grid-cols-3 lg:grid-cols-5 dark:text-black  gap-3 ">
             {" "}
             <div className="bg-white px-2 pb-2 md:w-56 rounded-lg shadow-lg">
               <div className="flex justify-center px-3 py-2 items-center">
@@ -64,7 +65,6 @@ const OurFeature = () => {
                 safe from pickup to delivery.
               </p>
             </div>
-            {/* <div className="card"></div> */}
             <div className="bg-white px-2 pb-2 md:w-56    rounded-lg shadow-lg">
               <div className="flex justify-center px-5 py-3 items-center">
                 <img src={parcel} className="w-full h-36 " alt="" />
@@ -95,14 +95,20 @@ const OurFeature = () => {
                 ensuring peace of mind throughout the journey.
               </p>
             </div>
-            <div className="bg-white px-2 pb-2 md:w-56   rounded-lg shadow-lg">
+            <div className="bg-white px-2 pb-2 md:w-56 rounded-lg shadow-lg">
               <div className="flex justify-center py-2 px-5 items-center">
-                <img src={boXLottie} className="w-full h-36" alt="" />
+                <img
+                  src={customer}
+                  className="w-full h-36"
+                  alt="Customer Support"
+                />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Package Insurance</h3>
+              <h3 className="text-xl font-semibold mb-2">
+                24/7 Customer Support
+              </h3>
               <p className="text-gray-600 text-sm">
-                Know exactly where your parcel is with live tracking updates,
-                ensuring peace of mind throughout the journey.
+                Our dedicated support team is always available to assist you
+                with any delivery concerns—anytime, anywhere.
               </p>
             </div>
           </div>
