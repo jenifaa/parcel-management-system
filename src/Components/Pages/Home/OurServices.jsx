@@ -116,7 +116,7 @@ const OurServices = () => {
         }}
       >
         <h2 className="text-3xl font-bold text-center mb-6 text-black dark:text-white">🏆 Achievements</h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 xxs:grid-cols-2  md:grid-cols-3 lg:grid-cols-5 gap-6">
           {data.achievements.stats.map((stat, index) => (
             <div
               key={index}

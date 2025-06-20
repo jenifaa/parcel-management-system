@@ -9,7 +9,8 @@ const DeliveryNotification = () => {
 
 
   return (
-    <div className="p-4 my-24 lg:pl-64 lg:pr-[550px]">
+    <div className="p-4 py-28 lg:pl-64 lg:pr-[550px]">
+      <hr className="mb-8"/>
       <h1 className="text-2xl font-bold mb-6">
         Delivery Man Notifications: {notifications.length}
       </h1>
@@ -24,8 +25,8 @@ const DeliveryNotification = () => {
               <div className="flex justify-between">
                 <div>
                   {" "}
-                  <p className="font-bold">Congratulation!!</p>
-                  <p>Admin Has accepted your request</p>
+                  <p className="font-bold dark:text-black">Congratulation!!</p>
+                  <p className="dark:text-black">Admin Has accepted your request</p>
                   <p className="text-sm text-gray-500">
                     You're A deliveryMan Now
                   </p>

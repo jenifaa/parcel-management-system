@@ -45,8 +45,8 @@ const TopDeliveryMan = () => {
         <p className="text-sm text-blue-500 font-bold mb-3">
           Meet our deliveryman---
         </p>
-        <h2 className="text-5xl font-bold  mb-12">
-          🏆 Our Top Three DeliveryMan
+        <h2 className="text-4xl sm:text-5xl font-bold  mb-12">
+          🏆Our Top Three DeliveryMan
         </h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 ">

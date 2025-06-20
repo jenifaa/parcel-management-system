@@ -62,42 +62,23 @@ const Navbar = () => {
           : "bg-black bg-opacity-40 text-white"
       }`}
     >
-      <nav className="flex items-center md:px-8 px-5 lg:px-12 justify-between py-4">
-        <div className="flex items-center">
-          <img className="w-12" src={logo} alt="Logo" />
-          <Link to="/" className="text-3xl font-bold tracking-widest font3">
+      <nav className="flex items-center md:px-8 px-2 lg:px-12 justify-between py-4">
+        <div className="sm:flex items-center">
+          <img className="w-9 sm:w-12" src={logo} alt="Logo" />
+          <Link
+            to="/"
+            className="text-2xl sm:text-3xl font-bold tracking-widest font3"
+          >
             Packify
           </Link>
         </div>
 
-        <div className="flex items-center space-x-3">
-          <div className="lg:hidden">
-            <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              className="focus:outline-none"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </button>
-          </div>
-
+        <div className="flex items-center sm:space-x-3">
           <div>
             {location.pathname !== "/login" &&
               location.pathname !== "/register" && (
-                <div className="flex space-x-4 items-center">
-                  <div className="flex items-center space-x-6">
+                <div className="flex space-x-2 sm:space-x-4 items-center">
+                  <div className="flex items-center sm:space-x-6">
                     <button
                       onClick={toggleTheme}
                       className="p-2 bg-gray-200 dark:bg-gray-700 rounded-full transition-all"
@@ -214,7 +195,7 @@ const Navbar = () => {
                         <DropdownMenuSeparator />
                         <DropdownMenuGroup>
                           <DropdownMenuItem>
-                            <h2 className="font-bold text-green-800 text-xl">
+                            <h2 className="font-bold text-blue-500 text-xl">
                               {user?.displayName}
                             </h2>
                           </DropdownMenuItem>
@@ -255,6 +236,27 @@ const Navbar = () => {
                       </button>
                     </NavLink>
                   )}
+                  <div className="lg:hidden">
+                    <button
+                      onClick={() => setMenuOpen(!menuOpen)}
+                      className="focus:outline-none"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M4 6h16M4 12h16M4 18h16"
+                        />
+                      </svg>
+                    </button>
+                  </div>
                 </div>
               )}
           </div>
@@ -275,6 +277,15 @@ const Navbar = () => {
           <NavLink to="/about" className="">
             About Us
           </NavLink>
+          {user ? (
+            <>
+              <NavLink to="/service" className="">
+                Our Services
+              </NavLink>
+            </>
+          ) : (
+            ""
+          )}
         </div>
       )}
     </div>

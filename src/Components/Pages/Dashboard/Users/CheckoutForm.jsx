@@ -83,9 +83,9 @@ const CheckoutForm = () => {
 
   return (
     <div>
-      <div className="mb-8 bg-white shadow-md rounded-lg p-6">
-        <h2 className="text-2xl font-bold mb-4">Parcel Details</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="mb-8 bg-white  shadow-md rounded-lg p-6">
+        <h2 className="text-2xl font-bold mb-4 dark:text-black">Parcel Details</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 dark:text-black">
           <div>
             <p>
               <span className="font-semibold">Sender Name:</span> {data.name}

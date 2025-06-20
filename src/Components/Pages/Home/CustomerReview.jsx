@@ -82,7 +82,7 @@ const CustomerReview = () => {
             {sortedReviews.map((review, index) => (
               <div
                 key={index}
-                className="review-card bg-white shadow-lg rounded-lg p-6 mb-6 w-80"
+                className=" bg-white shadow-lg rounded-lg p-6 mb-6 sm:w-80"
               >
                 <div className="flex items-center mb-4">
                   <img

@@ -8,7 +8,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
-
+import { gsap } from "gsap";
 import axios from "axios";
 import auth from "@/firebase.init";
 import useAxiosPublic from "../Hooks/useAxiosPublic";

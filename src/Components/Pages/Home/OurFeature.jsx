@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import icon from "../../../assets/icons/globe-location.png";
 import secure from "../../../assets/icons/safety.png";
 import boXLottie from "../../../assets/icons/protect.png";
-
+import { gsap } from "gsap";
 import { FaTruck, FaUserFriends, FaBoxOpen } from "react-icons/fa";
 import Lottie from "lottie-react";
 import CountUp from "react-countup";
@@ -28,6 +28,18 @@ const OurFeature = () => {
       return res.data;
     },
   });
+  // const borderRef = useRef(null);
+
+  // useEffect(() => {
+  //   gsap.to(".card", {
+  //     borderImageSource:
+  //       "linear-gradient(90deg, #9333ea, #ec4899, #3b82f6, #9333ea)",
+  //     backgroundPosition: "200% center",
+  //     duration: 3,
+  //     ease: "linear",
+  //     repeat: -1,
+  //   });
+  // }, []);
 
   return (
     <div className="bg-gray-50 dark:bg-black font mb-20">
@@ -38,8 +50,9 @@ const OurFeature = () => {
           </h2>
           <h2 className="text-5xl font-bold mb-16">Our Services at a Glance</h2>
 
-          <div className="grid grid-cols-2 px-5 lg:px-0 sm:grid-cols-3 lg:grid-cols-5  gap-3 ">
-            <div className="bg-white px-2 pb-2 md:w-56   rounded-lg shadow-lg">
+          <div className="grid xxs:grid-cols-2 px-5 lg:px-0 sm:grid-cols-3 lg:grid-cols-5  gap-3 ">
+            {" "}
+            <div className="bg-white px-2 pb-2 md:w-56 rounded-lg shadow-lg">
               <div className="flex justify-center px-3 py-2 items-center">
                 <img src={secure} className="w-full h-36" alt="" />
               </div>
@@ -51,7 +64,7 @@ const OurFeature = () => {
                 safe from pickup to delivery.
               </p>
             </div>
-
+            {/* <div className="card"></div> */}
             <div className="bg-white px-2 pb-2 md:w-56    rounded-lg shadow-lg">
               <div className="flex justify-center px-5 py-3 items-center">
                 <img src={parcel} className="w-full h-36 " alt="" />
@@ -62,7 +75,6 @@ const OurFeature = () => {
                 delivery network.
               </p>
             </div>
-
             <div className="bg-white px-2 pb-2 md:w-56   rounded-lg shadow-lg">
               <div className="flex justify-center px-3 py-2 items-center">
                 <img src={icon} className="w-full h-36" alt="" />
@@ -93,7 +105,6 @@ const OurFeature = () => {
                 ensuring peace of mind throughout the journey.
               </p>
             </div>
-           
           </div>
         </div>
       </section>
@@ -104,7 +115,6 @@ const OurFeature = () => {
         }}
         className="h-screen bg-fixed bg-cover  bg-center relative mt-20  mb-20 sm:mb-5"
       >
-        
         <div className="absolute inset-0 bg-black opacity-80"></div>
 
         <div className="relative z-10 lg:px-64 py-10">
